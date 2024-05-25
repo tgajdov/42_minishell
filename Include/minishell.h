@@ -58,6 +58,8 @@ typedef struct  s_token
     struct s_token    *next;
 }   t_token;
 
+//gat ft
+char*	get_var(t_export *allotrack, char *var);
 
 // -- FIRSTPARSE --
 
@@ -127,7 +129,7 @@ int         redirect_stdout_append(char *fichier);
 // -- CMD -- All commands
 
 // cd.c
-int         cd(char *path);
+int         cd(char *path, t_export *alloctrack);
 
 // echo.c
 int         echo(char *input);

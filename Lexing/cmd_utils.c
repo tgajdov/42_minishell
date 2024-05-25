@@ -73,19 +73,21 @@ int	make_cd(t_token *tokens, t_export *alloctrack)
 	if (ft_strcasecmp(tokens->cmd, "cd", 2) == 0
 		&& tokens->cmd[2] == '\0')
 	{
-		if (!tokens->argument[0])
+		if ((!tokens->argument[0]) || (ft_strncmp(tokens->argument[0], "~", 1) == 0))
 		{
-			printf("mnsh : cd : Only with relative or absolute path\n");
+			cd(get_var(alloctrack, "ZDOTDIR"), alloctrack);
 			alloctrack->status = 42;
 			return (1);
 		}
-		if (tokens->argument[1])
+		else if (tokens->argument[1])
 		{
 			printf("mnsh : cd : String not in pwd : %s\n", tokens->argument[0]);
 			alloctrack->status = 1;
 			return (1);
 		}
-		if (!cd(tokens->argument[0]))
+		else if (ft_strncmp(tokens->argument[0], "-", 1) == 0)
+			cd (get_var(alloctrack, "OLDPWD"), alloctrack);
+		else if (!cd(tokens->argument[0], alloctrack))
 		{
 			alloctrack->status = 127;
 			return (0);

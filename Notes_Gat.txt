@@ -1,0 +1,8 @@
+1.	le makefile relinke
+2.	pwd ne modifier pas l'environnement
+3.	tab ouvre des options alors qu'il ne devrait rien faire
+4.	quand je test "echo echo echo", ça print trop de fois
+5.	"expr $? + $?" donne une fois 0 et une fois 2 dans notre terminal
+6.	"ctrl-C" ne devrait pas afficher ^C, ni le texte en cas de texte avant
+7.	Si "ctrl-C" après un cat sans arg doit afficher une newline
+

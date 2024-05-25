@@ -49,7 +49,7 @@ int	is_echon(char *str, int i, t_token *token)
 {
 	if (token->cmd != NULL)
 	{
-		if (ft_strcasecmp(token->cmd, "echo") == 0)
+		if (ft_strcasecmp(token->cmd, "echo", 4) == 0)
 		{
 			while (!is_space(str, i))
 				i++;
