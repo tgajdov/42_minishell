@@ -20,8 +20,9 @@ int	make_echo(t_token *tokens, t_export *alloctrack)
 		&& tokens->cmd[4] == '\0')
 	{
 		t = 0;
-		if (!tokens->argument)
+		if (!(tokens->argument[0]))
 		{
+			printf("\n");
 			alloctrack->status = 0;
 			return (0);
 		}
@@ -49,7 +50,7 @@ int	make_echon(t_token *tokens, t_export *alloctrack)
 		&& tokens->cmd[7] == '\0')
 	{
 		t = 0;
-		if (!tokens->argument)
+		if (!(tokens->argument[0]))
 		{
 			alloctrack->status = 0;
 			return (0);
@@ -64,7 +65,6 @@ int	make_echon(t_token *tokens, t_export *alloctrack)
 			t++;
 		}
 		alloctrack->status = 0;
-		write (1, "\n", 1);
 	}
 	return (1);
 }

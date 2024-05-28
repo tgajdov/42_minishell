@@ -51,10 +51,12 @@ int	is_echon(char *str, int i, t_token *token)
 	{
 		if (ft_strcasecmp(token->cmd, "echo", 4) == 0)
 		{
-			while (!is_space(str, i))
+			while (!is_space(str, i) && str[i] != '\0')
 				i++;
-			while (is_space(str, i))
+			while (is_space(str, i) && str[i] != '\0')
 				i++;
+			if (str[i] == '\0')
+				return (0);
 			if (str[i] == '-' && str[i + 1] == 'n')
 			{
 				free(token->cmd);

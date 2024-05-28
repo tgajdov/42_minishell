@@ -46,7 +46,8 @@ $(EXECUTABLE): $(OBJ_MAIN) $(OBJ_FIRSTPARSE) $(OBJ_PARSING) $(OBJ_OPERATORS) $(O
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
 # Rule to make object files
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | directories
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	make directories
 	$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
 
 directories:
@@ -72,4 +73,4 @@ re: fclean all
 # Default rule to build the executable
 all: $(EXECUTABLE)
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re directories

@@ -19,7 +19,7 @@ void	ft_exit(int num, t_export *alloctrack)
 	if (num == -42)
 	{
 		free_alloctrack(alloctrack);
-		printf("Exiting..\n");
+		printf("exit\n");
 		exit(EXIT_FAILURE);
 	}
 }

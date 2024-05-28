@@ -50,10 +50,6 @@ int	ft_strcasecmp(char *s1, char *s2, size_t i)
 		s2++;
 		compt++;
 	}
-	c1 = ft_tolower(*s1);
-	c2 = ft_tolower(*s2);
-	if (c1 != c2)
-			return (c1 - c2);
 	return (0);
 }
 

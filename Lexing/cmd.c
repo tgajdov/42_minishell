@@ -62,21 +62,42 @@ static int	make_env(t_token *tokens, t_export *alloctrack)
 	return (1);
 }
 
+int	ft_isnumb(char *arg)
+{
+	int	i;
+
+	i = 0;
+	while (arg[i])
+	{
+		if (!(ft_isdigit(arg[i])))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 static int	make_exit(t_token *tokens, t_export *alloctrack)
 {
 	if (ft_strcasecmp(tokens->cmd, "exit", 4) == 0
 		&& tokens->cmd[4] == '\0')
 	{
-		if (tokens->argument[1] == NULL)
+		if (!(tokens->argument[0]) || (ft_isnumb(tokens->argument[0])
+			&& (!(tokens->argument[1]))))
 		{
 			alloctrack->status = 0;
 			return (-42);
 		}
-		else
+		else if (ft_isnumb(tokens->argument[0]) && (tokens->argument[1]))
 		{
 			alloctrack->status = 1;
 			printf("exit: too many arguments\n");
 			return (1);
+		}
+		else
+		{
+			alloctrack->status = 0;
+			printf("exit: %s: numeric argument required\n", tokens->argument[0]);
+			return (-42);
 		}
 	}
 	return (1);
