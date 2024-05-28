@@ -40,7 +40,7 @@ int	ft_strcasecmp(char *s1, char *s2, size_t i)
 	size_t	compt;
 
 	compt = 0;
-	while ((*s1 && *s2) && compt < i)
+	while ((*s1 || *s2) && compt < i)
 	{
 		c1 = ft_tolower(*s1);
 		c2 = ft_tolower(*s2);
@@ -48,7 +48,10 @@ int	ft_strcasecmp(char *s1, char *s2, size_t i)
 			return (c1 - c2);
 		s1++;
 		s2++;
+		compt++;
 	}
+	c1 = ft_tolower(*s1);
+	c2 = ft_tolower(*s2);
 	if (c1 != c2)
 			return (c1 - c2);
 	return (0);

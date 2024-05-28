@@ -16,7 +16,7 @@ int	error_echo(char *cmd, t_export *alloctrack)
 {
 	if (ft_strcasecmp(cmd, "echo", 4) == 0 && cmd[4] != '\0')
 	{
-		if (ft_strcasecmp(cmd, "echo -n", 7) == 0 && cmd[7] == '\0')
+		if (ft_strncmp(cmd, "echo -n", 7) == 0 && cmd[7] == '\0')
 			return (1);
 		else
 		{

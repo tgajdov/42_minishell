@@ -45,7 +45,7 @@ int	make_echon(t_token *tokens, t_export *alloctrack)
 {
 	int	t;
 
-	if (ft_strcasecmp(tokens->cmd, "echo -n", 7) == 0
+	if (ft_strncmp(tokens->cmd, "echo -n", 7) == 0
 		&& tokens->cmd[7] == '\0')
 	{
 		t = 0;
@@ -64,6 +64,7 @@ int	make_echon(t_token *tokens, t_export *alloctrack)
 			t++;
 		}
 		alloctrack->status = 0;
+		write (1, "\n", 1);
 	}
 	return (1);
 }

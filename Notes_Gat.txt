@@ -1,5 +1,4 @@
 1.	le makefile relinke
-2.	pwd ne modifier pas l'environnement
 3.	tab ouvre des options alors qu'il ne devrait rien faire
 4.	quand je test "echo echo echo", ça print trop de fois
 5.	"expr $? + $?" donne une fois 0 et une fois 2 dans notre terminal

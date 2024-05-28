@@ -67,8 +67,17 @@ static int	make_exit(t_token *tokens, t_export *alloctrack)
 	if (ft_strcasecmp(tokens->cmd, "exit", 4) == 0
 		&& tokens->cmd[4] == '\0')
 	{
-		alloctrack->status = 0;
-		return (-42);
+		if (tokens->argument[1] == NULL)
+		{
+			alloctrack->status = 0;
+			return (-42);
+		}
+		else
+		{
+			alloctrack->status = 1;
+			printf("exit: too many arguments\n");
+			return (1);
+		}
 	}
 	return (1);
 }
