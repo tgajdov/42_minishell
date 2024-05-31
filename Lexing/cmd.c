@@ -62,7 +62,7 @@ static int	make_env(t_token *tokens, t_export *alloctrack)
 	return (1);
 }
 
-int	ft_isnumb(char *arg)
+static int	ft_isnumb(char *arg)
 {
 	int	i;
 
@@ -99,21 +99,6 @@ static int	make_exit(t_token *tokens, t_export *alloctrack)
 			printf("exit: %s: numeric argument required\n", tokens->argument[0]);
 			return (-42);
 		}
-	}
-	return (1);
-}
-
-static int	make_exec(t_token *tokens, t_export *alloctrack)
-{
-	if (tokens->cmd[0] == '/'
-		|| (tokens->cmd[0] == '.' && tokens->cmd[1] == '/'))
-	{
-		if (!exec(tokens->cmd, tokens->argument, alloctrack->environ))
-		{
-			alloctrack->status = 127;
-			return (0);
-		}
-		alloctrack->status = 0;
 	}
 	return (1);
 }

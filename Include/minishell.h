@@ -30,11 +30,12 @@
 #include <dirent.h>
 #include <signal.h>
 #include <sys/wait.h>
-#include "/Users/tgajdov/.brew/opt/readline/include/readline/readline.h" //trouver une solution pour remplacer mon nom ici par un $(whoami), je n'arrive pas a ce que le makefile trouve le readline.h
-#include "/Users/tgajdov/.brew/opt/readline/include/readline/history.h"
+#include <sys/stat.h>
+//#include "/Users/tgajdov/.brew/opt/readline/include/readline/readline.h" //trouver une solution pour remplacer mon nom ici par un $(whoami), je n'arrive pas a ce que le makefile trouve le readline.h
+//#include "/Users/tgajdov/.brew/opt/readline/include/readline/history.h"
 
-//#include <readline/readline.h>
-//#include <readline/history.h>
+#include <readline/readline.h>
+#include <readline/history.h>
 
 
 typedef struct s_export
@@ -192,6 +193,9 @@ int	        search_occurence(char *str1, char *str2);
 char        **init_way_path(t_export *alloctrack);
 char        **argument_system(t_token *tokens);
 int         is_access(char **way, t_export *alloctrack);
+
+// cmd_exec.c
+int         make_exec(t_token *tokens, t_export *alloctrack);
 
 // access.c
 int         exec_system(t_token *tokens, t_export *alloctrack);

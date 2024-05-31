@@ -19,7 +19,6 @@ SRC_FIRSTPARSE = $(wildcard $(SRC_DIR)/FirstParse/*.c)
 SRC_PARSING = $(wildcard $(SRC_DIR)/Parsing/*.c)
 SRC_OPERATORS = $(wildcard $(SRC_DIR)/Operators/*.c)
 SRC_CMD = $(wildcard $(SRC_DIR)/Cmd/*.c)
-SRC_BONUS = $(wildcard $(SRC_DIR)/Bonus/*.c)
 SRC_LEXING = $(wildcard $(SRC_DIR)/Lexing/*.c)
 SRC_MNSH = $(wildcard $(SRC_DIR)/Mnsh/*.c)
 SRC_UTILS = $(wildcard $(SRC_DIR)/Utils/*.c)
@@ -30,7 +29,6 @@ OBJ_FIRSTPARSE = $(patsubst $(SRC_DIR)/FirstParse/%.c,$(OBJ_DIR)/FirstParse/%.o,
 OBJ_PARSING = $(patsubst $(SRC_DIR)/Parsing/%.c,$(OBJ_DIR)/Parsing/%.o,$(SRC_PARSING))
 OBJ_OPERATORS = $(patsubst $(SRC_DIR)/Operators/%.c,$(OBJ_DIR)/Operators/%.o,$(SRC_OPERATORS))
 OBJ_CMD = $(patsubst $(SRC_DIR)/Cmd/%.c,$(OBJ_DIR)/Cmd/%.o,$(SRC_CMD))
-OBJ_BONUS = $(patsubst $(SRC_DIR)/Bonus/%.c,$(OBJ_DIR)/Bonus/%.o,$(SRC_BONUS))
 OBJ_LEXING = $(patsubst $(SRC_DIR)/Lexing/%.c,$(OBJ_DIR)/Lexing/%.o,$(SRC_LEXING))
 OBJ_MNSH = $(patsubst $(SRC_DIR)/Mnsh/%.c,$(OBJ_DIR)/Mnsh/%.o,$(SRC_MNSH))
 OBJ_UTILS = $(patsubst $(SRC_DIR)/Utils/%.c,$(OBJ_DIR)/Utils/%.o,$(SRC_UTILS))
@@ -42,7 +40,7 @@ EXECUTABLE = minishell
 LIBFT = $(LIBFT_DIR)/libft.a
 
 # Rule to make the executable
-$(EXECUTABLE): $(OBJ_MAIN) $(OBJ_FIRSTPARSE) $(OBJ_PARSING) $(OBJ_OPERATORS) $(OBJ_CMD) $(OBJ_BONUS) $(OBJ_LEXING) $(OBJ_MNSH) $(OBJ_UTILS) $(LIBFT)
+$(EXECUTABLE): $(OBJ_MAIN) $(OBJ_FIRSTPARSE) $(OBJ_PARSING) $(OBJ_OPERATORS) $(OBJ_CMD) $(OBJ_LEXING) $(OBJ_MNSH) $(OBJ_UTILS) $(LIBFT)
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
 # Rule to make object files
