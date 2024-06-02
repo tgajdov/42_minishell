@@ -64,6 +64,8 @@ typedef struct  s_token
 
 //gat ft
 char*	get_var(t_export *allotrack, char *var);
+/* char	*ft_getcmdpath(char *cmd, char **envp);
+void	ft_exceve(char *av, char **envp); */
 
 // -- FIRSTPARSE --
 

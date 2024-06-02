@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-static void	header(void)
+/* static void	header(void)
 {
 	printf("\033[1;32m  __  __               _          _ _\n");
 	printf(" |  \\/   _ _ __  _ ___| |__   ___| | |\n");
@@ -20,7 +20,7 @@ static void	header(void)
 	printf(" | |  | | | | | | \\__ \\ | | |  __/ | |\n");
 	printf(" |_|  |_|_|_| |_|_|___/_| |_|\\___|_|_|\n");
 	printf("  _    _ _ _   _ _ ___ _   _   ___ _ _ \033[0m\n\n");
-}
+} */
 
 static t_token	*take_n_tokenize(t_export *alloctrack)
 {
@@ -87,10 +87,10 @@ static int	minishell(t_export *alloctrack, int fd[2])
 	{
 		setup_signal(&sa);
 		status = execute(&tokens, alloctrack, fd);
-		if (status == -42)
+		if (status != 0 && status != 1)
 		{
 			free_token_chain(tokens);
-			ft_exit(-42, alloctrack);
+			ft_exit(status, alloctrack);
 		}
 		free_token_chain(tokens);
 	}
@@ -104,7 +104,7 @@ int	main(int argc, char **argv, char **env)
 
 	(void)argc;
 	(void)argv;
-	header();
+	//header();
 	save_std(fd);
 	alloctrack = init(env);
 	redirect_std(fd);

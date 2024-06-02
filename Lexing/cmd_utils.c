@@ -28,12 +28,13 @@ int	make_echo(t_token *tokens, t_export *alloctrack)
 		}
 		while (tokens->argument[t] != NULL)
 		{
+			if (t > 0)
+				write (STDOUT_FILENO, " ", 1);
 			if (!echo(tokens->argument[t]))
 			{
 				alloctrack->status = 127;
 				return (0);
 			}
-			write (STDOUT_FILENO, " ", 1);
 			t++;
 		}
 		alloctrack->status = 0;
@@ -103,12 +104,12 @@ int	make_pwd(t_token *tokens, t_export *alloctrack)
 	if (ft_strcasecmp(tokens->cmd, "pwd", 3) == 0
 		&& tokens->cmd[3] == '\0')
 	{
-		if (tokens->argument[0])
+		/* if (tokens->argument[0])
 		{
 			printf("mnsh : pwd : Too many argument\n");
 			alloctrack->status = 1;
 			return (1);
-		}
+		} */
 		if (!pwd())
 		{
 			alloctrack->status = -42;

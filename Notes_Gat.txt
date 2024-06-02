@@ -5,4 +5,9 @@
 5.	"expr $? + $?" donne une fois 0 et une fois 2 dans notre terminal
 6.	"ctrl-C" ne devrait pas afficher ^C, ni le texte en cas de texte avant
 7.	Si "ctrl-C" après un cat sans arg doit afficher une newline
+8.	"echo < outfile" fait segfault le programme, il cherche a exec ce qui est dans le outfile
+9.	"ctrl-D" devrait afficher exit sur la meme ligne
+10.	un espace après chaque impression
+11.	"echo "> >> < * ? [ ] | ; [ ] || && ( ) & # $  <<"" fait segfault
+12.	"echo "$"" fait segfault
 
