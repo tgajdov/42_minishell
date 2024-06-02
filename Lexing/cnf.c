@@ -40,7 +40,7 @@ static int	other_parse(char *cmd, t_export *alloctrack)
 		&& ft_strcasecmp(cmd, "unset", 5) != 0 && ft_strcasecmp(cmd, "env", 3) != 0
 		&& ft_strcasecmp(cmd, "exit", 4) != 0 && cmd[0] != '\0')
 	{
-		printf("mnsh : command not found : %s\n", cmd);
+		printf("mnsh : %s: command not found\n", cmd);
 		alloctrack->status = 127;
 		return (0);
 	}

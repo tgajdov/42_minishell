@@ -29,7 +29,7 @@ int	error_zero(int num)
 	if (num == 7)
 		printf("mnsh : Writing Error\n");
 	if (num == 8)
-		perror("mnsh : cd");
+		perror("");
 	if (num == 9)
 		perror("mnsh : pwd");
 	if (num == 10)

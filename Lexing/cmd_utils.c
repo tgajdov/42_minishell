@@ -75,16 +75,11 @@ int	make_cd(t_token *tokens, t_export *alloctrack)
 	if (ft_strcasecmp(tokens->cmd, "cd", 2) == 0
 		&& tokens->cmd[2] == '\0')
 	{
+		
 		if ((!tokens->argument[0]) || (ft_strncmp(tokens->argument[0], "~", 1) == 0))
 		{
 			cd(get_var(alloctrack, "ZDOTDIR"), alloctrack);
 			alloctrack->status = 42;
-			return (1);
-		}
-		else if (tokens->argument[1])
-		{
-			printf("mnsh : cd : String not in pwd : %s\n", tokens->argument[0]);
-			alloctrack->status = 1;
 			return (1);
 		}
 		else if (ft_strncmp(tokens->argument[0], "-", 1) == 0)
@@ -104,12 +99,6 @@ int	make_pwd(t_token *tokens, t_export *alloctrack)
 	if (ft_strcasecmp(tokens->cmd, "pwd", 3) == 0
 		&& tokens->cmd[3] == '\0')
 	{
-		/* if (tokens->argument[0])
-		{
-			printf("mnsh : pwd : Too many argument\n");
-			alloctrack->status = 1;
-			return (1);
-		} */
 		if (!pwd())
 		{
 			alloctrack->status = -42;

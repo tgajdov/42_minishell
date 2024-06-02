@@ -16,6 +16,11 @@ void	ft_exit(int num, t_export *alloctrack)
 {
 	if (num == 0)
 		exit(EXIT_SUCCESS);
+	else if (num == 255)
+	{
+		free_alloctrack(alloctrack);
+		exit(num);
+	}
 	else
 	{
 		free_alloctrack(alloctrack);

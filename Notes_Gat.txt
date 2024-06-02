@@ -10,4 +10,6 @@
 10.	un espace après chaque impression
 11.	"echo "> >> < * ? [ ] | ; [ ] || && ( ) & # $  <<"" fait segfault
 12.	"echo "$"" fait segfault
+13. "export HELLO="123 A-"" ne prends pas en compte "123 A-" comme un arg, mais comme deux
+14. Parsing de $ a checker
 

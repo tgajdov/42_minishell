@@ -21,7 +21,6 @@ static int	make_unset(t_token *tokens, t_export *alloctrack)
 	{
 		if (!tokens->argument[0])
 		{
-			printf("mnsh : unset : Not enough arguments\n");
 			alloctrack->status = 1;
 			return (0);
 		}
@@ -69,7 +68,7 @@ static int	ft_isnumb(char *arg)
 	i = 0;
 	while (arg[i])
 	{
-		if (!(ft_isdigit(arg[i])))
+		if (!(ft_isdigit(arg[i])) && !(arg[i] == 45) && !(arg[i] == 43) && !(arg[i] == 34) && !(arg[i] == 39))
 			return (0);
 		i++;
 	}
@@ -85,19 +84,20 @@ static int	make_exit(t_token *tokens, t_export *alloctrack)
 			&& (!(tokens->argument[1]))))
 		{
 			alloctrack->status = 0;
-			return (-42);
+			return (ft_atoi(tokens->argument[0]));
 		}
 		else if (ft_isnumb(tokens->argument[0]) && (tokens->argument[1]))
 		{
 			alloctrack->status = 1;
-			printf("exit: too many arguments\n");
+			printf("exit\n");
+			printf("mnsh: exit: too many arguments\n");
 			return (1);
 		}
 		else
 		{
 			alloctrack->status = 0;
-			printf("exit: %s: numeric argument required\n", tokens->argument[0]);
-			return (-42);
+
+			return (255);
 		}
 	}
 	return (1);
@@ -121,8 +121,8 @@ int	cmd(t_token *tokens, t_export *alloctrack)
 		return (0);
 	if (!make_env(tokens, alloctrack))
 		return (0);
-	if (make_exit(tokens, alloctrack) == -42)
-		return (-42);
+	if (make_exit(tokens, alloctrack) != 1)
+		return (make_exit(tokens, alloctrack));
 	if (!make_exec(tokens, alloctrack))
 		return (0);
 	return (1);

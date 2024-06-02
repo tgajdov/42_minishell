@@ -20,7 +20,7 @@ int	error_echo(char *cmd, t_export *alloctrack)
 			return (1);
 		else
 		{
-			printf("mnsh : command not found : %s\n", cmd);
+			printf("mnsh : %s: command not found\n", cmd);
 			alloctrack->status = 127;
 			return (0);
 		}
@@ -32,7 +32,7 @@ int	error_cd(char *cmd, t_export *alloctrack)
 {
 	if (ft_strcasecmp(cmd, "cd", 2) == 0 && cmd[2] != '\0')
 	{
-		printf("mnsh : command not found : %s\n", cmd);
+		printf("mnsh : %s: command not found\n", cmd);
 		alloctrack->status = 127;
 		return (0);
 	}
@@ -43,7 +43,7 @@ int	error_pwd(char *cmd, t_export *alloctrack)
 {
 	if (ft_strcasecmp(cmd, "pwd", 3) == 0 && cmd[3] != '\0')
 	{
-		printf("mnsh : command not found : %s\n", cmd);
+		printf("mnsh : %s: command not found\n", cmd);
 		alloctrack->status = 127;
 		return (0);
 	}
@@ -54,19 +54,19 @@ int	error_export_unset_env(char *cmd, t_export *alloctrack)
 {
 	if (ft_strcasecmp(cmd, "export", 6) == 0 && cmd[6] != '\0')
 	{
-		printf("mnsh : command not found : %s\n", cmd);
+		printf("mnsh : %s: command not found\n", cmd);
 		alloctrack->status = 127;
 		return (0);
 	}
 	if (ft_strcasecmp(cmd, "unset", 5) == 0 && cmd[5] != '\0')
 	{
-		printf("mnsh : command not found : %s\n", cmd);
+		printf("mnsh : %s: command not found\n", cmd);
 		alloctrack->status = 127;
 		return (0);
 	}
 	if (ft_strcasecmp(cmd, "env", 3) == 0 && cmd[3] != '\0')
 	{
-		printf("mnsh : command not found : %s\n", cmd);
+		printf("mnsh : %s: command not found\n", cmd);
 		alloctrack->status = 127;
 		return (0);
 	}
@@ -77,7 +77,7 @@ int	error_exit(char *cmd, t_export *alloctrack)
 {
 	if (ft_strcasecmp(cmd, "exit", 4) == 0 && cmd[4] != '\0')
 	{
-		printf("mnsh : command not found : %s\n", cmd);
+		printf("mnsh : %s: command not found\n", cmd);
 		alloctrack->status = 127;
 		return (0);
 	}

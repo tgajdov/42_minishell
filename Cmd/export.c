@@ -53,11 +53,31 @@ static void	check_environ(char *v_env, t_export *alloctrack, int *i, int *find)
 	}
 }
 
+static int	ft_check_id(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0' && str[i] != '=')
+	{
+		if (!ft_isalpha(str[i]))
+		{
+			printf("mnsh: export: `%s': not a valid identifier\n", str);
+			return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+
 int	ft_export(char *v_env, t_export *alloctrack)
 {
 	int	i;
 	int	found;
 
+	printf("`%s'\n", v_env);
+	if (!ft_check_id(v_env))
+		return (0);
 	i = 0;
 	while (v_env[i] != '=')
 		i++;
@@ -65,7 +85,7 @@ int	ft_export(char *v_env, t_export *alloctrack)
 		return (0);
 	if (i == 0)
 	{
-		printf("mnsh : %s not found\n", v_env + 1);
+		printf("mnsh: export: `%s': not a valid identifier\n", v_env);
 		return (0);
 	}
 	found = 0;

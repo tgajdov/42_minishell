@@ -68,8 +68,8 @@ static int	execute(t_token **tokens, t_export *alloctrack, int fd[2])
 		alloctrack->back = lexing((*tokens), alloctrack);
 		if (alloctrack->back == 0)
 			return (0);
-		if (alloctrack->back == -42)
-			return (-42);
+		else if (alloctrack->back != 1)
+			return (alloctrack->back);
 		redirect_std(fd);
 		(*tokens) = (*tokens)->next;
 	}
@@ -89,6 +89,10 @@ static int	minishell(t_export *alloctrack, int fd[2])
 		status = execute(&tokens, alloctrack, fd);
 		if (status != 0 && status != 1)
 		{
+			if (status == 255)
+				printf("exit\n");
+			if (status == 255)
+				printf("mnsh: exit: %s: numeric argument required\n", tokens->argument[0]);
 			free_token_chain(tokens);
 			ft_exit(status, alloctrack);
 		}
