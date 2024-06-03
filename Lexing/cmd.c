@@ -21,8 +21,8 @@ static int	make_unset(t_token *tokens, t_export *alloctrack)
 	{
 		if (!tokens->argument[0])
 		{
-			alloctrack->status = 1;
-			return (0);
+			alloctrack->status = 0;
+			return (1);
 		}
 		t = 0;
 		while (tokens->argument[t])
@@ -96,7 +96,6 @@ static int	make_exit(t_token *tokens, t_export *alloctrack)
 		else
 		{
 			alloctrack->status = 0;
-
 			return (255);
 		}
 	}

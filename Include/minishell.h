@@ -31,11 +31,10 @@
 #include <signal.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
-//#include "/Users/tgajdov/.brew/opt/readline/include/readline/readline.h" //trouver une solution pour remplacer mon nom ici par un $(whoami), je n'arrive pas a ce que le makefile trouve le readline.h
-//#include "/Users/tgajdov/.brew/opt/readline/include/readline/history.h"
-
-#include <readline/readline.h>
-#include <readline/history.h>
+#include "/Users/tgajdov/.brew/opt/readline/include/readline/readline.h" //trouver une solution pour remplacer mon nom ici par un $(whoami), je n'arrive pas a ce que le makefile trouve le readline.h
+#include "/Users/tgajdov/.brew/opt/readline/include/readline/history.h"
+//#include <readline/readline.h>
+//#include <readline/history.h>
 
 
 typedef struct s_export

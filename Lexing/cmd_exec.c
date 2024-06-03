@@ -14,34 +14,34 @@
 
 static int	is_directory(const char *path) 
 {
-    struct	stat st;
+	struct	stat st;
 
-    if (stat(path, &st) == -1) 
-        return (0);
-    if (S_ISDIR(st.st_mode)) 
-        return (1);
-    return (0);
+	if (stat(path, &st) == -1) 
+		return (0);
+	if (S_ISDIR(st.st_mode)) 
+		return (1);
+	return (0);
 }
 
 static int	is_executable(const char *path)
 {
-    struct	stat st;
+	struct	stat st;
 
-    if (stat(path, &st) == -1)
-        return (0);
-    if ((st.st_mode & S_IXUSR) || (st.st_mode & S_IXGRP)
+	if (stat(path, &st) == -1)
+		return (0);
+	if ((st.st_mode & S_IXUSR) || (st.st_mode & S_IXGRP)
 		|| (st.st_mode & S_IXOTH))
-        return (1);
-    return (0);
+		return (1);
+	return (0);
 }
 
 static int is_regular_file(const char *path) 
 {
-    struct	stat st;
+	struct	stat st;
 
-    if (stat(path, &st) == -1) {
-        return (0);
-    }
+	if (stat(path, &st) == -1) {
+		return (0);
+	}
 	if (S_ISREG(st.st_mode)) 
 		return (1);
 	return (0);
@@ -49,6 +49,7 @@ static int is_regular_file(const char *path)
 
 int	make_exec(t_token *tokens, t_export *alloctrack)
 {
+	// int i = 0;
 	if (tokens->cmd[0] == '/'
 		|| (tokens->cmd[0] == '.' && tokens->cmd[1] == '/'))
 	{
@@ -62,6 +63,8 @@ int	make_exec(t_token *tokens, t_export *alloctrack)
 		{
 			if (is_executable(tokens->cmd))
 			{
+				// while(tokens->argument[i] != NULL)
+				// 	printf("The argument is :%s:\n", tokens->argument[i++]);
 				if (!exec(tokens->cmd, tokens->argument, alloctrack->environ))
 				{
 					alloctrack->status = 127;

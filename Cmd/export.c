@@ -75,7 +75,6 @@ int	ft_export(char *v_env, t_export *alloctrack)
 	int	i;
 	int	found;
 
-	printf("`%s'\n", v_env);
 	if (!ft_check_id(v_env))
 		return (0);
 	i = 0;

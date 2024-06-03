@@ -22,7 +22,6 @@ char	**ft_parsing(char **argument, t_export *alloctrack)
 	{
 		if (argument[t] == NULL)
 			break ;
-		//printf("%s\n", argument[t]);
 		argument[t] = erase_quote(argument[t]);
 		if (!argument[t])
 			return (NULL);

@@ -29,14 +29,3 @@ void	ft_exit(int num, t_export *alloctrack)
 	}
 }
 
-/* void	ft_exit(int num, t_export *alloctrack)
-{
-	if (num == 0)
-		exit(EXIT_SUCCESS);
-	if (num == -42)
-	{
-		free_alloctrack(alloctrack);
-		printf("exit\n");
-		exit(EXIT_FAILURE);
-	}
-} */

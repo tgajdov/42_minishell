@@ -22,11 +22,11 @@
 [0m[0;33mTest  11: ✅[38;5;244m echo 'aspas ->"' 
 [0m[0;33mTest  12: ✅[38;5;244m echo 'aspas -> " ' 
 [0m[0;33mTest  13: ❌[38;5;244m echo "> >> < * ? [ ] | ; [ ] || && ( ) & # $  <<" 
-[0mmini output = (> >> < README.md bash.supp bash_outfiles bonus bonus_bonus builtins extras local.supp loop.out manual_tests mini_outfiles os_specific outfiles pipes redirects syntax test_files tester traces wildcards ? [ ] | ; [ ] || && ( ) & # )
-bash output = (> >> < README.md bash.supp bash_outfiles bonus bonus_bonus builtins extras local.supp loop.out manual_tests mini_outfiles os_specific outfiles pipes redirects syntax test_files tester traces wildcards ? [ ] | ; [ ] || && ( ) & # $ <<)
+[0mmini output = (> >> < README.md bash.supp bash_outfiles bonus bonus_bonus builtins extras local.supp loop.out manual_tests mini_outfiles os_specific outfiles output_builtins output_extra pipes redirects syntax test_files tester wildcards ? [ ] | ; [ ] || && ( ) & # )
+bash output = (> >> < README.md bash.supp bash_outfiles bonus bonus_bonus builtins extras local.supp loop.out manual_tests mini_outfiles os_specific outfiles output_builtins output_extra pipes redirects syntax test_files tester wildcards ? [ ] | ; [ ] || && ( ) & # $ <<)
 [0;33mTest  14: ✅[38;5;244m echo '> >> < * ? [ ] | ; [ ] || && ( ) & # $  <<' 
 [0m[0;33mTest  15: ❌[38;5;244m echo "exit_code ->$? user ->$USER home -> $HOME" 
-[0mmini output = (exit_code ->0 user ->tgajdov home -> )
+[0mmini output = ()
 bash output = (exit_code ->0 user ->tgajdov home -> /Users/tgajdov)
 [0;33mTest  16: ✅[38;5;244m echo 'exit_code ->$? user ->$USER home -> $HOME' 
 [0m[0;33mTest  17: ❌[38;5;244m echo "$" 
@@ -40,45 +40,37 @@ bash exit code = 0
 [0m[0;33mTest  21: ✅[38;5;244m echo $?HELLO 
 [0m[0;33mTest  22: ✅[38;5;244m pwd 
 [0m[0;33mTest  23: ✅[38;5;244m pwd oi 
-[0m[0;33mTest  24: ❌[38;5;244m export hello 
-[0mmini exit code = 139
-bash exit code = 0
-[0;33mTest  25: ❌[38;5;244m export HELLO=123 
-[0mmini exit code = 139
-bash exit code = 0
-[0;33mTest  26: ❌[38;5;244m export A- 
-[0mmini exit code = 139
-bash exit code = 1
+[0m[0;33mTest  24: ✅[38;5;244m export hello 
+[0m[0;33mTest  25: ✅[38;5;244m export HELLO=123 
+[0m[0;33mTest  26: ❌[38;5;244m export A- 
+[0mmini output = (mnsh: export: `A-': not a valid identifier)
+bash output = ()
 mini error = ()
 bash error = ( not a valid identifier)
-[0;33mTest  27: ❌[38;5;244m export HELLO=123 A 
-[0mmini exit code = 139
+[0;33mTest  27: ✅[38;5;244m export HELLO=123 A 
+[0m[0;33mTest  28: ❌[38;5;244m export HELLO="123 A-" 
+[0mmini output = (mnsh: export: `A-': not a valid identifier)
+bash output = ()
+mini exit code = 1
 bash exit code = 0
-[0;33mTest  28: ❌[38;5;244m export HELLO="123 A-" 
-[0mmini exit code = 139
-bash exit code = 0
-[0;33mTest  29: ❌[38;5;244m export hello world 
-[0mmini exit code = 139
-bash exit code = 0
-[0;33mTest  30: ❌[38;5;244m export HELLO-=123 
-[0mmini exit code = 139
-bash exit code = 1
+[0;33mTest  29: ✅[38;5;244m export hello world 
+[0m[0;33mTest  30: ❌[38;5;244m export HELLO-=123 
+[0mmini output = (mnsh: export: `HELLO-=123': not a valid identifier)
+bash output = ()
 mini error = ()
 bash error = ( not a valid identifier)
 [0;33mTest  31: ❌[38;5;244m export = 
-[0mmini exit code = 139
-bash exit code = 1
+[0mmini output = (mnsh: export: `=': not a valid identifier)
+bash output = ()
 mini error = ()
 bash error = ( not a valid identifier)
 [0;33mTest  32: ❌[38;5;244m export 123 
-[0mmini exit code = 139
-bash exit code = 1
+[0mmini output = (mnsh: export: `123': not a valid identifier)
+bash output = ()
 mini error = ()
 bash error = ( not a valid identifier)
-[0;33mTest  33: ❌[38;5;244m unset 
-[0mmini exit code = 1
-bash exit code = 0
-[0;33mTest  34: ✅[38;5;244m unset HELLO 
+[0;33mTest  33: ✅[38;5;244m unset 
+[0m[0;33mTest  34: ✅[38;5;244m unset HELLO 
 [0m[0;33mTest  35: ✅[38;5;244m unset HELLO1 HELLO2 
 [0m[0;33mTest  36: ✅[38;5;244m unset HOME 
 [0m[0;33mTest  37: ✅[38;5;244m unset PATH 
@@ -89,10 +81,8 @@ bash exit code = 0
 [0;33mTest  40: ❌[38;5;244m cd $PWD hi 
 [0mmini exit code = 139
 bash exit code = 0
-[0;33mTest  41: ❌[38;5;244m cd 123123 
-[0mmini exit code = 127
-bash exit code = 1
-mini error = (No such file or directory)
+[0;33mTest  41: ✅⚠️ [38;5;244m cd 123123 
+[0mmini error = (No such file or directory)
 bash error = ( No such file or directory)
 [0;33mTest  42: ✅[38;5;244m exit 123 
 [0m[0;33mTest  43: ✅[38;5;244m exit 298 
@@ -113,5 +103,5 @@ bash output = ()
 mini error = ()
 bash error = ( too many arguments)
 [0;33mTest  52: ✅[38;5;244m  
-[0m[0;35m[1m34/52
+[0m[0;35m[1m40/52
 [0m😭 😭 😭

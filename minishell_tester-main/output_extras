@@ -1,0 +1,82 @@
+[0;31m🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+                                                                                             
+ ██    ██ █ ██    █ █ █████ █   █ █████ █     █       ██████ █████ █████ ██████ █████ █████  
+ ███  ███ █ ███   █ █ █     █   █ █     █     █         ██   █     █       ██   █     █   ██ 
+ █ ████ █ █ █ ██  █ █ █████ █████ ████  █     █         ██   ████  █████   ██   ████  █████  
+ █  ██  █ █ █  ██ █ █     █ █   █ █     █     █         ██   █         █   ██   █     █   ██ 
+ █      █ █ █   ███ █ █████ █   █ █████ █████ █████     ██   █████ █████   ██   █████ █   ██ 
+                                                                                             
+🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+                                                                                              
+[0;31m———————————— extras
+[0;33mTest   1: ✅[38;5;244m  
+[0m[0;33mTest   2: ❌[38;5;244m $PWD 
+[0mmini output = (mnsh: /Users/tgajdov/Desktop/Cursus/42_minishell/minishell_tester-main: is a directory)
+bash output = ()
+mini error = ()
+bash error = ( is a directory)
+[0;33mTest   3: ❌[38;5;244m $EMPTY 
+[0mmini exit code = 139
+bash exit code = 0
+[0;33mTest   4: ❌[38;5;244m $EMPTY echo hi 
+[0mmini output = ()
+bash output = (hi)
+mini exit code = 139
+bash exit code = 0
+[0;33mTest   5: ❌[38;5;244m ./test_files/invalid_permission 
+[0mmini output = (mnsh: ./test_files/invalid_permission: Permission denied)
+bash output = ()
+mini error = ()
+bash error = ( Permission denied)
+[0;33mTest   6: ❌[38;5;244m ./missing.out 
+[0mmini output = (mnsh: ./missing.out: : No such file or directory)
+bash output = ()
+mini error = ()
+bash error = ( No such file or directory)
+[0;33mTest   7: ❌[38;5;244m missing.out 
+[0mmini output = (mnsh : missing.out: command not found)
+bash output = ()
+mini error = ()
+bash error = ( command not found)
+[0;33mTest   8: ❌[38;5;244m "aaa" 
+[0mmini output = (mnsh : aaa: command not found)
+bash output = ()
+mini error = ()
+bash error = ( command not found)
+[0;33mTest   9: ❌[38;5;244m test_files 
+[0mmini output = (mnsh : test_files: command not found)
+bash output = ()
+mini error = ()
+bash error = ( command not found)
+[0;33mTest  10: ❌[38;5;244m ./test_files 
+[0mmini output = (mnsh: ./test_files: is a directory)
+bash output = ()
+mini error = ()
+bash error = ( is a directory)
+[0;33mTest  11: ❌[38;5;244m /test_files 
+[0mmini output = (mnsh: /test_files: : No such file or directory)
+bash output = ()
+mini error = ()
+bash error = ( No such file or directory)
+[0;33mTest  12: ❌[38;5;244m minishell.h 
+[0mmini output = (mnsh : minishell.h: command not found)
+bash output = ()
+mini error = ()
+bash error = ( command not found)
+[0;33mTest  13: ❌[38;5;244m $ 
+[0mmini output = (mnsh : $: command not found)
+bash output = ()
+mini error = ()
+bash error = ( command not found)
+[0;33mTest  14: ❌[38;5;244m $? 
+[0mmini output = (mnsh : 0: command not found)
+bash output = ()
+mini error = ()
+bash error = ( command not found)
+[0;33mTest  15: ❌[38;5;244m README.md 
+[0mmini output = (mnsh : README.md: command not found)
+bash output = ()
+mini error = ()
+bash error = ( command not found)
+[0;35m[1m1/15
+[0m😭 😭 😭

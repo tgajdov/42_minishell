@@ -66,9 +66,7 @@ static int	execute(t_token **tokens, t_export *alloctrack, int fd[2])
 			if ((*tokens)->next->pipe == 1)
 				redirect_output(alloctrack->pipex);
 		alloctrack->back = lexing((*tokens), alloctrack);
-		if (alloctrack->back == 0)
-			return (0);
-		else if (alloctrack->back != 1)
+		if (alloctrack->back != 1)
 			return (alloctrack->back);
 		redirect_std(fd);
 		(*tokens) = (*tokens)->next;

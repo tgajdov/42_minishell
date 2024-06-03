@@ -77,16 +77,12 @@ int	make_cd(t_token *tokens, t_export *alloctrack)
 	{
 		
 		if ((!tokens->argument[0]) || (ft_strncmp(tokens->argument[0], "~", 1) == 0))
-		{
 			cd(get_var(alloctrack, "ZDOTDIR"), alloctrack);
-			alloctrack->status = 42;
-			return (1);
-		}
 		else if (ft_strncmp(tokens->argument[0], "-", 1) == 0)
 			cd (get_var(alloctrack, "OLDPWD"), alloctrack);
 		else if (!cd(tokens->argument[0], alloctrack))
 		{
-			alloctrack->status = 127;
+			alloctrack->status = 1;
 			return (0);
 		}
 		alloctrack->status = 0;
@@ -128,7 +124,7 @@ int	make_export(t_token *tokens, t_export *alloctrack)
 		{
 			if (!ft_export(tokens->argument[t], alloctrack))
 			{
-				alloctrack->status = -42;
+				alloctrack->status = 1;
 				return (0);
 			}
 			t++;

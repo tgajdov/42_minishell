@@ -27,9 +27,7 @@ int	lexing(t_token *tokens, t_export *alloctrack)
 		if (!command_not_found(tokens, alloctrack))
 			return (0);
 		back = cmd(tokens, alloctrack);
-		if (back == 0)
-			return (0);
-		else if (back != 1)
+		if (back != 1)
 			return (back);
 	}
 	return (1);
