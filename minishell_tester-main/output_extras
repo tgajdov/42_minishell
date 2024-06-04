@@ -15,14 +15,10 @@
 bash output = ()
 mini error = ()
 bash error = ( is a directory)
-[0;33mTest   3: ❌[38;5;244m $EMPTY 
-[0mmini exit code = 139
-bash exit code = 0
-[0;33mTest   4: ❌[38;5;244m $EMPTY echo hi 
+[0;33mTest   3: ✅[38;5;244m $EMPTY 
+[0m[0;33mTest   4: ❌[38;5;244m $EMPTY echo hi 
 [0mmini output = ()
 bash output = (hi)
-mini exit code = 139
-bash exit code = 0
 [0;33mTest   5: ❌[38;5;244m ./test_files/invalid_permission 
 [0mmini output = (mnsh: ./test_files/invalid_permission: Permission denied)
 bash output = ()
@@ -78,5 +74,5 @@ bash error = ( command not found)
 bash output = ()
 mini error = ()
 bash error = ( command not found)
-[0;35m[1m1/15
+[0;35m[1m2/15
 [0m😭 😭 😭

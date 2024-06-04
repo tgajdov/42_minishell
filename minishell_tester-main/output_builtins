@@ -21,20 +21,12 @@
 [0m[0;33mTest  10: ✅[38;5;244m echo "aspas -> ' " 
 [0m[0;33mTest  11: ✅[38;5;244m echo 'aspas ->"' 
 [0m[0;33mTest  12: ✅[38;5;244m echo 'aspas -> " ' 
-[0m[0;33mTest  13: ❌[38;5;244m echo "> >> < * ? [ ] | ; [ ] || && ( ) & # $  <<" 
-[0mmini output = (> >> < README.md bash.supp bash_outfiles bonus bonus_bonus builtins extras local.supp loop.out manual_tests mini_outfiles os_specific outfiles output_builtins output_extra pipes redirects syntax test_files tester wildcards ? [ ] | ; [ ] || && ( ) & # )
-bash output = (> >> < README.md bash.supp bash_outfiles bonus bonus_bonus builtins extras local.supp loop.out manual_tests mini_outfiles os_specific outfiles output_builtins output_extra pipes redirects syntax test_files tester wildcards ? [ ] | ; [ ] || && ( ) & # $ <<)
-[0;33mTest  14: ✅[38;5;244m echo '> >> < * ? [ ] | ; [ ] || && ( ) & # $  <<' 
-[0m[0;33mTest  15: ❌[38;5;244m echo "exit_code ->$? user ->$USER home -> $HOME" 
-[0mmini output = ()
-bash output = (exit_code ->0 user ->tgajdov home -> /Users/tgajdov)
-[0;33mTest  16: ✅[38;5;244m echo 'exit_code ->$? user ->$USER home -> $HOME' 
-[0m[0;33mTest  17: ❌[38;5;244m echo "$" 
-[0mmini output = ()
-bash output = ($)
-mini exit code = 139
-bash exit code = 0
-[0;33mTest  18: ✅[38;5;244m echo '$' 
+[0m[0;33mTest  13: ✅[38;5;244m echo "> >> < * ? [ ] | ; [ ] || && ( ) & # $  <<" 
+[0m[0;33mTest  14: ✅[38;5;244m echo '> >> < * ? [ ] | ; [ ] || && ( ) & # $  <<' 
+[0m[0;33mTest  15: ✅[38;5;244m echo "exit_code ->$? user ->$USER home -> $HOME" 
+[0m[0;33mTest  16: ✅[38;5;244m echo 'exit_code ->$? user ->$USER home -> $HOME' 
+[0m[0;33mTest  17: ✅[38;5;244m echo "$" 
+[0m[0;33mTest  18: ✅[38;5;244m echo '$' 
 [0m[0;33mTest  19: ✅[38;5;244m echo $ 
 [0m[0;33mTest  20: ✅[38;5;244m echo $? 
 [0m[0;33mTest  21: ✅[38;5;244m echo $?HELLO 
@@ -103,5 +95,5 @@ bash output = ()
 mini error = ()
 bash error = ( too many arguments)
 [0;33mTest  52: ✅[38;5;244m  
-[0m[0;35m[1m40/52
+[0m[0;35m[1m43/52
 [0m😭 😭 😭

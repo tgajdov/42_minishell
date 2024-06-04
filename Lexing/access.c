@@ -58,7 +58,7 @@ static char	**add_cmd(char *cmd, char **way)
 static int	exec_sys_child(t_token *tokens, t_export *alloctrack, char **way)
 {
 	pid_t	child;
-	int i = 0;
+	// int i = 0;
 
 	if (tokens->operator)
 		if (ft_strncmp(tokens->operator, "<<", 2) == 0
