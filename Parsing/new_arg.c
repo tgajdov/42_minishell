@@ -24,8 +24,7 @@ static char	**make_new_tab(char *arg, char **new, int *m)
 	i = 0;
 	while (tmp[i])
 	{
-		i = 0;
-		if (tmp[i] == '$')
+		while (tmp[i] == '$')
 			i++;
 		while (tmp[i] != '$' && tmp[i] != '?' && tmp[i] != '\0')
 			i++;
@@ -33,8 +32,8 @@ static char	**make_new_tab(char *arg, char **new, int *m)
 			i++;
 		if (i > 0)
 			new[(*m)++] = ft_substr(tmp, 0, i);
-		if (tmp[i])
-			tmp = tmp + i;
+		tmp = tmp + i;
+		i = 0;
 	}
 	return (new);
 }
@@ -120,6 +119,12 @@ char	**replace_argument(char **argument, t_export *alloctrack)
 		if (!arg_more)
 			return (NULL);
 		arg_more = dollars_parse(arg_more);
+		//int i = 0;
+		//while (arg_more[i])
+		//{
+		//	printf("arg_more apres dollars parse est %s\n", arg_more[i]);
+		//	i++;
+		//}
 		free(argument[t]);
 		argument[t] = convert_n_concat(arg_more, alloctrack);
 		if (!argument[t])

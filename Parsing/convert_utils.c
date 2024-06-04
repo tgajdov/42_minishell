@@ -12,22 +12,76 @@
 
 #include "minishell.h"
 
-// Fonction qui rend soit la valeur du tableau d'environnement soit 
-// la derniere valeur retourné par la programme.
+static char	*get_str_pid(void)
+{
+	pid_t 	pid;
+	char	*str_pid;
+
+	pid = getpid();
+	str_pid = ft_itoa(pid);
+	return (str_pid);
+}
+
+static char	*make_double_dollars(char *dollars)
+{
+	int		compt;
+	int		i;
+	char	*joined;
+	char	*pid_str;
+	
+	pid_str = get_str_pid();
+	compt = 0;
+	i = 0;
+	joined = NULL;
+	while (dollars[i] == '$')
+	{
+		compt++;
+		i++;
+	}
+	while (compt > 1)
+	{
+		compt -= 2;
+		if (!joined)
+			joined = ft_strdup(pid_str);
+		else
+			joined = ft_strcat(joined, pid_str);
+	}
+	if (compt == 1)
+		joined = ft_strcat(joined, dollars + (i - 1));
+	free (pid_str);
+	return (joined);
+}
+
+static int	dollar_not_translated(int c)
+{
+	if (c == '}' || c == ']' || c == '%' || c == '^'
+		|| c == '+' || c == '/' || c == '~')
+		return (1);
+	return (0);
+}
+
 char	*choose_convert(char *dollars, t_export *alloctrack)
 {
 	char	*d;
 
-	if (dollars[1] == '?')
+	if (dollars[1] == '\0')
+		d = ft_strdup("$");
+	else if (dollars[1] == '?')
 		d = last_return(alloctrack->status);
+	else if (ft_isdigit(dollars[1]) && dollars[2] != '\0')
+		d = ft_substr(dollars, 2, (ft_strlen(dollars) - 2));
+	else if (dollar_not_translated(dollars[1]))
+		d = ft_strdup(dollars);
+	else if (dollars[1] == '$')
+		d = make_double_dollars(dollars);
 	else
 		d = dollars_lex(dollars + 1, alloctrack);
+	if (d == NULL)
+		d = ft_strdup("");
 	free(dollars);
 	return (d);
 }
 
-// Fonction qui cherche une variable dans le tableau d'environnement et..
-// ..renvoi un pointeur sur sa valeur si elle est trouvée sinon return NULL.
 char	*dollars_lex(char *var_name, t_export *alloctrack)
 {
 	char	*value;
@@ -49,12 +103,11 @@ char	*dollars_lex(char *var_name, t_export *alloctrack)
 		t++;
 	}
 	if (found == 0)
-		value = NULL;
+		return (NULL);
 	value = value + 1;
 	return (value);
 }
 
-// Fonction qui concatène src à la fin de dst.
 char	*ft_strcat(char *dst, char *src)
 {
 	int		i;
