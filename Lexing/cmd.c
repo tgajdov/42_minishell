@@ -84,6 +84,8 @@ static int	make_exit(t_token *tokens, t_export *alloctrack)
 			&& (!(tokens->argument[1]))))
 		{
 			alloctrack->status = 0;
+			if(!tokens->argument[0])
+				return(52);
 			return (ft_atoi(tokens->argument[0]));
 		}
 		else if (ft_isnumb(tokens->argument[0]) && (tokens->argument[1]))
