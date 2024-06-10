@@ -58,7 +58,6 @@ static char	**add_cmd(char *cmd, char **way)
 static int	exec_sys_child(t_token *tokens, t_export *alloctrack, char **way)
 {
 	pid_t	child;
-	// int i = 0;
 
 	if (tokens->operator)
 		if (ft_strncmp(tokens->operator, "<<", 2) == 0
@@ -71,11 +70,9 @@ static int	exec_sys_child(t_token *tokens, t_export *alloctrack, char **way)
 	{
 		default_signals();
 		tokens->argument = argument_system(tokens);
-		// while (tokens->argument[i])
-		// 	printf("arg is :%s:\n", tokens->argument[i++]);
-		if (execve(way[alloctrack->access], tokens->argument,
-				alloctrack->environ) == -1)
-			return (1);
+		execve(way[alloctrack->access], tokens->argument,
+				alloctrack->environ);
+		return (1);
 	}
 	wait(NULL);
 	return (0);

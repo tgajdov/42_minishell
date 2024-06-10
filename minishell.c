@@ -77,13 +77,12 @@ static int	execute(t_token **tokens, t_export *alloctrack, int fd[2])
 static int	minishell(t_export *alloctrack, int fd[2])
 {
 	t_token				*tokens;
-	struct sigaction	sa;
 	int					status;
 
 	tokens = NULL;
 	while (1)
 	{
-		setup_signal(&sa);
+		setup_signal();
 		status = execute(&tokens, alloctrack, fd);
 		if (status != 0 && status != 1)
 		{

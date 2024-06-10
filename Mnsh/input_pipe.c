@@ -47,7 +47,7 @@ static char	*take_input_again(char *input)
 	more = 0;
 	while (more == 0)
 	{
-		input_more = readline("pipe> ");
+		input_more = readline("> ");
 		add_history(input_more);
 		if (input_more)
 		{

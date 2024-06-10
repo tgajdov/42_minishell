@@ -16,4 +16,4 @@
 16.	"$EMPTY echo hi"
 17.	"env | sort | grep -v SHLVL | grep -v ^_"
 18.	"export GHOST=123 | env | grep GHOST"
-19.	
+19.	export fonctionne que si le premier char soit Alphabetics ou '_', si il y a un egal apparait dans env sinon juste dans export, trie, avec des "declare -x "

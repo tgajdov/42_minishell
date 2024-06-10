@@ -17,6 +17,8 @@
 # define HRDC_FILE "/tmp/.heredoc"
 # define PIPE_FILE "/tmp/.pipex"
 
+# define DEBUG printf("\033[91m%s, %d\033[39m\n", __FILE__, __LINE__);
+
 // Create with our hands
 #include "../libft/libft.h"
 
@@ -39,26 +41,26 @@
 
 typedef struct s_export
 {
-    char    **environ;
-    char    **way;
-    char    *heredoc;
-    char    *pipex;
-    int     std[2];
-    int     status;
-    int     back;
-    int     access;
+	char    **environ;
+	char    **way;
+	char    *heredoc;
+	char    *pipex;
+	int     std[2];
+	int     status;
+	int     back;
+	int     access;
 }   t_export;
 
 typedef struct  s_token
 {
-    char    *input;
-    char    **argument;
-    char    *cmd;
-    char    *operator;
-    char    *arg_operator;
-    int     pipe;
-    int     quotes;
-    struct s_token    *next;
+	char    *input;
+	char    **argument;
+	char    *cmd;
+	char    *operator;
+	char    *arg_operator;
+	int     pipe;
+	int     quotes;
+	struct s_token    *next;
 }   t_token;
 
 //gat ft
@@ -238,7 +240,9 @@ char        *input_pipe(char *input);
 // signaux.c
 void        signal_print_newline(int signal);
 void        default_signals(void);
-void        setup_signal(struct sigaction *sa);
+void        setup_signal(void);
+void	    restore_sigquit(void);
+void	    ignore_sigquit(void);
 
 // mnsh_utils.c
 t_token     *create_void_token(void);

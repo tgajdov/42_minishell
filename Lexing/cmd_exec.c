@@ -49,7 +49,6 @@ static int is_regular_file(const char *path)
 
 int	make_exec(t_token *tokens, t_export *alloctrack)
 {
-	// int i = 0;
 	if (tokens->cmd[0] == '/'
 		|| (tokens->cmd[0] == '.' && tokens->cmd[1] == '/'))
 	{
@@ -63,8 +62,6 @@ int	make_exec(t_token *tokens, t_export *alloctrack)
 		{
 			if (is_executable(tokens->cmd))
 			{
-				// while(tokens->argument[i] != NULL)
-				// 	printf("The argument is :%s:\n", tokens->argument[i++]);
 				if (!exec(tokens->cmd, tokens->argument, alloctrack->environ))
 				{
 					alloctrack->status = 127;
