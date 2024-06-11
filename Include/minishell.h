@@ -42,6 +42,7 @@
 typedef struct s_export
 {
 	char    **environ;
+	char	**export_env;
 	char    **way;
 	char    *heredoc;
 	char    *pipex;

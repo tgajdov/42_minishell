@@ -46,8 +46,7 @@ static int	make_env(t_token *tokens, t_export *alloctrack)
 	{
 		if (tokens->argument[0] != NULL)
 		{
-			printf("mnsh : env -> ");
-			printf("%s : No such file or directory\n", tokens->argument[0]);
+			printf("mnsh : %s : No such file or directory\n", tokens->argument[0]);
 			alloctrack->status = 127;
 			return (1);
 		}

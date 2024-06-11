@@ -34,6 +34,8 @@ void	free_alloctrack(t_export *alloctrack)
 	{
 		if (alloctrack->environ)
 			free_tab(alloctrack->environ);
+		if (alloctrack->export_env)
+			free_tab(alloctrack->export_env);
 		if (alloctrack->way)
 			free_tab(alloctrack->way);
 		free(alloctrack);
