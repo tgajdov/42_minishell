@@ -42,11 +42,9 @@ static void	check_export_env(char *v_env, t_export *alloctrack, int *i, int *fin
 	t = 0;
 	while (alloctrack->export_env[t])
 	{
-		DEBUG
 		if ((ft_strncmp(alloctrack->export_env[t], name, ft_strlen(name)) == 0)
 			&& (alloctrack->export_env[t][ft_strlen(name)] == '=' || alloctrack->export_env[t][ft_strlen(name)] == '\0'))
 		{
-			DEBUG
 			free(alloctrack->export_env[t]);
 			alloctrack->export_env[t] = ft_strdup(v_env);
 			(*find) = 1;
