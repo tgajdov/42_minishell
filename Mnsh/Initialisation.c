@@ -42,6 +42,9 @@ t_export	*init(char **env)
 	alloctrack->environ = ft_tabdup(env);
 	if (!alloctrack->environ)
 		return (NULL);
+	alloctrack->export_env = malloc(sizeof(char *));
+	if (!alloctrack->export_env)
+		return (NULL);
 	alloctrack->status = 0;
 	alloctrack->way = NULL;
 	alloctrack->heredoc = HRDC_FILE;
