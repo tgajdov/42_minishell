@@ -103,7 +103,7 @@ int	ft_export(char *v_env, t_export *alloctrack)
 	int	found;
 
 	if (!ft_check_id(v_env))
-		return (0);
+		return (1);
 	i = 0;
 	while (v_env[i] != '=' && v_env[i] != '\0')
 		i++;
