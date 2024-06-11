@@ -113,7 +113,7 @@ int	make_export(t_token *tokens, t_export *alloctrack)
 	{
 		if (!tokens->argument[0])
 		{
-			if (!ft_env(alloctrack))
+			if (!ft_env(alloctrack, 21))
 			{
 				alloctrack->status = -42;
 				return (0);

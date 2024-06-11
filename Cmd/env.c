@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-int	ft_env(t_export *alloctrack)
+int	ft_env(t_export *alloctrack, int n)
 {
 	int		i;
 	ssize_t	len;
@@ -26,6 +26,8 @@ int	ft_env(t_export *alloctrack)
 	i = 0;
 	while (alloctrack->environ[i])
 	{
+		if(n == 21)
+			write(STDOUT_FILENO, "declare -x ", 11);
 		len = ft_strlen(alloctrack->environ[i]);
 		w = write(STDOUT_FILENO, alloctrack->environ[i], len);
 		if (w < len)

@@ -51,7 +51,7 @@ static int	make_env(t_token *tokens, t_export *alloctrack)
 			alloctrack->status = 127;
 			return (1);
 		}
-		if (!ft_env(alloctrack))
+		if (!ft_env(alloctrack, 0))
 		{
 			alloctrack->status = -42;
 			return (0);

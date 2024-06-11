@@ -143,7 +143,7 @@ int         echo(char *input);
 int         echon(char *input);
 
 // env.c
-int         ft_env(t_export *alloctrack);
+int         ft_env(t_export *alloctrack, int n);
 
 // exec.c
 int         exec(char *exec, char **arg, char **env);
