@@ -6,7 +6,7 @@
 /*   By: brferran <brferran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 13:29:26 by brferran          #+#    #+#             */
-/*   Updated: 2024/06/11 16:39:10 by brferran         ###   ########.fr       */
+/*   Updated: 2024/06/11 17:08:42 by brferran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ static int	minishell(t_export *alloctrack, int fd[2])
 	{
 		setup_signal();
 		status = execute(&tokens, alloctrack, fd);
-		//printf("status est %d\n", status);
 		if (status != 0 && status != 1)
 		{
 			if (status == 255)
