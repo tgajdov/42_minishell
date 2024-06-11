@@ -6,13 +6,13 @@
 /*   By: brferran <brferran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:14:03 by brferran          #+#    #+#             */
-/*   Updated: 2024/05/30 13:14:53 by brferran         ###   ########.fr       */
+/*   Updated: 2024/06/11 13:01:12 by brferran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	is_directory(const char *path) 
+int	is_directory(const char *path) 
 {
 	struct	stat st;
 
@@ -35,7 +35,7 @@ static int	is_executable(const char *path)
 	return (0);
 }
 
-static int is_regular_file(const char *path) 
+int is_regular_file(const char *path)
 {
 	struct	stat st;
 

@@ -6,7 +6,7 @@
 /*   By: brferran <brferran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 13:22:23 by brferran          #+#    #+#             */
-/*   Updated: 2024/05/21 15:09:51 by brferran         ###   ########.fr       */
+/*   Updated: 2024/06/11 15:36:08 by brferran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	lexing(t_token *tokens, t_export *alloctrack)
 	int	back;
 
 	back = operators(tokens, alloctrack);
+	//printf("back est %d\n", back);
 	if (back == 0)
 		return (0);
 	if (back == -42)

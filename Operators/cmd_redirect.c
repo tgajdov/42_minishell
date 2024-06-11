@@ -6,7 +6,7 @@
 /*   By: brferran <brferran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 13:27:48 by brferran          #+#    #+#             */
-/*   Updated: 2024/05/21 15:34:49 by brferran         ###   ########.fr       */
+/*   Updated: 2024/06/11 15:23:51 by brferran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ int	redirect_input(char *filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		return (error_zero(3));
+	{
+		printf("mnsh: %s: No such file or director\n", filename);
+		return (0);
+	}
 	if (dup2(fd, STDIN_FILENO) == -1)
 		return (error_zero(4));
 	if (close(fd) == -1)

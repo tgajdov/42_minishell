@@ -6,7 +6,7 @@
 /*   By: brferran <brferran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 13:29:26 by brferran          #+#    #+#             */
-/*   Updated: 2024/05/24 16:28:10 by brferran         ###   ########.fr       */
+/*   Updated: 2024/06/11 16:39:10 by brferran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,15 @@ static t_token	*take_n_tokenize(t_export *alloctrack)
 static int	execute(t_token **tokens, t_export *alloctrack, int fd[2])
 {
 	*tokens = take_n_tokenize(alloctrack);
+	//printer_tokens(*tokens);
 	if (!(*tokens))
 		return (0);
 	if ((*tokens)->pipe == 42)
 		return (-42);
 	while ((*tokens))
 	{
+		if (check_for_next_redirect(tokens, alloctrack) == 1)
+			return (1);
 		if ((*tokens)->pipe == 1)
 		{
 			redirect_input(alloctrack->pipex);
@@ -84,6 +87,7 @@ static int	minishell(t_export *alloctrack, int fd[2])
 	{
 		setup_signal();
 		status = execute(&tokens, alloctrack, fd);
+		//printf("status est %d\n", status);
 		if (status != 0 && status != 1)
 		{
 			if (status == 255)
@@ -93,7 +97,6 @@ static int	minishell(t_export *alloctrack, int fd[2])
 			free_token_chain(tokens);
 			ft_exit(status, alloctrack);
 		}
-		free_token_chain(tokens);
 	}
 	return (1);
 }

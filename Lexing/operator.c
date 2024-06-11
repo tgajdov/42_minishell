@@ -6,7 +6,7 @@
 /*   By: brferran <brferran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 13:22:27 by brferran          #+#    #+#             */
-/*   Updated: 2024/05/24 16:58:37 by brferran         ###   ########.fr       */
+/*   Updated: 2024/06/11 15:36:18 by brferran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static int	single_operator(t_token *tokens, t_export *alloctrack)
 	{
 		if (!redirect_input(tokens->arg_operator))
 		{
-			alloctrack->status = -42;
+			alloctrack->status = 1;
 			return (0);
 		}
 		alloctrack->status = 0;
@@ -73,7 +73,7 @@ static int	single_operator(t_token *tokens, t_export *alloctrack)
 	{
 		if (!redirect_output(tokens->arg_operator))
 		{
-			alloctrack->status = -42;
+			alloctrack->status = 1;
 			return (0);
 		}
 		alloctrack->status = 0;
@@ -89,7 +89,7 @@ static int	double_operator(t_token *tokens, t_export *alloctrack, int compt)
 	{
 		if (!redirect_stdout_append(tokens->arg_operator))
 		{
-			alloctrack->status = -42;
+			alloctrack->status = 1;
 			return (0);
 		}
 		alloctrack->status = 0;
@@ -100,7 +100,7 @@ static int	double_operator(t_token *tokens, t_export *alloctrack, int compt)
 		compt = redirect_input_command(tokens, alloctrack);
 		if (compt == 0)
 		{
-			alloctrack->status = -42;
+			alloctrack->status = 1;
 			return (0);
 		}
 		if (compt == -42)

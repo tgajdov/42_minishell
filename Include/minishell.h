@@ -6,7 +6,7 @@
 /*   By: brferran <brferran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 13:21:47 by brferran          #+#    #+#             */
-/*   Updated: 2024/05/24 18:42:10 by brferran         ###   ########.fr       */
+/*   Updated: 2024/06/11 16:39:36 by brferran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@
 #include <signal.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
-#include "/Users/tgajdov/.brew/opt/readline/include/readline/readline.h" //trouver une solution pour remplacer mon nom ici par un $(whoami), je n'arrive pas a ce que le makefile trouve le readline.h
-#include "/Users/tgajdov/.brew/opt/readline/include/readline/history.h"
-// #include <readline/readline.h>
-// #include <readline/history.h>
+//#include "/Users/tgajdov/.brew/opt/readline/include/readline/readline.h" //trouver une solution pour remplacer mon nom ici par un $(whoami), je n'arrive pas a ce que le makefile trouve le readline.h
+//#include "/Users/tgajdov/.brew/opt/readline/include/readline/history.h"
+#include <readline/readline.h>
+#include <readline/history.h>
 
 
 typedef struct s_export
@@ -120,6 +120,8 @@ char        **ft_parsing(char **argument, t_export *alloctrack);
 
 // -- OPERATORS -- All Operators
 
+int			is_directory(const char *path);
+int			is_regular_file(const char *path);
 // cmd_redirect.c
 int         redirect_input(char *filename);
 int         redirect_output(char *filename);
@@ -132,6 +134,8 @@ int         redirect_input_command(t_token *tokens, t_export *alloctrack);
 
 // redirect_stdout.c
 int         redirect_stdout_append(char *fichier);
+
+int			check_for_next_redirect(t_token **token, t_export *alloctrack);
 
 // -- CMD -- All commands
 

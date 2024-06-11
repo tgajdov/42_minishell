@@ -6,7 +6,7 @@
 /*   By: brferran <brferran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 13:27:37 by brferran          #+#    #+#             */
-/*   Updated: 2024/05/21 15:28:46 by brferran         ###   ########.fr       */
+/*   Updated: 2024/06/11 13:07:11 by brferran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	signal_print_newline(int signal)
 {
 	(void)signal;
-	rl_replace_line("", 0);
+	//rl_replace_line("", 0);
 	rl_on_new_line();
 }
 
@@ -33,7 +33,7 @@ static void	signal_handler(int sig)
 {
 	if (sig == SIGINT)
 	{
-		rl_replace_line("", 0);
+		//rl_replace_line("", 0);
 		write(STDOUT_FILENO,"\n", 1);
 		rl_on_new_line();
 		rl_redisplay();
