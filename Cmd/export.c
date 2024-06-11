@@ -58,9 +58,9 @@ static int	ft_check_id(char *str)
 	int	i;
 
 	i = 0;
-	while (str[i] != '\0' && str[i] != '=')
+		while (str[i] != '\0' && str[i] != '=')
 	{
-		if (!ft_isalpha(str[i]))
+		if (!ft_isalpha(str[i]) && !(str[i] == '_'))
 		{
 			printf("mnsh: export: `%s': not a valid identifier\n", str);
 			return (0);
@@ -78,15 +78,8 @@ int	ft_export(char *v_env, t_export *alloctrack)
 	if (!ft_check_id(v_env))
 		return (0);
 	i = 0;
-	while (v_env[i] != '=')
+	while (v_env[i] != '=' || v_env[i] != '\0')
 		i++;
-	if (v_env[i] == '\0')
-		return (0);
-	if (i == 0)
-	{
-		printf("mnsh: export: `%s': not a valid identifier\n", v_env);
-		return (0);
-	}
 	found = 0;
 	if (!alloctrack->environ[0])
 		alloctrack->environ[0] = ft_strdup(v_env);

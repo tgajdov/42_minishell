@@ -17,7 +17,7 @@
 # define HRDC_FILE "/tmp/.heredoc"
 # define PIPE_FILE "/tmp/.pipex"
 
-# define DEBUG printf("\033[91m%s, %d\033[39m\n", __FILE__, __LINE__);
+# define DEBUG printf("\033[91m%s, line:%d\033[39m\n", __FILE__, __LINE__);
 
 // Create with our hands
 #include "../libft/libft.h"
