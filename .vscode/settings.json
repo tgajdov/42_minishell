@@ -2,6 +2,9 @@
     "files.associations": {
         "readline.h": "c",
         "history.h": "c",
-        "minishell.h": "c"
+        "minishell.h": "c",
+        "__threading_support": "c",
+        "cerrno": "c",
+        "locale": "c"
     }
 }

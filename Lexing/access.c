@@ -70,8 +70,11 @@ static int	exec_sys_child(t_token *tokens, t_export *alloctrack, char **way)
 	{
 		default_signals();
 		tokens->argument = argument_system(tokens);
-		execve(way[alloctrack->access], tokens->argument,
+		DEBUG
+		alloctrack->status = execve(way[alloctrack->access], tokens->argument,
 				alloctrack->environ);
+		printf("done");
+		alloctrack->status = errno;
 		return (1);
 	}
 	wait(NULL);
