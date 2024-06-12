@@ -14,26 +14,22 @@
 
 void	signal_print_newline(int signal)
 {
-	(void)signal;
-	//rl_replace_line("", 0);
-	rl_on_new_line();
+	if (signal == 3)
+		write(STDOUT_FILENO,"Quit: 3", 7);
+	write(STDOUT_FILENO,"\n", 1);
 }
 
 void	default_signals(void)
 {
-	struct sigaction	act;
-
-	act.sa_handler = &signal_print_newline;
-	ft_memset(&act, 0, sizeof(act));
-	sigaction(SIGINT, &act, NULL);
-	sigaction(SIGQUIT, &act, NULL);
+	signal(SIGINT, signal_print_newline);
+	signal(SIGQUIT, signal_print_newline);
 }
 
 static void	signal_handler(int sig)
 {
 	if (sig == SIGINT)
 	{
-		//rl_replace_line("", 0);
+		rl_replace_line("", 0);
 		write(STDOUT_FILENO,"\n", 1);
 		rl_on_new_line();
 		rl_redisplay();

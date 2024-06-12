@@ -17,7 +17,7 @@
 # define HRDC_FILE "/tmp/.heredoc"
 # define PIPE_FILE "/tmp/.pipex"
 
-# define DEBUG printf("\033[91m%s, line:%d\033[39m\n", __FILE__, __LINE__);
+# define DEBUG(str) printf("\033[91m%s, line:%d\033[39m\n%s\n\n", __FILE__, __LINE__, str);
 
 // Create with our hands
 #include "../libft/libft.h"
@@ -33,10 +33,10 @@
 #include <signal.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
-//#include "/Users/tgajdov/.brew/opt/readline/include/readline/readline.h" //trouver une solution pour remplacer mon nom ici par un $(whoami), je n'arrive pas a ce que le makefile trouve le readline.h
-//#include "/Users/tgajdov/.brew/opt/readline/include/readline/history.h"
-#include <readline/readline.h>
-#include <readline/history.h>
+#include "/Users/tgajdov/.brew/opt/readline/include/readline/readline.h" //trouver une solution pour remplacer mon nom ici par un $(whoami), je n'arrive pas a ce que le makefile trouve le readline.h
+#include "/Users/tgajdov/.brew/opt/readline/include/readline/history.h"
+// #include <readline/readline.h>
+// #include <readline/history.h>
 
 
 typedef struct s_export
@@ -49,6 +49,7 @@ typedef struct s_export
 	int     std[2];
 	int     status;
 	int     back;
+	int		should_exit;
 	int     access;
 }   t_export;
 

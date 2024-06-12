@@ -19,3 +19,8 @@
 19.	export fonctionne que si le premier char soit Alphabetics ou '_', si il y a un egal apparait dans env sinon juste dans export, trie, avec des "declare -x "
 20. unset a checker "unset USER"
 21. liberer le buffer de readline apres un crtl-c
+
+
+
+NOTES
+Pour exit 

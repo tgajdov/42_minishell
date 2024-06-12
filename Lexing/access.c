@@ -63,21 +63,24 @@ static int	exec_sys_child(t_token *tokens, t_export *alloctrack, char **way)
 		if (ft_strncmp(tokens->operator, "<<", 2) == 0
 			&& tokens->operator[2] == '\0')
 			redirect_input(alloctrack->heredoc);
+	default_signals();
 	child = fork();
 	if (child == -1)
 		exit(0);
 	if (child == 0)
 	{
-		default_signals();
 		tokens->argument = argument_system(tokens);
-		DEBUG
-		alloctrack->status = execve(way[alloctrack->access], tokens->argument,
+		execve(way[alloctrack->access], tokens->argument,
 				alloctrack->environ);
-		printf("done");
-		alloctrack->status = errno;
-		return (1);
+		(ft_putendl_fd(strerror(errno), 2), exit(127));
 	}
-	wait(NULL);
+	waitpid(child, &alloctrack->status, 0);
+	if (WIFEXITED(alloctrack->status))
+		alloctrack->status = WEXITSTATUS(alloctrack->status);
+	else if (WIFSIGNALED(alloctrack->status))
+		alloctrack->status = WTERMSIG(alloctrack->status) + 128;
+	else
+		alloctrack->status = 1;
 	return (0);
 }
 

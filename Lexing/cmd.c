@@ -84,7 +84,11 @@ static int	make_exit(t_token *tokens, t_export *alloctrack)
 		{
 			alloctrack->status = 0;
 			if(!tokens->argument[0])
-				return(52);
+			{
+				printf("exit\n");
+				free_token_chain(tokens);
+				ft_exit(alloctrack->status, alloctrack);
+			}
 			return (ft_atoi(tokens->argument[0]));
 		}
 		else if (ft_isnumb(tokens->argument[0]) && (tokens->argument[1]))
@@ -92,11 +96,13 @@ static int	make_exit(t_token *tokens, t_export *alloctrack)
 			alloctrack->status = 1;
 			printf("exit\n");
 			printf("mnsh: exit: too many arguments\n");
+			alloctrack->should_exit = 1;
 			return (1);
 		}
 		else
 		{
 			alloctrack->status = 0;
+			alloctrack->should_exit = 1;
 			return (255);
 		}
 	}

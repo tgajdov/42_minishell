@@ -17,7 +17,6 @@ int	lexing(t_token *tokens, t_export *alloctrack)
 	int	back;
 
 	back = operators(tokens, alloctrack);
-	//printf("back est %d\n", back);
 	if (back == 0)
 		return (0);
 	if (back == -42)

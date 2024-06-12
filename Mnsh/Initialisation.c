@@ -46,6 +46,7 @@ t_export	*init(char **env)
 	if (!alloctrack->export_env)
 		return (NULL);
 	alloctrack->status = 0;
+	alloctrack->should_exit = 0;
 	alloctrack->way = NULL;
 	alloctrack->heredoc = HRDC_FILE;
 	redirect_output(alloctrack->heredoc);

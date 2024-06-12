@@ -55,7 +55,7 @@ static int	execute(t_token **tokens, t_export *alloctrack, int fd[2])
 	if (!(*tokens))
 		return (0);
 	if ((*tokens)->pipe == 42)
-		return (-42);
+		return (-42);	
 	while ((*tokens))
 	{
 		if (check_for_next_redirect(tokens, alloctrack) == 1)
@@ -74,32 +74,11 @@ static int	execute(t_token **tokens, t_export *alloctrack, int fd[2])
 		redirect_std(fd);
 		(*tokens) = (*tokens)->next;
 	}
-	return (1);
+	return (alloctrack->status);
 }
 
 static int	minishell(t_export *alloctrack, int fd[2])
 {
-/* 	t_token				*tokens;
-	int					status;
-
-	tokens = NULL;
-	while (1)
-	{
-		setup_signal();
-		status = execute(&tokens, alloctrack, fd);
-		if (status != 0 && status != 1)
-		{
-			if (status == 255)
-				printf("exit\n");
-			if (status == 255)
-				printf("mnsh: exit: %s: numeric argument required\n", tokens->argument[0]);
-			free_token_chain(tokens);
-			ft_exit(status, alloctrack);
-		}
-		printf("Back is :%d:\nStatus is :%d:\n\n", status, alloctrack->status);
-	}
-	return (1); */
-
 	t_token				*tokens;
 
 	tokens = NULL;
@@ -107,7 +86,7 @@ static int	minishell(t_export *alloctrack, int fd[2])
 	{
 		setup_signal();
 		alloctrack->status = execute(&tokens, alloctrack, fd);
-		if (alloctrack->status != 0 && alloctrack->status != 1)
+		if (alloctrack->should_exit)
 		{
 			if (alloctrack->status == 255)
 				printf("exit\n");
@@ -116,7 +95,6 @@ static int	minishell(t_export *alloctrack, int fd[2])
 			free_token_chain(tokens);
 			ft_exit(alloctrack->status, alloctrack);
 		}
-		printf("Status is :%d:\n\n", alloctrack->status);
 	}
 	return (1);
 }
