@@ -15,8 +15,8 @@
 void	signal_print_newline(int signal)
 {
 	if (signal == 3)
-		write(STDOUT_FILENO,"Quit: 3", 7);
-	write(STDOUT_FILENO,"\n", 1);
+		write(STDOUT_FILENO, "Quit: 3", 7);
+	write(STDOUT_FILENO, "\n", 1);
 }
 
 void	default_signals(void)

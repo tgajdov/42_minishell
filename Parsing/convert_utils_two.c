@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   convert_utils_two.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgajdov <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 13:52:01 by tgajdov           #+#    #+#             */
-/*   Updated: 2023/10/30 15:59:43 by tgajdov          ###   ########.fr       */
+/*   Created: 2024/06/13 12:05:14 by tgajdov           #+#    #+#             */
+/*   Updated: 2024/06/13 12:05:16 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+char	*get_str_pid(void)
 {
-	char	*s11;
-	char	*s22;
-	size_t	i;
+	pid_t	pid;
+	char	*str_pid;
 
-	s11 = (char *)s1;
-	s22 = (char *)s2;
-	i = 0;
-	while (i < n)
-	{
-		if ((unsigned char)s11[i] != (unsigned char)s22[i])
-			return ((unsigned char)s11[i] - (unsigned char)s22[i]);
-		i++;
-	}
-	return (0);
+	pid = getpid();
+	str_pid = ft_itoa(pid);
+	return (str_pid);
 }

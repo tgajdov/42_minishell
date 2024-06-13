@@ -12,32 +12,19 @@
 
 #include "minishell.h"
 
-static char	*get_str_pid(void)
-{
-	pid_t 	pid;
-	char	*str_pid;
-
-	pid = getpid();
-	str_pid = ft_itoa(pid);
-	return (str_pid);
-}
-
 static char	*make_double_dollars(char *dollars)
 {
 	int		compt;
 	int		i;
 	char	*joined;
 	char	*pid_str;
-	
+
 	pid_str = get_str_pid();
-	compt = 0;
 	i = 0;
 	joined = NULL;
 	while (dollars[i] == '$')
-	{
-		compt++;
 		i++;
-	}
+	compt = i;
 	while (compt > 1)
 	{
 		compt -= 2;

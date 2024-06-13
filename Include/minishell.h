@@ -99,6 +99,7 @@ t_token		*parsing_input(char *str);
 
 // convert_utils.c
 char		*choose_convert(char *dollars, t_export *alloctrack);
+char		*get_str_pid(void);
 char		*dollars_lex(char *var_name, t_export *alloctrack);
 char		*ft_strcat(char *dst, char *src);
 
@@ -211,7 +212,7 @@ int			exec_system(t_token *tokens, t_export *alloctrack);
 int			operators(t_token *tokens, t_export *alloctrack);
 
 // cmd_utils.c
-int	make_unset(t_token *tokens, t_export *alloctrack);
+int			make_unset(t_token *tokens, t_export *alloctrack);
 int			make_echo(t_token *tokens, t_export *alloctrack);
 int			make_echon(t_token *tokens, t_export *alloctrack);
 int			make_cd(t_token *tokens, t_export *alloctrack);

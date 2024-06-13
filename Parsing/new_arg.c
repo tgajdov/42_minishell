@@ -119,12 +119,6 @@ char	**replace_argument(char **argument, t_export *alloctrack)
 		if (!arg_more)
 			return (NULL);
 		arg_more = dollars_parse(arg_more);
-		//int i = 0;
-		//while (arg_more[i])
-		//{
-		//	printf("arg_more apres dollars parse est %s\n", arg_more[i]);
-		//	i++;
-		//}
 		free(argument[t]);
 		argument[t] = convert_n_concat(arg_more, alloctrack);
 		if (!argument[t])

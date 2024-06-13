@@ -10,11 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "minishell.h"
 
-void printer_tokens(t_token *tokens)
+/* void printer_tokens(t_token *tokens)
 {
     int i;
 
@@ -44,4 +42,4 @@ void printer_tokens(t_token *tokens)
             tokens = tokens->next;
         }
     }
-}
+} */

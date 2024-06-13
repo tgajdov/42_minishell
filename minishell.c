@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-/* static void	header(void)
+static void	header(void)
 {
 	printf("\033[1;32m  __  __               _          _ _\n");
 	printf(" |  \\/   _ _ __  _ ___| |__   ___| | |\n");
@@ -20,7 +20,7 @@
 	printf(" | |  | | | | | | \\__ \\ | | |  __/ | |\n");
 	printf(" |_|  |_|_|_| |_|_|___/_| |_|\\___|_|_|\n");
 	printf("  _    _ _ _   _ _ ___ _   _   ___ _ _ \033[0m\n\n");
-} */
+}
 
 static t_token	*take_n_tokenize(t_export *alloctrack)
 {
@@ -51,11 +51,10 @@ static t_token	*take_n_tokenize(t_export *alloctrack)
 static int	execute(t_token **tokens, t_export *alloctrack, int fd[2])
 {
 	*tokens = take_n_tokenize(alloctrack);
-	//printer_tokens(*tokens);
 	if (!(*tokens))
 		return (0);
 	if ((*tokens)->pipe == 42)
-		return (-42);	
+		return (-42);
 	while ((*tokens))
 	{
 		if (check_for_next_redirect(tokens, alloctrack) == 1)
@@ -91,7 +90,8 @@ static int	minishell(t_export *alloctrack, int fd[2])
 			if (alloctrack->status == 255)
 				printf("exit\n");
 			if (alloctrack->status == 255)
-				printf("mnsh: exit: %s: numeric argument required\n", tokens->argument[0]);
+				printf("mnsh: exit: %s: numeric argument required\n",
+					tokens->argument[0]);
 			free_token_chain(tokens);
 			ft_exit(alloctrack->status, alloctrack);
 		}
@@ -106,7 +106,7 @@ int	main(int argc, char **argv, char **env)
 
 	(void)argc;
 	(void)argv;
-	//header();
+	header();
 	save_std(fd);
 	alloctrack = init(env);
 	redirect_std(fd);

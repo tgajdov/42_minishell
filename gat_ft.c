@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   gat_ft.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tgajdov <marvin@42lausanne.ch>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/13 12:13:44 by tgajdov           #+#    #+#             */
+/*   Updated: 2024/06/13 12:13:46 by tgajdov          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-char*	get_var(t_export *allotrack, char *var)
+char	*get_var(t_export *allotrack, char *var)
 {
 	int	i;
 
 	i = 0;
-	while(ft_strnstr(allotrack->environ[i], var, ft_strlen(var)) == 0)
+	while (ft_strnstr(allotrack->environ[i], var, ft_strlen(var)) == 0)
 		i++;
 	if (ft_strnstr(allotrack->environ[i], var, ft_strlen(var)) != 0)
 		return (allotrack->environ[i] + ft_strlen(var) + 1);
