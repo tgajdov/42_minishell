@@ -12,33 +12,6 @@
 
 #include "minishell.h"
 
-static int	make_unset(t_token *tokens, t_export *alloctrack)
-{
-	int	t;
-
-	if (ft_strcasecmp(tokens->cmd, "unset", 5) == 0
-		&& tokens->cmd[5] == '\0')
-	{
-		if (!tokens->argument[0])
-		{
-			alloctrack->status = 0;
-			return (1);
-		}
-		t = 0;
-		while (tokens->argument[t])
-		{
-			if (!ft_unset(tokens->argument[t], alloctrack))
-			{
-				alloctrack->status = -42;
-				return (0);
-			}
-			t++;
-		}
-		alloctrack->status = 0;
-	}
-	return (1);
-}
-
 static int	make_env(t_token *tokens, t_export *alloctrack)
 {
 	if (ft_strcasecmp(tokens->cmd, "env", 3) == 0
@@ -46,7 +19,8 @@ static int	make_env(t_token *tokens, t_export *alloctrack)
 	{
 		if (tokens->argument[0] != NULL)
 		{
-			printf("mnsh : %s : No such file or directory\n", tokens->argument[0]);
+			printf("mnsh : %s : No such file or directory\n",
+				tokens->argument[0]);
 			alloctrack->status = 127;
 			return (1);
 		}
@@ -67,11 +41,20 @@ static int	ft_isnumb(char *arg)
 	i = 0;
 	while (arg[i])
 	{
-		if (!(ft_isdigit(arg[i])) && !(arg[i] == 45) && !(arg[i] == 43) && !(arg[i] == 34) && !(arg[i] == 39))
+		if (!(ft_isdigit(arg[i])) && !(arg[i] == 45)
+			&& !(arg[i] == 43) && !(arg[i] == 34)
+			&& !(arg[i] == 39))
 			return (0);
 		i++;
 	}
 	return (1);
+}
+
+void	make_exit_else_if(t_export *alloctrack)
+{
+	alloctrack->status = 1;
+	printf("exit\n");
+	printf("mnsh: exit: too many arguments\n");
 }
 
 static int	make_exit(t_token *tokens, t_export *alloctrack)
@@ -80,10 +63,10 @@ static int	make_exit(t_token *tokens, t_export *alloctrack)
 		&& tokens->cmd[4] == '\0')
 	{
 		if (!(tokens->argument[0]) || (ft_isnumb(tokens->argument[0])
-			&& (!(tokens->argument[1]))))
+				&& (!(tokens->argument[1]))))
 		{
 			alloctrack->status = 0;
-			if(!tokens->argument[0])
+			if (!tokens->argument[0])
 			{
 				printf("exit\n");
 				free_token_chain(tokens);
@@ -92,16 +75,9 @@ static int	make_exit(t_token *tokens, t_export *alloctrack)
 			return (ft_atoi(tokens->argument[0]));
 		}
 		else if (ft_isnumb(tokens->argument[0]) && (tokens->argument[1]))
-		{
-			alloctrack->status = 1;
-			printf("exit\n");
-			printf("mnsh: exit: too many arguments\n");
-			alloctrack->should_exit = 1;
-			return (1);
-		}
+			make_exit_else_if(alloctrack);
 		else
 		{
-			alloctrack->status = 0;
 			alloctrack->should_exit = 1;
 			return (255);
 		}

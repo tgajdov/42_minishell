@@ -28,4 +28,3 @@ void	ft_exit(int num, t_export *alloctrack)
 		exit(num);
 	}
 }
-

@@ -12,6 +12,12 @@
 
 #include "minishell.h"
 
+void	make_echo_nl(t_export *alloctrack)
+{
+	write (STDOUT_FILENO, "\n", 1);
+	alloctrack->status = 0;
+}
+
 int	make_echo(t_token *tokens, t_export *alloctrack)
 {
 	int	t;
@@ -22,23 +28,20 @@ int	make_echo(t_token *tokens, t_export *alloctrack)
 		t = 0;
 		if (!(tokens->argument[0]))
 		{
-			printf("\n");
-			alloctrack->status = 0;
+			make_echo_nl(alloctrack);
 			return (0);
 		}
 		while (tokens->argument[t] != NULL)
 		{
 			if (t > 0)
 				write (STDOUT_FILENO, " ", 1);
-			if (!echo(tokens->argument[t]))
+			if (!echo(tokens->argument[t++]))
 			{
 				alloctrack->status = 127;
 				return (0);
 			}
-			t++;
 		}
-		alloctrack->status = 0;
-		write (1, "\n", 1);
+		make_echo_nl(alloctrack);
 	}
 	return (1);
 }
@@ -75,8 +78,8 @@ int	make_cd(t_token *tokens, t_export *alloctrack)
 	if (ft_strcasecmp(tokens->cmd, "cd", 2) == 0
 		&& tokens->cmd[2] == '\0')
 	{
-		
-		if ((!tokens->argument[0]) || (ft_strncmp(tokens->argument[0], "~", 1) == 0))
+		if ((!tokens->argument[0]) || (ft_strncmp(tokens->argument[0], "~", 1)
+				== 0))
 			cd(get_var(alloctrack, "ZDOTDIR"), alloctrack);
 		else if (ft_strncmp(tokens->argument[0], "-", 1) == 0)
 			cd (get_var(alloctrack, "OLDPWD"), alloctrack);
@@ -102,34 +105,5 @@ int	make_pwd(t_token *tokens, t_export *alloctrack)
 		}
 		alloctrack->status = 0;
 	}
-	return (1);
-}
-
-int	make_export(t_token *tokens, t_export *alloctrack)
-{
-	int	t;
-
-	if (ft_strcasecmp(tokens->cmd, "export", 6) == 0 && tokens->cmd[6] == '\0')
-	{
-		if (!tokens->argument[0])
-		{
-			if (!ft_env(alloctrack, 21))
-			{
-				alloctrack->status = -42;
-				return (0);
-			}
-		}
-		t = 0;
-		while (tokens->argument[t] != NULL)
-		{
-			if (!ft_export(tokens->argument[t], alloctrack))
-			{
-				alloctrack->status = 1;
-				return (0);
-			}
-			t++;
-		}
-	}
-	alloctrack->status = 0;
 	return (1);
 }

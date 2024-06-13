@@ -33,7 +33,8 @@ static char	**ft_realloc(char *v_env, t_export *alloctrack)
 	return (new_environ);
 }
 
-static void	check_export_env(char *v_env, t_export *alloctrack, int *i, int *find)
+static void	check_export_env(char *v_env, t_export *alloctrack,
+	int *i, int *find)
 {
 	char	*name;
 	int		t;
@@ -43,7 +44,8 @@ static void	check_export_env(char *v_env, t_export *alloctrack, int *i, int *fin
 	while (alloctrack->export_env[t])
 	{
 		if ((ft_strncmp(alloctrack->export_env[t], name, ft_strlen(name)) == 0)
-			&& (alloctrack->export_env[t][ft_strlen(name)] == '=' || alloctrack->export_env[t][ft_strlen(name)] == '\0'))
+			&& (alloctrack->export_env[t][ft_strlen(name)] == '='
+			|| alloctrack->export_env[t][ft_strlen(name)] == '\0'))
 		{
 			free(alloctrack->export_env[t]);
 			alloctrack->export_env[t] = ft_strdup(v_env);

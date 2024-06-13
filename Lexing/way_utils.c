@@ -28,7 +28,7 @@ void	complete_way(char **way, char *cmd, char **tmp, int t)
 
 char	**check_if_good_way(char **way, char *cmd)
 {
-	char 	**good_way;
+	char	**good_way;
 	int		i;
 
 	i = 0;

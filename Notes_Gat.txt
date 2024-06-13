@@ -24,3 +24,5 @@
 
 NOTES
 Pour exit 
+
+# define DEBUG(str) printf("\033[91m%s, line:%d\033[39m\n%s\n\n", __FILE__, __LINE__, str);

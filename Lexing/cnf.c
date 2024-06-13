@@ -36,8 +36,10 @@ static int	other_parse(char *cmd, t_export *alloctrack)
 	if ((cmd[0] == '.' && cmd[1] == '/') || cmd[0] == '/')
 		return (1);
 	if (ft_strcasecmp(cmd, "echo", 4) != 0 && ft_strcasecmp(cmd, "cd", 2) != 0
-		&& ft_strcasecmp(cmd, "pwd", 3) != 0 && ft_strcasecmp(cmd, "export", 6) != 0
-		&& ft_strcasecmp(cmd, "unset", 5) != 0 && ft_strcasecmp(cmd, "env", 3) != 0
+		&& ft_strcasecmp(cmd, "pwd", 3) != 0
+		&& ft_strcasecmp(cmd, "export", 6) != 0
+		&& ft_strcasecmp(cmd, "unset", 5) != 0
+		&& ft_strcasecmp(cmd, "env", 3) != 0
 		&& ft_strcasecmp(cmd, "exit", 4) != 0 && cmd[0] != '\0')
 	{
 		printf("mnsh : %s: command not found\n", cmd);

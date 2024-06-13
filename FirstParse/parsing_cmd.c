@@ -35,8 +35,8 @@ char	**ft_realloc2(char *new_arg, t_token *token)
 
 int	ft_strcasecmp(char *s1, char *s2, size_t i)
 {
-	int	c1;
-	int	c2;
+	int		c1;
+	int		c2;
 	size_t	compt;
 
 	compt = 0;

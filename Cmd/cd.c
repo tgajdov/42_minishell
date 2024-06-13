@@ -17,7 +17,7 @@ int	cd(char *path, t_export *alloctrack)
 	char	*temp;
 
 	temp = malloc(sizeof(char) * (ft_strlen(getcwd(NULL, 0) + 1)));
-	ft_strlcpy(temp, getcwd(NULL, 0), ft_strlen(getcwd(NULL, 0))+1);
+	ft_strlcpy(temp, getcwd(NULL, 0), ft_strlen(getcwd(NULL, 0)) + 1);
 	if (chdir(path) == -1)
 	{
 		path = ft_strcat("mnsh : cd: ", path);
@@ -28,7 +28,8 @@ int	cd(char *path, t_export *alloctrack)
 		return (0);
 	}
 	ft_strlcpy(get_var(alloctrack, "OLDPWD"), temp, ft_strlen(temp)+1);
-	ft_strlcpy(get_var(alloctrack, "PWD"), getcwd(NULL, 0), ft_strlen(getcwd(NULL, 0))+1);
+	ft_strlcpy(get_var(alloctrack, "PWD"), getcwd(NULL, 0),
+		ft_strlen(getcwd(NULL, 0)) + 1);
 	free(temp);
 	return (1);
 }

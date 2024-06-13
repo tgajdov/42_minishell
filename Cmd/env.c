@@ -14,7 +14,7 @@
 
 int	ft_env_deux(t_export *alloctrack, int n)
 {
-	int	i;
+	int		i;
 	ssize_t	len;
 	ssize_t	w;
 
@@ -23,7 +23,7 @@ int	ft_env_deux(t_export *alloctrack, int n)
 	{
 		if ((ft_strrchr(alloctrack->export_env[i], '=')) || (n == 21))
 		{
-			if(n == 21)
+			if (n == 21)
 				write(STDOUT_FILENO, "declare -x ", 11);
 			len = ft_strlen(alloctrack->export_env[i]);
 			w = write(STDOUT_FILENO, alloctrack->export_env[i], len);
@@ -33,7 +33,7 @@ int	ft_env_deux(t_export *alloctrack, int n)
 		}
 		i++;
 	}
-	return(1);
+	return (1);
 }
 
 int	ft_env(t_export *alloctrack, int n)
@@ -50,7 +50,7 @@ int	ft_env(t_export *alloctrack, int n)
 	i = 0;
 	while (alloctrack->environ[i])
 	{
-		if(n == 21)
+		if (n == 21)
 			write(STDOUT_FILENO, "declare -x ", 11);
 		len = ft_strlen(alloctrack->environ[i]);
 		w = write(STDOUT_FILENO, alloctrack->environ[i++], len);
@@ -58,7 +58,7 @@ int	ft_env(t_export *alloctrack, int n)
 			return (error_zero(7));
 		write(STDOUT_FILENO, "\n", 1);
 	}
-	if(!ft_env_deux(alloctrack, n))
-		return(error_zero(7));
+	if (!ft_env_deux(alloctrack, n))
+		return (error_zero(7));
 	return (1);
 }

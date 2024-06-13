@@ -37,6 +37,7 @@ static void	delete_var(t_export *alloctrack, int *i)
 	}
 	(*i) -= 1;
 }
+
 static int	ft_check_id_unset(char *str)
 {
 	int	i;
@@ -65,16 +66,15 @@ int	ft_unset(char *var_name, t_export *alloctrack)
 
 	if (!alloctrack->environ[0])
 		printf("mnsh : unset : non-existent environment table\n");
-	if (!alloctrack->environ[0])	
+	if (!alloctrack->environ[0])
 		return (0);
-	if(!ft_check_id_unset(var_name))
-		return(1);
+	if (!ft_check_id_unset(var_name))
+		return (1);
 	i = -1;
 	while (alloctrack->environ[++i])
 	{
-		if (ft_strncmp(alloctrack->environ[i], var_name,
-				ft_strlen(var_name)) == 0
-			&& alloctrack->environ[i][ft_strlen(var_name)] == '=')
+		if (ft_strncmp(alloctrack->environ[i], var_name, ft_strlen(var_name))
+			== 0 && alloctrack->environ[i][ft_strlen(var_name)] == '=')
 			delete_var(alloctrack, &i);
 	}
 	i = -1;
@@ -82,7 +82,8 @@ int	ft_unset(char *var_name, t_export *alloctrack)
 	{
 		if (ft_strncmp(alloctrack->export_env[i], var_name,
 				ft_strlen(var_name)) == 0
-			&& (alloctrack->export_env[i][ft_strlen(var_name)] == '=' || alloctrack->export_env[i][ft_strlen(var_name)] == '\0'))
+			&& (alloctrack->export_env[i][ft_strlen(var_name)] == '='
+			|| alloctrack->export_env[i][ft_strlen(var_name)] == '\0'))
 			delete_var_export(alloctrack, &i);
 	}
 	return (1);

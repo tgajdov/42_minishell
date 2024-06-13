@@ -30,7 +30,6 @@ static int	is_builtin(t_token *tokens)
 		return (0);
 }
 
-
 static char	**add_cmd(char *cmd, char **way)
 {
 	char	**new_way;
@@ -71,7 +70,7 @@ static int	exec_sys_child(t_token *tokens, t_export *alloctrack, char **way)
 	{
 		tokens->argument = argument_system(tokens);
 		execve(way[alloctrack->access], tokens->argument,
-				alloctrack->environ);
+			alloctrack->environ);
 		(ft_putendl_fd(strerror(errno), 2), exit(127));
 	}
 	waitpid(child, &alloctrack->status, 0);

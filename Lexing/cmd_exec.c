@@ -12,20 +12,20 @@
 
 #include "minishell.h"
 
-int	is_directory(const char *path) 
+int	is_directory(const char *path)
 {
-	struct	stat st;
+	struct stat	st;
 
-	if (stat(path, &st) == -1) 
+	if (stat(path, &st) == -1)
 		return (0);
-	if (S_ISDIR(st.st_mode)) 
+	if (S_ISDIR(st.st_mode))
 		return (1);
 	return (0);
 }
 
 static int	is_executable(const char *path)
 {
-	struct	stat st;
+	struct stat	st;
 
 	if (stat(path, &st) == -1)
 		return (0);
@@ -35,53 +35,44 @@ static int	is_executable(const char *path)
 	return (0);
 }
 
-int is_regular_file(const char *path)
+int	is_regular_file(const char *path)
 {
-	struct	stat st;
+	struct stat	st;
 
-	if (stat(path, &st) == -1) {
+	if (stat(path, &st) == -1)
 		return (0);
-	}
-	if (S_ISREG(st.st_mode)) 
+	if (S_ISREG(st.st_mode))
 		return (1);
 	return (0);
 }
+/*alloctrack devient aloctrk pour gagner de la
+place sur les lignes et donc en nmbr de lignes */
 
-int	make_exec(t_token *tokens, t_export *alloctrack)
+int	make_exec(t_token *tokens, t_export *aloctrk)
 {
 	if (tokens->cmd[0] == '/'
 		|| (tokens->cmd[0] == '.' && tokens->cmd[1] == '/'))
 	{
 		if (is_directory(tokens->cmd))
-		{
 			printf("mnsh: %s: is a directory\n", tokens->cmd);
-			alloctrack->status = 126;
-			return (0);
-		}
+		if (is_directory(tokens->cmd))
+			aloctrk->status = 126;
 		else if (is_regular_file(tokens->cmd))
 		{
 			if (is_executable(tokens->cmd))
-			{
-				if (!exec(tokens->cmd, tokens->argument, alloctrack->environ))
-				{
-					alloctrack->status = 127;
-					return (0);
-				}
-			}
+				exec(tokens->cmd, tokens->argument, aloctrk->environ, aloctrk);
 			else
 			{
 				printf("mnsh: %s: Permission denied\n", tokens->cmd);
-				alloctrack->status = 126;
-				return (0);
+				aloctrk->status = 126;
 			}
 		}
 		else
 		{
 			printf("mnsh: %s: : No such file or directory\n", tokens->cmd);
-			alloctrack->status = 127;
-			return (0);
+			aloctrk->status = 127;
 		}
-		alloctrack->status = 0;
+		return (0);
 	}
 	return (1);
 }

@@ -14,25 +14,26 @@
 
 int	file_exists(const char *filename)
 {
-    int exists;
+	int	exists;
 
-    exists = access(filename, F_OK) != -1;
-    return (exists);
+	exists = access(filename, F_OK) != -1;
+	return (exists);
 }
 
 static int	create_empty_file(char *filename) 
 {
-    int fd;
+	int	fd;
 		
-	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
-    if (fd == -1)
+	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC,
+		S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+	if (fd == -1)
 	{
-        printf("mnsh: %s: No such file or directory\n", filename);
+		printf("mnsh: %s: No such file or directory\n", filename);
 		return (0);
 	}
-    if (close(fd) == -1)
-        return (error_zero(5));
-    return (1);
+	if (close(fd) == -1)
+		return (error_zero(5));
+	return (1);
 }
 
 static int	check_if_empty_file(char *filename)

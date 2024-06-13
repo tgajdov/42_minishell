@@ -33,11 +33,30 @@ char	**get_argv(char **arg, char *exec)
 	return (fake_argv);
 }
 
-int	exec(char *exec, char **arg, char **env)
+void	exec_child(char *exec, char **arg, char **fake_argv, char **env)
+{
+	printf("-- PROGRAM STARTED --\n");
+	if (fake_argv == NULL)
+	{
+		if (execve(exec, arg, env) == -1)
+			err_exit(1);
+	}
+	else
+	{
+		if (execve(exec, fake_argv, env) == -1)
+		{
+			free_tab(fake_argv);
+			err_exit(1);
+		}
+		free_tab(fake_argv);
+	}
+}
+
+int	exec(char *exec, char **arg, char **env, t_export *alloctrack)
 {
 	pid_t	children;
 	char	**fake_argv;
-	
+
 	fake_argv = NULL;
 	if (arg[0] != NULL)
 		fake_argv = get_argv(arg, exec);
@@ -47,23 +66,15 @@ int	exec(char *exec, char **arg, char **env)
 	signal(SIGINT, SIG_IGN);
 	if (children == 0)
 	{
-		printf("-- PROGRAM STARTED --\n");
-		if (fake_argv == NULL)
-		{
-			if (execve(exec, arg, env) == -1)
-				return (err_exit(1));
-		}
-		else
-		{
-			if (execve(exec, fake_argv, env) == -1)
-			{
-				free_tab(fake_argv);
-				return (err_exit(1));
-			}
-			free_tab(fake_argv);
-		}
+		exec_child(exec, arg, fake_argv, env);
 	}
-	wait(NULL);
+	waitpid(children, &alloctrack->status, 0);
+	if (WIFEXITED(alloctrack->status))
+		alloctrack->status = WEXITSTATUS(alloctrack->status);
+	else if (WIFSIGNALED(alloctrack->status))
+		alloctrack->status = WTERMSIG(alloctrack->status) + 128;
+	else
+		alloctrack->status = 1;
 	printf("-- PROGRAM EXIT --\n");
 	return (1);
 }
