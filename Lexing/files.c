@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   files.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brferran <brferran@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tgajdov <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/11 12:30:32 by brferran          #+#    #+#             */
-/*   Updated: 2024/06/11 16:41:17 by brferran         ###   ########.fr       */
+/*   Created: 2024/06/13 16:11:04 by tgajdov           #+#    #+#             */
+/*   Updated: 2024/06/13 16:11:35 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ int	file_exists(const char *filename)
 	return (exists);
 }
 
-static int	create_empty_file(char *filename) 
+static int	create_empty_file(char *filename)
 {
 	int	fd;
-		
-	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC,
-		S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+
+	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, \
+			S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 	if (fd == -1)
 	{
 		printf("mnsh: %s: No such file or directory\n", filename);
@@ -41,15 +41,15 @@ static int	check_if_empty_file(char *filename)
 	if (file_exists(filename))
 		return (1);
 	else if (create_empty_file(filename) == 0)
-			return (0);
+		return (0);
 	return (1);
 }
 
 int	check_for_next_redirect(t_token **token, t_export *alloctrack)
 {
-	while ((*token)->next != NULL && (*token)->operator != NULL 
-			&& (*token)->next->operator
-			&& (ft_strncmp((*token)->next->operator, (*token)->operator, 1) == 0))
+	while ((*token)->next != NULL && (*token)->operator != NULL \
+			&& (*token)->next->operator \
+			&& (!ft_strncmp((*token)->next->operator, (*token)->operator, 1)))
 	{
 		if (ft_strncmp((*token)->operator, ">", 1) == 0)
 		{
@@ -71,11 +71,12 @@ int	check_for_next_redirect(t_token **token, t_export *alloctrack)
 			}
 			(*token) = (*token)->next;
 		}
-		else if ((ft_strncmp((*token)->operator, "<", 1) == 0)
-				&& (ft_strncmp((*token)->operator, "<<", 2) != 0)
+		else if ((ft_strncmp((*token)->operator, "<", 1) == 0) \
+				&& (ft_strncmp((*token)->operator, "<<", 2) != 0) \
 				&& (ft_strncmp((*token)->next->operator, "<<", 2) != 0))
 		{
-			if (file_exists((*token)->arg_operator) || is_directory((*token)->arg_operator))
+			if (file_exists((*token)->arg_operator)
+				|| is_directory((*token)->arg_operator))
 				(*token) = (*token)->next;
 			else
 				return (1);
@@ -83,4 +84,3 @@ int	check_for_next_redirect(t_token **token, t_export *alloctrack)
 	}
 	return (0);
 }
- 

@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-/* void printer_tokens(t_token *tokens)
+void printer_tokens(t_token *tokens)
 {
     int i;
 
@@ -42,4 +42,4 @@
             tokens = tokens->next;
         }
     }
-} */
+}

@@ -37,6 +37,8 @@ je n'arrive pas a ce que le makefile trouve le readline.h*/
 // #include <readline/readline.h>
 // #include <readline/history.h>
 
+# define DEBUG(str) printf("\033[91m%s, line:%d\033[39m\n%s\n\n", __FILE__, __LINE__, str);
+
 typedef struct s_export
 {
 	char	**environ;
