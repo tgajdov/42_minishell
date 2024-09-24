@@ -1,0 +1,28 @@
+		1.	le makefile relinke
+		2.	pwd ne modifier pas l'environnement
+		3.	tab ouvre des options alors qu'il ne devrait rien faire
+		4.	quand je test "echo echo echo", ça print trop de fois
+5.	"expr $? + $?" donne une fois 0 et une fois 2 dans bash
+6.	"ctrl-C" ne devrait pas afficher ^C, ni le texte en cas de texte avant
+7.	Si "ctrl-C" après un cat sans arg doit afficher une newline
+8.	"echo < outfile" fait segfault le programme, il cherche a exec ce qui est dans le outfile
+9.	"ctrl-D" devrait afficher exit sur la meme ligne
+		10.	un espace après chaque impression
+		11.	"echo "> >> < * ? [ ] | ; [ ] || && ( ) & # $  <<"" fait segfault
+		12.	"echo "$"" fait segfault
+13.	"export HELLO="123 A-"" ne prends pas en compte "123 A-" comme un arg, mais comme deux
+14.	Parsing de $ a checker
+15.	Toute la gestion d'erreur, mdr
+16.	"$EMPTY echo hi"
+17.	"env | sort | grep -v SHLVL | grep -v ^_"
+18.	"export GHOST=123 | env | grep GHOST"
+19.	export fonctionne que si le premier char soit Alphabetics ou '_', si il y a un egal apparait dans env sinon juste dans export, trie, avec des "declare -x "
+20. unset a checker "unset USER"
+21. liberer le buffer de readline apres un crtl-c
+
+
+
+NOTES
+Pour exit 
+
+# define DEBUG(str) printf("\033[91m%s, line:%d\033[39m\n%s\n\n", __FILE__, __LINE__, str);

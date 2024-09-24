@@ -1,0 +1,25 @@
+[0;31m🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+                                                                                             
+ ██    ██ █ ██    █ █ █████ █   █ █████ █     █       ██████ █████ █████ ██████ █████ █████  
+ ███  ███ █ ███   █ █ █     █   █ █     █     █         ██   █     █       ██   █     █   ██ 
+ █ ████ █ █ █ ██  █ █ █████ █████ ████  █     █         ██   ████  █████   ██   ████  █████  
+ █  ██  █ █ █  ██ █ █     █ █   █ █     █     █         ██   █         █   ██   █     █   ██ 
+ █      █ █ █   ███ █ █████ █   █ █████ █████ █████     ██   █████ █████   ██   █████ █   ██ 
+                                                                                             
+🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+                                                                                              
+[0;31m———————————— pipes
+[0;33mTest   1: ❌[38;5;244m env | sort | grep -v SHLVL | grep -v ^_ 
+[0mmini output = ()
+bash output = (COLORTERM=truecolor GIT_ASKPASS=/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/git/dist/askpass.sh HOME=/Users/tgajdov LANG=en_US.UTF-8 LESS=-R LOGNAME=tgajdov LSCOLORS=Gxfxcxdxbxegedabagacad LS_COLORS=di=1;36:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43 MallocNanoZone=0 ORIGINAL_XDG_CURRENT_DESKTOP=undefined PAGER=less PATH=/Users/tgajdov/.brew/bin:/Users/tgajdov/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Library/Apple/usr/bin PWD=/Users/tgajdov/Desktop/Cursus/42_minishell/minishell_tester-main SHELL=/bin/zsh SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.BhKBNxHnzY/Listeners TERM=xterm-256color TERM_PROGRAM=vscode TERM_PROGRAM_VERSION=1.87.2 TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n000cf280033hk/T/ USER=tgajdov USER_ZDOTDIR=/Users/tgajdov VSCODE_GIT_ASKPASS_EXTRA_ARGS= VSCODE_GIT_ASKPASS_MAIN=/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/git/dist/askpass-main.js VSCODE_GIT_ASKPASS_NODE=/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Plugin).app/Contents/MacOS/Code Helper (Plugin) VSCODE_GIT_IPC_HANDLE=/var/folders/zz/zyxvpxvq6csfxvn_n000cf280033hk/T/vscode-git-fc70b62518.sock VSCODE_INJECTION=1 XPC_FLAGS=0x0 XPC_SERVICE_NAME=0 ZDOTDIR=/Users/tgajdov ZSH=/Users/tgajdov/.oh-my-zsh)
+[0;33mTest   2: ✅[38;5;244m cat ./test_files/infile_big | grep oi 
+[0m[0;33mTest   3: ❌[38;5;244m cat ./minishell.h | grep ");"$ 
+[0mmini exit code = 0
+bash exit code = 1
+[0;33mTest   4: ❌[38;5;244m export GHOST=123 | env | grep GHOST 
+[0mmini output = (GHOST=123)
+bash output = ()
+mini exit code = 0
+bash exit code = 1
+[0;35m[1m1/4
+[0m😭 😭 😭
