@@ -1,0 +1,58 @@
+.PHONY: all clean fclean re testleaks test
+
+NAME = minishell
+CC = gcc
+CCFLAGS = -Wall -Werror -Wextra
+DBGFLAG = -g
+LDFLAGS = 
+LEAKS = leaks -atExit --
+DATARACE = -fsanitize=thread
+
+RM = rm -rf
+MKDIR = mkdir -p
+
+SRC_DIR = src
+INC_DIR = include
+OBJ_DIR = bin
+BIN_DIR = bin
+
+SRCS = $(wildcard ${SRC_DIR}/*.c)
+OBJS = $(SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o)
+
+DEF_COLOR = \033[0;39m
+GRAY = \033[0;90m
+RED = \033[0;91m
+GREEN = \033[0;92m
+YELLOW = \033[0;93m
+BLUE = \033[0;94m
+MAGENTA = \033[0;95m
+CYAN = \033[0;96m
+WHITE = \033[0;97m
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	@echo "Creating ./$@"
+	@$(CC) $(CCFLAGS) $(OBJS) -o $(NAME)
+	@echo "$(GREEN)The Makefile of $(NAME) has been compied!\n$(DEF_COLOR)"
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@echo "Creating ./$@"
+	@$(MKDIR) $(BIN_DIR)
+	@$(CC) $(CCFLAGS) -I$(INC_DIR) -c $< -o $@
+
+test:
+
+testleaks:
+
+clean:
+	@echo "Cleaning up $(NAME)"
+	@$(RM) $(OBJ_DIR)
+	@echo "$(BLUE)$(NAME) Object files cleaned!$(DEF_COLOR)"
+
+fclean: clean
+	@$(RM) $(NAME)
+	@echo "$(BLUE)$(NAME) Executable files cleaned!$(DEF_COLOR)\n"
+
+re: fclean all
+	@echo "$(BLUE)$(NAME) Cleaned and re-compiled everything!$(DEF_COLOR)"
