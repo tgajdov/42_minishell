@@ -32,10 +32,10 @@
 # include <sys/stat.h>
 /* trouver une solution pour remplacer mon nom ici par un $(whoami)
 je n'arrive pas a ce que le makefile trouve le readline.h*/
-# include "/Users/tgajdov/.brew/opt/readline/include/readline/readline.h"
-# include "/Users/tgajdov/.brew/opt/readline/include/readline/history.h"
-// #include <readline/readline.h>
-// #include <readline/history.h>
+// # include "/Users/tgajdov/.brew/opt/readline/include/readline/readline.h"
+// # include "/Users/tgajdov/.brew/opt/readline/include/readline/history.h"
+#include <readline/readline.h>
+#include <readline/history.h>
 
 # define DEBUG(str) printf("\033[91m%s, line:%d\033[39m\n%s\n\n", __FILE__, __LINE__, str);
 
