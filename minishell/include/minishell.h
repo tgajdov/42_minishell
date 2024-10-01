@@ -15,6 +15,7 @@
 # include <readline/history.h>
 # include "colors.h"
 
+# define PROMPT "minishell> "
 # define DEBUG(str) printf(B_RED"%s, line: %d\n"B_BLACK"%s\n\n"C_RESET, __FILE__, __LINE__, str);
 
 #endif
