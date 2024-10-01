@@ -1,8 +1,8 @@
 # Compiler and flags
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
-#LDFLAGS = -I /Users/$(shell whoami)/.brew/opt/readline/include/readline -L /Users/$(shell whoami)/.brew/opt/readline/lib -L./Libft -lft -lreadline -lhistory -lncurses #Version avec readline de brew sur le mac
-LDFLAGS = -I./Readline -L./Readline -L./Libft -lft -lreadline -lhistory -lncurses #ORIGINAL AVEC LE DOSSIER READLINE DU PROJET
+# LDFLAGS = -I /Users/$(shell whoami)/.brew/opt/readline/include/readline -L /Users/$(shell whoami)/.brew/opt/readline/lib -L./Libft -lft -lreadline -lhistory -lncurses #Version avec readline de brew sur le mac
+LDFLAGS = -I./Readline -L./Readline -L./Libft -lreadline -lhistory -lncurses #ORIGINAL AVEC LE DOSSIER READLINE DU PROJET
 #-L .brew/opt/readline/lib
 #-I .brew/opt/readline/include
 
@@ -11,7 +11,7 @@ LDFLAGS = -I./Readline -L./Readline -L./Libft -lft -lreadline -lhistory -lncurse
 SRC_DIR = .
 OBJ_DIR = ./obj
 INC_DIR = ./Include
-LIBFT_DIR = ./Libft
+LIBFT_DIR = ./libft
 
 # Source files
 SRC_MAIN = $(wildcard $(SRC_DIR)/*.c)

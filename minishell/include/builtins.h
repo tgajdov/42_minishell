@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_exit.c                                       :+:      :+:    :+:   */
+/*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/01 15:10:28 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/01 15:10:44 by tgajdov          ###   ########.fr       */
+/*   Created: 2024/10/01 14:58:13 by tgajdov           #+#    #+#             */
+/*   Updated: 2024/10/01 17:38:47 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"minishell.h"
+#ifndef BUILTINS_H
+# define BUILTINS_H
 
-void	error_exit(const char *error, t_struct *name_struct) //créer notre struct, si besoin! Exemple pour gestion erreur sinon peut être enlevé
-{
-	printf(B_RED"%s\n"C_RESET, error);
+typedef struct s_command {
 
-	//set_bool(&table->table_mutex, &table->end_simulation, true, table);
-	//ou bien
-	//exit();
-}
+	char	*name;
+	int		(*func)(char **args);
+}			t_command;
+
+
+#endif
