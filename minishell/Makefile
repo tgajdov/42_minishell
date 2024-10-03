@@ -1,4 +1,4 @@
-.PHONY: all clean fclean re testleaks test
+.PHONY: all clean fclean re testleaks test lib clean cleanlib
 
 NAME = minishell
 CC = gcc
@@ -11,12 +11,13 @@ DATARACE = -fsanitize=thread
 RM = rm -rf
 MKDIR = mkdir -p
 
-SRC_DIR = src
+LIB_DIR = libft
+SRC_DIR = src/*/
 INC_DIR = include
 OBJ_DIR = bin
 BIN_DIR = bin
 
-SRCS = $(wildcard ${SRC_DIR}/*.c)
+SRCS = $(wildcard ${SRC_DIR}*.c)
 OBJS = $(SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o)
 
 DEF_COLOR = \033[0;39m
@@ -31,15 +32,19 @@ WHITE = \033[0;97m
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): lib $(OBJS)
 	@echo "Creating ./$@"
 	@$(CC) $(CCFLAGS) $(OBJS) -o $(NAME)
 	@echo "$(GREEN)The Makefile of $(NAME) has been compied!\n$(DEF_COLOR)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@echo "Creating ./$@"
-	@$(MKDIR) $(BIN_DIR)
-	@$(CC) $(CCFLAGS) -I$(INC_DIR) -c $< -o $@
+	$(MKDIR) $(BIN_DIR)
+	$(CC) $(CCFLAGS) -I$(INC_DIR) -c $< -o $@
+
+lib:
+	@echo "Creating ./$@"
+	@make -C $(LIB_DIR)
 
 test:
 
@@ -50,9 +55,12 @@ clean:
 	@$(RM) $(OBJ_DIR)
 	@echo "$(BLUE)$(NAME) Object files cleaned!$(DEF_COLOR)"
 
-fclean: clean
+cleanlib:
+	@make fclean -C $(LIB_DIR)
+
+fclean: clean cleanlib
 	@$(RM) $(NAME)
 	@echo "$(BLUE)$(NAME) Executable files cleaned!$(DEF_COLOR)\n"
 
 re: fclean all
-	@echo "$(BLUE)$(NAME) Cleaned and re-compiled everything!$(DEF_COLOR)"
+	@echo "$(BLUE)$(NAME) has been cleaned and re-compiled.$(DEF_COLOR)"

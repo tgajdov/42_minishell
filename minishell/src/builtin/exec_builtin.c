@@ -6,13 +6,13 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 17:29:18 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/01 17:43:34 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/03 12:25:06 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"minishell.h"
+#include"../../include/minishell.h"
 
-t_command builtin_cmds[] = {
+/* t_command builtin_cmds[] = {
 
 	{"cd", &builtin_cd},
 	{"env", &builtin_env},
@@ -22,9 +22,9 @@ t_command builtin_cmds[] = {
 	{"pwd", &builtin_pwd},
 	{"unset", &builtin_unset},
 	{NULL, NULL}
-} ;
+} ; */
 
-int	execute_builtin(char **args)
+/* int	execute_builtin(char **args)
 {
 	t_command	*builtin_cmds;
 	int			i;
@@ -41,5 +41,6 @@ int	execute_builtin(char **args)
 		}
 		i++;
 	}
-}
+	return (0);
+} */
 

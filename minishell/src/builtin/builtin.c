@@ -6,11 +6,11 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:09:17 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/01 17:49:57 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/03 12:21:54 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"minishell.h"
+#include"../../include/minishell.h"
 
 int	builtin_cd(char **args)
 {

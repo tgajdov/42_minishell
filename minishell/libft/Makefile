@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tgajdov <marvin@42lausanne.ch>             +#+  +:+       +#+         #
+#    By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 13:15:09 by tgajdov           #+#    #+#              #
-#    Updated: 2023/10/30 18:46:33 by tgajdov          ###   ########.fr        #
+#    Updated: 2024/10/03 11:04:15 by tgajdov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,8 @@
 
 CFILES = $(wildcard sources/*/*.c)
 
-NAME = libft.a
+NAME = libft
+ARNAME = $(NAME).a
 CC = gcc
 CCFLAGS = -Wall -Wextra -Werror
 RM = rm -f
@@ -77,24 +78,27 @@ MAGENTA = \033[0;95m
 CYAN = \033[0;96m
 WHITE = \033[0;97m
 
-all: $(NAME)
-	@echo "$(GREEN) The Makefile of [LIBFT] has been compiled!$(DEF_COLOR)"
+all: $(ARNAME)
 
-$(NAME):$(OFILES)
-	$(AR) $@ $^
+$(ARNAME):$(OFILES)
+	@echo "Creating ./$@"
+	@$(AR) $@ $^
+	@echo "$(GREEN) The Makefile of $(NAME) has been compiled!$(DEF_COLOR)"
 	
 %.o: %.c
-	$(CC) $(CCFLAGS) -o $@ -c $^
+	@echo "Creating ./$@"
+	@$(CC) $(CCFLAGS) -o $@ -c $^
 
 clean:
-	$(RM) $(OFILES)
-	@echo "$(BLUE) [LIBFT] Object files cleaned!$(DEF_COLOR)"
+	@echo "Cleaning up $(NAME)"
+	@$(RM) $(OFILES)
+	@echo "$(BLUE)$(NAME): Object files cleaned!$(DEF_COLOR)"
 
 fclean: clean
-	$(RM) $(NAME)
-	@echo "$(BLUE) [LIBFT] Executable files cleaned!$(DEF_COLOR)"
+	@$(RM) $(ARNAME)
+	@echo "$(BLUE)$(NAME): Executable files cleaned!$(DEF_COLOR)"
 
 re: fclean all
-	@echo "$(BLUE) [LIBFT] Cleaned and rebuilt everything!$(DEF_COLOR)"
+	@echo "$(BLUE)$(NAME): Cleaned and rebuilt everything!$(DEF_COLOR)"
 
 .PHONY: all, clean, fclean, re
