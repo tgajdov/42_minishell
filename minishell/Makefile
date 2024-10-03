@@ -4,19 +4,19 @@ NAME = minishell
 CC = gcc
 CCFLAGS = -Wall -Werror -Wextra
 DBGFLAG = -g
-LDFLAGS = 
+LIBFLAGS = -L$(LIB_DIR) -l$(LIB_NAME)
 LEAKS = leaks -atExit --
 DATARACE = -fsanitize=thread
 
 RM = rm -rf
 MKDIR = mkdir -p
 
-LIB_DIR = libft
+LIB_DIR = lib
 SRC_DIR = src/*/
-INC_DIR = include
 OBJ_DIR = bin
 BIN_DIR = bin
 
+LIB_NAME = ft
 SRCS = $(wildcard ${SRC_DIR}*.c)
 OBJS = $(SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o)
 
@@ -34,13 +34,13 @@ all: $(NAME)
 
 $(NAME): lib $(OBJS)
 	@echo "Creating ./$@"
-	@$(CC) $(CCFLAGS) $(OBJS) -o $(NAME)
+	@$(CC) $(CCFLAGS) $(OBJS) $(LIBFLAGS) -o $(NAME)
 	@echo "$(GREEN)The Makefile of $(NAME) has been compied!\n$(DEF_COLOR)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@echo "Creating ./$@"
 	$(MKDIR) $(BIN_DIR)
-	$(CC) $(CCFLAGS) -I$(INC_DIR) -c $< -o $@
+	$(CC) $(CCFLAGS) -c $< -o $@
 
 lib:
 	@echo "Creating ./$@"

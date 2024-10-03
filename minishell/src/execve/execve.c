@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 08:05:08 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/03 12:26:30 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/03 18:14:36 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ char	*ft_getcmdpath(char *cmd, char **envp)
 	char	*inter_path;
 
 	i = 0;
+	DEBUG("je suis dans getcmdpath");
 	while (ft_strnstr(envp[i], "PATH", 4) == 0)
 		i++;
 	paths = ft_split(envp[i] + 5, ':');
@@ -46,6 +47,7 @@ void	ft_exceve(int ac, char **av, char **envp)
 	char	**thecmd;
 
 	thecmd = ft_split(av[ac], ' ');
+	DEBUG("je suis dans ft_execve");
 	thepath = ft_getcmdpath(thecmd[0], envp);
 	if (execve(thepath, thecmd, envp) == -1)
 	{

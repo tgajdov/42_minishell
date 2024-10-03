@@ -6,13 +6,13 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:09:17 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/03 12:21:54 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/03 17:52:04 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../include/minishell.h"
 
-int	builtin_cd(char **args)
+/* int	builtin_cd(char **args)
 {
 	if (args[1] == NULL)
 	{
@@ -57,4 +57,4 @@ int builtin_echo(char **args)
 	}
 	printf("\n");
 	return (0);
-}
+} */

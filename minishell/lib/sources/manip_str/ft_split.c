@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:04:59 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/02 16:26:45 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/03 18:15:58 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ char	**ft_split(char const *s, char c)
 
 	if (s == NULL)
 		return (NULL);
+	DEBUG("je suis dans ft_split");
 	tab_iter = 0;
 	tab = ft_calloc((ft_cw(s, c)) + 1, sizeof(char *));
 	if (!tab)

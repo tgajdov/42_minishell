@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 13:33:01 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/03 10:16:15 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/03 18:12:20 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdio.h>
 # include <ctype.h>
 # include <fcntl.h>
+# include "../../include/minishell.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1024
