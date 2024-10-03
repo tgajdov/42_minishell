@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:08:18 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/01 15:08:20 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/02 08:04:10 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,17 @@
 # include "colors.h"
 # include "builtins.h"
 
-
 # define DEBUG(str) printf(B_RED"%s, line: %d\n"B_BLACK"%s\n\n"C_RESET, __FILE__, __LINE__, str);
+
+typedef struct s_data {
+
+	int		ac;
+	char	**av;
+	char	**envp;
+	
+	char	*cmd;
+	char	*cmd_path;
+	
+}			t_data;
 
 #endif
