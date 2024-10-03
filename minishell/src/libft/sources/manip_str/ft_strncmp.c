@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_exit.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/01 15:10:28 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/01 15:10:44 by tgajdov          ###   ########.fr       */
+/*   Created: 2023/10/16 20:12:48 by tgajdov           #+#    #+#             */
+/*   Updated: 2024/10/02 16:31:54 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"minishell.h"
+#include "../../includes/libft.h"
 
-void	error_exit(const char *error, t_struct *name_struct) //créer notre struct, si besoin! Exemple pour gestion erreur sinon peut être enlevé
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	printf(B_RED"%s\n"C_RESET, error);
+	size_t	i;
 
-	//set_bool(&table->table_mutex, &table->end_simulation, true, table);
-	//ou bien
-	//exit();
+	i = 0;
+	while ((s1[i] != '\0' || s2[i] != '\0') && (i < n))
+	{
+		if ((unsigned char)s1[i] != (unsigned char)s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	return (0);
 }

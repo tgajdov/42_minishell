@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_exit.c                                       :+:      :+:    :+:   */
+/*   execve.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/01 15:10:28 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/01 15:10:44 by tgajdov          ###   ########.fr       */
+/*   Created: 2024/10/02 08:05:08 by tgajdov           #+#    #+#             */
+/*   Updated: 2024/10/02 08:05:57 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"minishell.h"
+#include "minishell.h"
 
-void	error_exit(const char *error, t_struct *name_struct) //créer notre struct, si besoin! Exemple pour gestion erreur sinon peut être enlevé
+void	ft_exceve(int ac, char **av, char **envp)
 {
-	printf(B_RED"%s\n"C_RESET, error);
+	char	*thepath;
+	char	**thecmd;
 
-	//set_bool(&table->table_mutex, &table->end_simulation, true, table);
-	//ou bien
-	//exit();
+	thecmd = ft_split(av[ac], ' ');
+	thepath = ft_getcmdpath(thecmd[0], envp);
+	if (execve(thepath, thecmd, envp) == -1)
+		ft_exit("Could not find programm to execute");
 }

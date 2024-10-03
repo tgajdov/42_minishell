@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brferran <brferran@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 13:22:03 by brferran          #+#    #+#             */
-/*   Updated: 2024/05/24 16:55:53 by brferran         ###   ########.fr       */
+/*   Updated: 2024/10/01 16:08:58 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,28 @@ int	make_cd(t_token *tokens, t_export *alloctrack)
 	if (ft_strcasecmp(tokens->cmd, "cd", 2) == 0
 		&& tokens->cmd[2] == '\0')
 	{
+		if (tokens->argument[0] == NULL)
+		{
+			if (chdir(getenv("HOME")))
+			{
+				printf("%s\n", strerror(errno));
+				return (0);
+			}
+		}
+		else if (chdir(tokens->argument[0]) != 0)
+		{
+			printf("%s\n", strerror(errno));
+			return (0);
+		}
+	}
+	return (1);
+}
+
+/* int	make_cd(t_token *tokens, t_export *alloctrack)
+{
+	if (ft_strcasecmp(tokens->cmd, "cd", 2) == 0
+		&& tokens->cmd[2] == '\0')
+	{
 		if ((!tokens->argument[0]) || (ft_strncmp(tokens->argument[0], "~", 1)
 				== 0))
 			cd(get_var(alloctrack, "ZDOTDIR"), alloctrack);
@@ -91,7 +113,7 @@ int	make_cd(t_token *tokens, t_export *alloctrack)
 		alloctrack->status = 0;
 	}
 	return (1);
-}
+} */
 
 int	make_pwd(t_token *tokens, t_export *alloctrack)
 {

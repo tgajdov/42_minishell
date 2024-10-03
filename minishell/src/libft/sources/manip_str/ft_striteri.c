@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_exit.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/01 15:10:28 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/01 15:10:44 by tgajdov          ###   ########.fr       */
+/*   Created: 2023/10/11 14:21:13 by tgajdov           #+#    #+#             */
+/*   Updated: 2024/10/02 16:32:10 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"minishell.h"
+#include "../../includes/libft.h"
 
-void	error_exit(const char *error, t_struct *name_struct) //créer notre struct, si besoin! Exemple pour gestion erreur sinon peut être enlevé
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	printf(B_RED"%s\n"C_RESET, error);
+	size_t	i;
 
-	//set_bool(&table->table_mutex, &table->end_simulation, true, table);
-	//ou bien
-	//exit();
+	i = 0;
+	while (s[i])
+	{
+		(*f)(i, &s[i]);
+		i++;
+	}
 }
