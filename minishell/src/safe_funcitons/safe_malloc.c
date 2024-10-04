@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:22:41 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/03 12:29:54 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/04 15:44:23 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ void	*safe_malloc(size_t bytes/* , t_data *name_struct */) //créer notre struct
 	void	*ret;
 
 	ret = malloc(bytes);
-	if (NULL == ret)
+	if (!ret)
+	{
+		perror("mnsh : Allocated memory failed");
 		exit(1);
-
+	}
 	/* if (NULL == ret)
 		error_exit("Error with malloc", name_struct); //créer error_exit et adapter en fonction
 	 */
