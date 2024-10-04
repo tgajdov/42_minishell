@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:08:18 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/03 14:57:11 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/04 14:08:01 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct s_data {
 }			t_data;
 
 char	*ft_getcmdpath(char *cmd, char **envp);
-void	ft_exceve(int ac, char **av, char **envp);
+void	ft_exceve(char *cmd_str, char **envp);
 
 
 void	error_exit(const char *error/* , t_data *name_struct */);

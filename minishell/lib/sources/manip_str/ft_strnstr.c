@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 14:24:54 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/03 18:12:56 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/04 13:42:32 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 
 	i = 0;
 	j = 0;
-	DEBUG("je suis dans strnstr");
 	if (needle[i] == '\0')
 		return ((char *)haystack);
 	while (haystack[j] && j < len)
