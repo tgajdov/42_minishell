@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 08:05:08 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/04 14:29:27 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/05 10:31:56 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	ft_exceve(char *cmd_str, char **envp)
 	char	**cmd_tab;
 
 	cmd_tab = ft_split(cmd_str, ' ');
+	// Comment free cmd_tab?
+	
 	//faut-il securiser du genre
 	// if(!cmd_tab)
 	// 	return();

@@ -6,13 +6,22 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 17:29:18 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/03 12:25:06 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/05 11:58:57 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../include/minishell.h"
 
-/* t_command builtin_cmds[] = {
+/* t_command builtin_tab[8] = {
+
+	{"cd", 100},
+	{"env", 101},
+	{"echo", 102},
+	{"export", 103},
+	{"exit", 104},
+	{"pwd", 105},
+	{"unset", 106},
+	{NULL, 0}
 
 	{"cd", &builtin_cd},
 	{"env", &builtin_env},
@@ -24,23 +33,55 @@
 	{NULL, NULL}
 } ; */
 
-/* int	execute_builtin(char **args)
+int	execute_builtin(char *cmd_str)
 {
-	t_command	*builtin_cmds;
-	int			i;
+	const char *builtin_tab[] = {
+		"cd",
+		"env",
+		"echo",
+		"export",
+		"exit",
+		"pwd",
+		"unset"
+	};
+
+	int		i;
+	char	**cmd_tab;
 
 	i = 0;
-	if (args[0] == NULL)
+	if (!cmd_str)
 		return (0);
-	while (builtin_cmds[i].name)
+	cmd_tab = ft_split(cmd_str, ' ');
+	// Comment free cmd_tab?
+	
+	//faut-il securiser du genre
+	// if(!cmd_tab)
+	// 	return();
+	while (i < 7)
 	{
-		if (ft_strncmp(args[0], builtin_cmds[i].name, 0) == 0)
+		printf("my tab :%s\n",cmd_tab[0]);
+		printf("cmd tab :%s\n",builtin_tab[i]);
+		if (ft_strncmp(cmd_tab[0], builtin_tab[i++], ft_strlen(cmd_tab[0])) == 0)
 		{
-			builtin_cmds[i].func(args);
-			return (0);
+			printf("The results : %s\n", builtin_tab[i]);
+			exit (0);
 		}
-		i++;
+	}
+	printf("No match\n");
+	return (0);
+}
+
+int	main(void)
+{
+	char *argv = {"echo"};
+
+	if (argv)
+		execute_builtin(argv);
+	else
+	{
+		printf("Wrong number of arguments\n");
+		exit(1);
 	}
 	return (0);
-} */
+}
 

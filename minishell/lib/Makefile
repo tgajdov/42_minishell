@@ -6,7 +6,7 @@
 #    By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 13:15:09 by tgajdov           #+#    #+#              #
-#    Updated: 2024/10/03 11:04:15 by tgajdov          ###   ########.fr        #
+#    Updated: 2024/10/05 11:11:38 by tgajdov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,12 +81,11 @@ WHITE = \033[0;97m
 all: $(ARNAME)
 
 $(ARNAME):$(OFILES)
-	@echo "Creating ./$@"
+	@echo "Creating $(ARNAME)"
 	@$(AR) $@ $^
-	@echo "$(GREEN) The Makefile of $(NAME) has been compiled!$(DEF_COLOR)"
+	@echo "$(GREEN)$(NAME) has been compiled!$(DEF_COLOR)"
 	
 %.o: %.c
-	@echo "Creating ./$@"
 	@$(CC) $(CCFLAGS) -o $@ -c $^
 
 clean:

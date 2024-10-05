@@ -32,19 +32,18 @@ WHITE = \033[0;97m
 
 all: $(NAME)
 
-$(NAME): lib $(OBJS)
+$(NAME): $(LIB_DIR) $(OBJS)
 	@echo "Creating ./$@"
 	@$(CC) $(CCFLAGS) $(OBJS) $(LIBFLAGS) -o $(NAME)
-	@echo "$(GREEN)The Makefile of $(NAME) has been compied!\n$(DEF_COLOR)"
+	@echo "$(GREEN)$(NAME) has been compied!\n$(DEF_COLOR)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@echo "Creating ./$@"
 	$(MKDIR) $(BIN_DIR)
 	$(CC) $(CCFLAGS) -c $< -o $@
 
-lib:
-	@echo "Creating ./$@"
-	@make -C $(LIB_DIR)
+$(LIB_DIR):
+	@make -C $@
 
 test:
 
