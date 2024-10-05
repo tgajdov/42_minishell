@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:08:18 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/04 14:08:01 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/05 21:41:55 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define PROMPT "minishell> "
 # define DEBUG(str) printf(B_RED"%s, line: %d\n"B_BLACK"%s\n\n"C_RESET, __FILE__, __LINE__, str);
 
-typedef struct s_data {
+typedef struct s_command_table {
 
 	int		ac;
 	char	**av;
@@ -42,7 +42,7 @@ typedef struct s_data {
 	char	*cmd_path;
 
 	int		exit_status;	
-}			t_data;
+}			t_command_table;
 
 char	*ft_getcmdpath(char *cmd, char **envp);
 void	ft_exceve(char *cmd_str, char **envp);

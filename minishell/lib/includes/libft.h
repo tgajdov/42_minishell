@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 13:33:01 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/03 18:12:20 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/05 21:05:53 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memmove(void *s1, const void *s2, size_t n);
 void	*ft_memset(void *b, int c, size_t len);
+void	ft_free_tab(char **tab);
 
 /* -------◊		FUNCTIONS TO MANIPULATE NUMBERS	◊------- */
 int		ft_intlen(int n);

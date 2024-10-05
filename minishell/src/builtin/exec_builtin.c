@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 17:29:18 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/05 11:58:57 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/05 21:08:06 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 	{NULL, NULL}
 } ; */
 
-int	execute_builtin(char *cmd_str)
+char	*look_for_builtin(char *cmd_str)
 {
 	const char *builtin_tab[] = {
 		"cd",
@@ -44,6 +44,7 @@ int	execute_builtin(char *cmd_str)
 		"pwd",
 		"unset"
 	};
+	//Faut voir comment arranger ça
 
 	int		i;
 	char	**cmd_tab;
@@ -59,24 +60,26 @@ int	execute_builtin(char *cmd_str)
 	// 	return();
 	while (i < 7)
 	{
-		printf("my tab :%s\n",cmd_tab[0]);
-		printf("cmd tab :%s\n",builtin_tab[i]);
-		if (ft_strncmp(cmd_tab[0], builtin_tab[i++], ft_strlen(cmd_tab[0])) == 0)
+		if (ft_strncmp(cmd_tab[0], builtin_tab[i], ft_strlen(cmd_tab[0])) == 0)
 		{
 			printf("The results : %s\n", builtin_tab[i]);
-			exit (0);
+			return (cmd_tab[0]);
 		}
+		i++;
 	}
+	ft_free_tab(cmd_tab);
 	printf("No match\n");
-	return (0);
+	return (NULL);
 }
+
+
 
 int	main(void)
 {
-	char *argv = {"echo"};
+	char *argv = {"cdd HELLO=123 A-"};
 
 	if (argv)
-		execute_builtin(argv);
+		look_for_builtin(argv);
 	else
 	{
 		printf("Wrong number of arguments\n");
