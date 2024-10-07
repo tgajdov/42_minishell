@@ -6,34 +6,24 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 17:29:18 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/05 21:08:06 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/07 16:38:31 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../include/minishell.h"
 
-/* t_command builtin_tab[8] = {
+typedef enum e_builtin_code
+{
+	CD,
+	ENV,
+	ECHO,
+	EXPORT,
+	EXIT,
+	PWD,
+	UNSET
+}		t_builtin_code;
 
-	{"cd", 100},
-	{"env", 101},
-	{"echo", 102},
-	{"export", 103},
-	{"exit", 104},
-	{"pwd", 105},
-	{"unset", 106},
-	{NULL, 0}
-
-	{"cd", &builtin_cd},
-	{"env", &builtin_env},
-	{"echo", &builtin_echo},
-	{"export", &builtin_export},
-	{"exit", &builtin_exit},
-	{"pwd", &builtin_pwd},
-	{"unset", &builtin_unset},
-	{NULL, NULL}
-} ; */
-
-char	*look_for_builtin(char *cmd_str)
+t_builtin_code	look_for_builtin(char *cmd_str)
 {
 	const char *builtin_tab[] = {
 		"cd",
@@ -60,10 +50,10 @@ char	*look_for_builtin(char *cmd_str)
 	// 	return();
 	while (i < 7)
 	{
-		if (ft_strncmp(cmd_tab[0], builtin_tab[i], ft_strlen(cmd_tab[0])) == 0)
+		if (ft_strncasecmp(cmd_tab[0], builtin_tab[i], ft_strlen(cmd_tab[0])) == 0)
 		{
 			printf("The results : %s\n", builtin_tab[i]);
-			return (cmd_tab[0]);
+			return (i);
 		}
 		i++;
 	}
@@ -72,14 +62,32 @@ char	*look_for_builtin(char *cmd_str)
 	return (NULL);
 }
 
-
+void execute_builtin(t_builtin_code code)
+{
+	// if (code == CD)
+	// 	builtin_cd(cmd_tab, envp);
+	// else if (code == ENV)
+	// 	builtin_env(envp);
+	// else if (code == ECHO)
+	// 	builtin_echo(cmd_tab, envp);
+	// else if (code == EXPORT)
+	// 	builtin_export(cmd_tab, envp);
+	// else if (code == EXIT)
+	// 	builtin_exit(cmd_tab, envp);
+	if (code == PWD)
+		builtin_pwd();
+	// else if (code == UNSET)
+	// 	builtin_unset(cmd_tab, envp);
+	else
+		printf("No match\n");
+}
 
 int	main(void)
 {
-	char *argv = {"cdd HELLO=123 A-"};
+	char *argv = {"pwd"};
 
 	if (argv)
-		look_for_builtin(argv);
+		execute_builtin(look_for_builtin(argv)) ;
 	else
 	{
 		printf("Wrong number of arguments\n");

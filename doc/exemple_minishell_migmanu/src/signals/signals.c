@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migmanu <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 15:22:11 by migmanu           #+#    #+#             */
-/*   Updated: 2023/12/08 14:32:52 by jmigoya-         ###   ########.fr       */
+/*   Updated: 2024/10/07 16:18:47 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	handle_sigint_input(int signum)
 {
 	g_signal = signum;
 	ioctl(STDIN_FILENO, TIOCSTI, "\n");
-	rl_replace_line("", 0);
+	//rl_replace_line("", 0);
 	rl_on_new_line();
 }
 

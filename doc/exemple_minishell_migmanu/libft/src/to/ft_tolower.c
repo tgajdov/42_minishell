@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_builtin.c                                    :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: johnavar <johnavar@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/03 12:25:30 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/03 12:25:46 by tgajdov          ###   ########.fr       */
+/*   Created: 2023/05/03 07:38:46 by johnavar          #+#    #+#             */
+/*   Updated: 2023/07/04 17:51:01 by sebasnadu        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../include/minishell.h"
+#include "../../includes/libft.h"
 
-/* int	ft_look_for_builtin(char **args)
+int	ft_tolower(int i)
 {
-	int	i;
-
-	i = 0;
-	Une fonction qui permet de chercher le builtin
-	dans le tableau des builtin puis renvoie soit un 
-	poiteur vers elle soit le nom
-} */
+	if (i >= 'A' && i <= 'Z')
+		return (i + 32);
+	return (i);
+}

@@ -17,7 +17,9 @@ OBJ_DIR = bin
 BIN_DIR = bin
 
 LIB_NAME = ft
-SRCS = $(wildcard ${SRC_DIR}*.c)
+SRCS = src/builtin/*.c
+
+#SRCS = $(wildcard ${SRC_DIR}*.c)
 OBJS = $(SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o)
 
 DEF_COLOR = \033[0;39m
