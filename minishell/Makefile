@@ -35,7 +35,7 @@ WHITE = \033[0;97m
 
 all: $(NAME)
 
-$(NAME): $(LIB_DIR) $(OBJS)
+$(NAME): $(OBJS)
 	@echo "Creating ./$@"
 	@$(CC) $(CCFLAGS) $(OBJS) $(LIBFLAGS) -o $(NAME)
 	@echo "$(GREEN)$(NAME) has been compied!\n$(DEF_COLOR)"

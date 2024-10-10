@@ -6,28 +6,18 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 17:29:18 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/10 14:03:59 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/10 17:57:22 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../include/minishell.h"
-
-typedef enum e_builtin_code
-{
-	CD,
-	ENV,
-	ECHO,
-	EXPORT,
-	EXIT,
-	PWD,
-	UNSET
-}		t_builtin_code;
 
 t_builtin_code	look_for_builtin(char *cmd_str)
 {
 	const char *builtin_tab[] = {
 		"cd",
 		"env",
+		"echo -n",
 		"echo",
 		"export",
 		"exit",
@@ -36,39 +26,42 @@ t_builtin_code	look_for_builtin(char *cmd_str)
 	};
 	//Faut voir comment arranger ça
 
-	int		i;
+	int		cmd_pos;
 	char	**cmd_tab;
 
-	i = 0;
+	cmd_pos = 0;
 	if (!cmd_str)
 		return (0);
 	cmd_tab = ft_split(cmd_str, ' ');	
-	//faut-il securiser du genre
-	// if(!cmd_tab)
-	// 	return();
-	while (i < 7)
+	if(!cmd_tab)
+	/*definir un code d'erreur si aucune correspondance*/
+		return(42);
+	while (cmd_pos < 8)
 	{
-		if (ft_strncasecmp(cmd_tab[0], builtin_tab[i], ft_strlen(cmd_tab[0])) == 0)
+		if (ft_strncasecmp(cmd_tab[0], builtin_tab[cmd_pos], ft_strlen(builtin_tab[cmd_pos])) == 0)
 		{
-			printf("The results : %s\n", builtin_tab[i]);
+			printf("The results : %s, and his position : %d\n", builtin_tab[cmd_pos], cmd_pos);
 			ft_free_tab(cmd_tab);
-			return (i);
+			return (cmd_pos);
 		}
-		i++;
+		cmd_pos++;
 	}
 	ft_free_tab(cmd_tab);
 	printf("No match in look_for_builtin\n");
-	return ((t_builtin_code)NULL);
+	/*definir un code d'erreur si aucune correspondance*/
+	return (42);
 }
 
-void execute_builtin(t_builtin_code code, char **envp)
+void	execute_builtin(t_builtin_code code, char *cmd_str, char **envp)
 {
-	// if (code == CD)
-	// 	builtin_cd(cmd_tab, envp);
-	if (code == ENV)
+	if (code == 42)
+		return ;
+	else if (code == CD)
+		builtin_cd(cmd_str);
+	else if (code == ENV)
 		builtin_env(envp);
-	// else if (code == ECHO)
-	// 	builtin_echo(cmd_tab, envp);
+	else if (code == ECHO || code == ECHON)
+		builtin_echo(cmd_str, code);
 	// else if (code == EXPORT)
 	// 	builtin_export(cmd_tab, envp);
 	// else if (code == EXIT)
@@ -83,11 +76,14 @@ void execute_builtin(t_builtin_code code, char **envp)
 
 int	main(int ac, char **av, char **envp)
 {
-	char *argv = {"env"};
+	char *cmd_str = {"cd"};
+	/* envlever les espaces en trop entre les arguments
+	*/
+
 	if (!ac && !av)
 		return (0);
-	if (argv)
-		execute_builtin(look_for_builtin(argv), envp);
+	if (cmd_str)
+		execute_builtin(look_for_builtin(cmd_str), cmd_str, envp);
 	else
 	{
 		printf("Wrong number of arguments\n");
