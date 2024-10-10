@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:47:51 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/07 16:04:26 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/10 13:44:13 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	ft_strncasecmp(const char *s1, const char *s2, size_t n)
 	{
 		c1 = ft_tolower(s1[i]);
 		c2 = ft_tolower(s2[i]);
-		printf("%d = %d\n", c1, c2);
 		if (c1 != c2)
 			return (c1 - c2);
 		i++;

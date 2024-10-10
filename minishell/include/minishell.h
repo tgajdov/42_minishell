@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:08:18 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/05 21:41:55 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/10 14:01:18 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,21 @@ typedef struct s_command_table {
 	int		exit_status;	
 }			t_command_table;
 
-char	*ft_getcmdpath(char *cmd, char **envp);
-void	ft_exceve(char *cmd_str, char **envp);
+// builtin
+int builtin_env(char **envp);
+int	builtin_pwd(void);
 
-
+// errors
 void	error_exit(const char *error/* , t_data *name_struct */);
+
+// execve
+void	ft_exceve(char *cmd_str, char **envp);
+char	*ft_getcmdpath(char *cmd, char **envp);
+
+// safe_functions
+
+// utils
+int		ft_strncasecmp(const char *s1, const char *s2, size_t n);
+
 
 #endif

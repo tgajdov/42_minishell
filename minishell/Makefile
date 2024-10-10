@@ -3,9 +3,11 @@
 NAME = minishell
 CC = gcc
 CCFLAGS = -Wall -Werror -Wextra
-DBGFLAG = -g
+DBGFLAG = -g3
 LIBFLAGS = -L$(LIB_DIR) -l$(LIB_NAME)
 LEAKS = leaks -atExit --
+LEAKSLINUX = valgrind --leak-check=full
+LEAKSLINUXDEEP = $(LEAKSLINUX) --show-leak-kinds=all
 DATARACE = -fsanitize=thread
 
 RM = rm -rf
@@ -17,8 +19,7 @@ OBJ_DIR = bin
 BIN_DIR = bin
 
 LIB_NAME = ft
-SRCS = src/builtin/*.c
-
+SRCS = src/builtin/*.c src/utils/*.c
 #SRCS = $(wildcard ${SRC_DIR}*.c)
 OBJS = $(SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o)
 
@@ -50,6 +51,7 @@ $(LIB_DIR):
 test:
 
 testleaks:
+	@$(LEAKSLINUX) ./$(NAME)
 
 clean:
 	@echo "Cleaning up $(NAME)"

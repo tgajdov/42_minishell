@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 14:58:13 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/05 10:41:22 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/10 13:27:52 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,5 @@ typedef struct s_command {
 	int		num;
 	// int		(*func)(char **args);
 }			t_command;
-
-typedef enum e_builtins
-{
-	ECHO,
-	CD,
-	PWD,
-	EXPORT,
-	UNSET,
-	ENV,
-	EXIT,
-}		t_builtins;
-
-
 
 #endif

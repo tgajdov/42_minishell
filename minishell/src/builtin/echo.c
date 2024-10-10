@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:33:58 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/07 15:45:29 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/10 13:30:59 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ typedef enum e_echo_code
 
 t_echo_code	get_echo_code(char *str)
 {
-	if (!ft_strncmp(str, "echo", 4))
+	if (!ft_strncasecmp(str, "echo", 4))
 		return (ECHO);
-	if (!ft_strncmp(str, "echo -n", 7))
+	if (!ft_strncasecmp(str, "echo -n", 7))
 		return (ECHON);
 	return (-1);
 }
@@ -31,6 +31,6 @@ int builtin_echo(char *str, t_echo_code code, int output_fd)
 {
 	ft_putstr_fd(str, output_fd); //tester avec !str
 	if(code == ECHO)
-		rite (output_fd, "\n", 1);
+		write (output_fd, "\n", 1);
 	return (0);
 }
