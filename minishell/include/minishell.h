@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:08:18 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/10 17:51:26 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/14 15:10:48 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ char	*ft_getcmdpath(char *cmd, char **envp);
 // safe_functions
 
 // utils
+void	ft_free_tab(char **tab);
 int		ft_strncasecmp(const char *s1, const char *s2, size_t n);
 
 

@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 08:05:08 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/05 10:31:56 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/14 15:12:00 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,10 @@ void	ft_exceve(char *cmd_str, char **envp)
 	cmd_path = ft_getcmdpath(cmd_tab[0], envp);
 	if (execve(cmd_path, cmd_tab, envp) == -1)
 	{
-		printf("OUPS\n"); //modifier le msg d'erreur
-		exit(1);
+		free(cmd_path);
+		ft_free_tab(cmd_tab);
+		printf("execve failed\n");
+		return (1);
 	}
 }
 

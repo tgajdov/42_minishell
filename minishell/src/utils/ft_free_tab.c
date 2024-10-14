@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo.c                                             :+:      :+:    :+:   */
+/*   ft_free_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 15:33:58 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/14 15:02:44 by tgajdov          ###   ########.fr       */
+/*   Created: 2024/10/14 15:10:14 by tgajdov           #+#    #+#             */
+/*   Updated: 2024/10/14 15:10:29 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../include/minishell.h"
 
-int	builtin_echo(char *str, t_builtin_code code)
+void	ft_free_tab(char **tab)
 {
-	/*	tolower les arg de commandes avant la fonction
-	*/
-	char *tmp;
-	if (str)
+	int i = 0;
+	while (tab[i])
 	{
-		if (code == ECHON)
-			tmp = ft_strtrim(str, "echo -n ");
-		else
-			tmp = ft_strtrim(str, "echo ");
-		if (tmp)
-		{
-			ft_putstr_fd(tmp, STDOUT_FILENO);
-			free(tmp);
-		}
+		free(tab[i]);
+		i++;
 	}
-	if(code == ECHO)
-		write (STDOUT_FILENO, "\n", 1);
-	return (0);
+	free(tab);
 }
