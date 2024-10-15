@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 08:17:33 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/15 08:54:09 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/15 15:48:38 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,21 @@ int	ft_env_len(char **env)
 		len++;
 	return (len);
 }
-int	ft_unsetenv(char *key)
+int	ft_unsetenv(char *key, char **envp)
 {
-	char	**env = environ;
 	int		len;
 	int		j;
 
 	len = ft_strlen(key);
 	j = 0;
-	while (env[j])
+	while (envp[j])
 	{
-		if (ft_strncmp(env[j], key, len) == 0 && env[j][len] == '=')
+		if (ft_strncmp(envp[j], key, len) == 0 && envp[j][len] == '=')
 		{
-			free(env[j]);
-			while (env[j])
+			free(envp[j]);
+			while (envp[j])
 			{
-				env[j] = env[j + 1];
+				envp[j] = envp[j + 1];
 				j++;
 			}
 			return (0);
@@ -46,16 +45,16 @@ int	ft_unsetenv(char *key)
 	return (1);
 }
 
-void	builtin_unset(char **args)
+void	builtin_unset(char **args, char **envp)
 {
-	int i;
+	int	i;
 	
-	i= 1;
+	i = 1;
 	while (args[i])
 	{
 		if (is_valid_identifier(args[i]))
 		{
-			if (ft_unsetenv(args[i]) != 0)
+			if (ft_unsetenv(args[i], envp) != 0)
 				printf("unset: %s: failed to unset\n", args[i]);
 		}
 		else

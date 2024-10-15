@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:04:59 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/04 13:42:41 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/15 16:20:06 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,12 @@ void	ft_free_tab(char **tab)
 
 	i = 0;
 	while (tab[i])
-		free(tab[i++]);
-	free(tab);
+	{
+		if(tab[i])
+			free(tab[i++]);
+	}
+	if(tab)
+		free(tab);
 }
 
 size_t	ft_cw(char const *s, char c)

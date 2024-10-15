@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   ft_print_tab.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 15:36:43 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/15 16:30:43 by tgajdov          ###   ########.fr       */
+/*   Created: 2024/10/15 16:29:46 by tgajdov           #+#    #+#             */
+/*   Updated: 2024/10/15 16:30:25 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-
-int builtin_env(char **envp)
+int	ft_print_tab(char **tab)
 {
-	return(ft_print_tab(envp));
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		ft_putstr_fd(tab[i], STDOUT_FILENO);
+		ft_putchar_fd('\n', STDOUT_FILENO);
+		i++;
+	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:37:25 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/14 15:26:32 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/15 16:26:36 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	builtin_cd(char *cmd_str)
 	char		**tmp;
 	const char	*path;
 
+	DEBUG("IM HERE");
 	tmp = ft_split(cmd_str, ' ');
 	if (!tmp)
 		return (1);

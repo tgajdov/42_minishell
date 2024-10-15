@@ -2,12 +2,12 @@
 
 NAME = minishell
 CC = gcc
-CCFLAGS = -Wall -Werror -Wextra
-DBGFLAG = -g3
+#CCFLAGS = -Wall -Werror -Wextra
+GDBFLAG = -g3
 LIBFLAGS = -L$(LIB_DIR) -l$(LIB_NAME)
 LEAKS = leaks -atExit --
 LEAKSLINUX = valgrind --leak-check=full
-LEAKSLINUXDEEP = $(LEAKSLINUX) --show-leak-kinds=all
+LEAKSLINUXDEEP = $(LEAKSLINUX) --show-leak-kinds=all --track-origins=yes -s
 DATARACE = -fsanitize=thread
 
 RM = rm -rf
@@ -37,7 +37,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@echo "Creating ./$@"
-	@$(CC) $(CCFLAGS) $(OBJS) $(LIBFLAGS) -o $(NAME)
+	@$(CC) $(CCFLAGS) $(OBJS) $(LIBFLAGS) $(GDBFLAG) -o $(NAME)
 	@echo "$(GREEN)$(NAME) has been compied!\n$(DEF_COLOR)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
@@ -51,7 +51,7 @@ $(LIB_DIR):
 test:
 
 testleaks:
-	@$(LEAKSLINUX) ./$(NAME)
+	@$(LEAKSLINUXDEEP) ./$(NAME)
 
 clean:
 	@echo "Cleaning up $(NAME)"

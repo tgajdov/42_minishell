@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:33:58 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/14 15:02:44 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/15 15:58:14 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	builtin_echo(char *str, t_builtin_code code)
 	/*	tolower les arg de commandes avant la fonction
 	*/
 	char *tmp;
+
 	if (str)
 	{
 		if (code == ECHON)
