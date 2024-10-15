@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   putstr.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: fraqioui <fraqioui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 15:34:42 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/15 22:40:03 by tgajdov          ###   ########.fr       */
+/*   Created: 2023/02/23 11:27:42 by fraqioui          #+#    #+#             */
+/*   Updated: 2023/04/12 21:56:06 by fraqioui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../include/minishell.h"
+#include"../../headers/minishell.h"
 
-int	builtin_pwd(char **envp)
+void	ft_putstr_fd(char *s, int fd)
 {
-	char	*cwd;
-
-	cwd = getcwd(NULL, 0);
-	cwd = ft_getenv("PWD", envp);
-	if (cwd == NULL)
-		return (0);
-	ft_putstr_fd(cwd, STDOUT_FILENO);
-	write (STDOUT_FILENO, "\n", 1);
-	return (1);
+	if (!s)
+		return ;
+	while (*s)
+		write(fd, s++, 1);
 }

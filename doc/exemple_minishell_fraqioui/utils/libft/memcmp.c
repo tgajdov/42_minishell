@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   memcmp.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: fraqioui <fraqioui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 15:34:42 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/15 22:40:03 by tgajdov          ###   ########.fr       */
+/*   Created: 2022/10/06 11:58:54 by fraqioui          #+#    #+#             */
+/*   Updated: 2023/05/04 13:15:29 by fraqioui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../include/minishell.h"
+#include"../../headers/minishell.h"
 
-int	builtin_pwd(char **envp)
+bool	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	char	*cwd;
-
-	cwd = getcwd(NULL, 0);
-	cwd = ft_getenv("PWD", envp);
-	if (cwd == NULL)
+	if (!(s1 || !s2 || !n))
 		return (0);
-	ft_putstr_fd(cwd, STDOUT_FILENO);
-	write (STDOUT_FILENO, "\n", 1);
-	return (1);
+	while (n--)
+	{
+		if (*(unsigned char *)s1 != *(unsigned char *)s2)
+			return (1);
+		s1++;
+		s2++;
+	}
+	return (0);
 }

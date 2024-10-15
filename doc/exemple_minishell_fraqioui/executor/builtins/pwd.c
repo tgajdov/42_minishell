@@ -3,24 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: fraqioui <fraqioui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 15:34:42 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/15 22:40:03 by tgajdov          ###   ########.fr       */
+/*   Created: 2023/04/12 21:51:26 by fraqioui          #+#    #+#             */
+/*   Updated: 2023/05/08 14:33:19 by fraqioui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../include/minishell.h"
+#include"../../headers/minishell.h"
 
-int	builtin_pwd(char **envp)
+void	_pwd_(void)
 {
-	char	*cwd;
+	char	s[PATH_MAX];
 
-	cwd = getcwd(NULL, 0);
-	cwd = ft_getenv("PWD", envp);
-	if (cwd == NULL)
-		return (0);
-	ft_putstr_fd(cwd, STDOUT_FILENO);
-	write (STDOUT_FILENO, "\n", 1);
-	return (1);
+	getcwd(s, PATH_MAX);
+	ft_putstr_fd(s, 1);
+	ft_putstr_fd("\n", 1);
+	exit_with_status(0);
 }

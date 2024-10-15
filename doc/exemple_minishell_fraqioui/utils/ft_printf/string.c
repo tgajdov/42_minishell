@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   string.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: fraqioui <fraqioui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 15:34:42 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/15 22:40:03 by tgajdov          ###   ########.fr       */
+/*   Created: 2022/10/05 13:58:39 by fraqioui          #+#    #+#             */
+/*   Updated: 2023/02/26 11:47:04 by fraqioui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../include/minishell.h"
+#include"ft_printf.h"
 
-int	builtin_pwd(char **envp)
+void	ft_putchar(char c)
 {
-	char	*cwd;
+	write(2, &c, 1);
+}
 
-	cwd = getcwd(NULL, 0);
-	cwd = ft_getenv("PWD", envp);
-	if (cwd == NULL)
-		return (0);
-	ft_putstr_fd(cwd, STDOUT_FILENO);
-	write (STDOUT_FILENO, "\n", 1);
-	return (1);
+int	ft_putstr(char *s)
+{
+	int	len;
+
+	len = 0;
+	if (!s)
+	{
+		write(2, "(null)", 6);
+		return (6);
+	}
+	while (*s)
+	{
+		len++;
+		write(2, s++, 1);
+	}
+	return (len);
 }
