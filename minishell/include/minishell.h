@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:08:18 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/14 15:10:48 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/15 08:46:23 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,12 @@ typedef struct s_command_table {
 int		builtin_cd(char *cmd_str);
 int		builtin_echo(char *str, t_builtin_code code);
 int		builtin_env(char **envp);
+void	builtin_exit(char **args);
+void	builtin_export(char **args);
 int		builtin_pwd(void);
+void	builtin_unset(char **args);
+int		ft_env_len(char **env);
+int		is_valid_identifier(const char *str);
 
 // errors
 void	error_exit(const char *error/* , t_data *name_struct */);
