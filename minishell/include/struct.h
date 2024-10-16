@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 12:11:39 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/16 15:03:18 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/16 16:29:07 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_scmd
 }	t_scmd;
 
 typedef struct s_minishell {
+	char			*line;
 	int				exit_s;
 	int				stdin;
 	int				stdout;

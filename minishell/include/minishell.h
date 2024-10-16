@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:08:18 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/16 15:54:12 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/16 16:33:47 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,8 @@
 # include "struct.h"
 # include "../lib/includes/libft.h"
 
-# define PROMPT "minishell> "
+# define PROMPT "minishell > "
 # define DEBUG(str) printf(B_RED"%s, line: %d\n"B_BLACK"%s\n\n"C_RESET, __FILE__, __LINE__, str);
-
-// clean
-// ft_clean.c
-void	ft_clean_ms(void);
 
 // builtin
 // cd.c
@@ -68,14 +64,12 @@ int		ft_exec_builtin(char **args);
 bool	ft_is_builtin(char *arg);
 
 
-// errors
-void	error_exit(const char *error/* , t_data *name_struct */);
+// clean
+// ft_clean_ms.c
+void	ft_clean_ms(void);
 
 
 // execve
-// execve.c
-void	ft_exceve(char *cmd_str, char **envp);
-char	*ft_getcmdpath(char *cmd, char **envp);
 // execve_utils.c
 void	*ft_garbage_collector(void *ptr, bool clean);
 bool	ft_is_delimiter(char *delimiter, char *str);
@@ -83,14 +77,14 @@ bool	ft_is_delimiter(char *delimiter, char *str);
 // more_lib
 // ft_strcmp.c
 int		ft_strcmp(const char *s1, const char *s2);
+int		ft_strncasecmp(const char *s1, const char *s2, size_t n);
 
 // safe_functions
 
 // utils
 char	*ft_getenv(const char *name, char **envp);
-int	ft_print_tab(char **tab);
+int		ft_print_tab(char **tab);
 void	*ft_realloc(void *ptr, size_t old_size, size_t new_size);
-int		ft_strncasecmp(const char *s1, const char *s2, size_t n);
 
 
 #endif

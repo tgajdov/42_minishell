@@ -6,11 +6,11 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 21:57:43 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/05 22:04:40 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/16 16:12:17 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../include/minishell.h"
+#include "../include/minishell.h"
 
 /* 
 * La fonction copy_env permet de copier le tableau de string
@@ -26,7 +26,7 @@
 * comment free en cas d'échec de l'allocation.
 */
 
-char	**copy_env(char **envp)
+/* char	**copy_env(char **envp)
 {
 	char	**new_envp;
 	int		i;
@@ -43,4 +43,4 @@ char	**copy_env(char **envp)
 	}
 	new_envp[i] = 0;
 	return (new_envp);
-}
+} */

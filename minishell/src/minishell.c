@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dengelba <dengelba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:58:08 by dengelba          #+#    #+#             */
-/*   Updated: 2024/10/01 16:20:07 by dengelba         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:12:09 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <../include/minishell.h>
+#include "../include/minishell.h"
 
-int	main(void)
+/* int	main(void)
 {
 
 }
@@ -28,3 +28,4 @@ static char	*get_input(void)
 	input = readline(prompt);
 	return (input);
 }
+ */
