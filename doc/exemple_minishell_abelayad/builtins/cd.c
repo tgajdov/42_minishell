@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 15:37:25 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/16 12:58:03 by tgajdov          ###   ########.fr       */
+/*   Created: 2023/04/23 12:19:12 by abelayad          #+#    #+#             */
+/*   Updated: 2024/10/16 12:55:01 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../include/minishell.h"
+#include "minishell.h"
 
 static int	ft_change_pwd(void)
 {
@@ -44,13 +44,12 @@ static int	ft_cd_err_msg(char *err_msg)
 	return (1);
 }
 
-int	builtin_cd(char *path)
+int	ft_cd(char *path)
 {
 	if (!path)
 		return (ft_cd_home());
-	if (chdir(path != ENO_SUCCESS))
-		ft_cd_err_msg(path);
+	if (chdir(path) != ENO_SUCCESS)
+		return (ft_cd_err_msg(path));
 	ft_update_envlst("OLDPWD", ft_get_envlst_val("PWD"), false);
 	return (ft_change_pwd());
 }
-

@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins.h                                         :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: abelayad <abelayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/01 14:58:13 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/10 13:27:52 by tgajdov          ###   ########.fr       */
+/*   Created: 2022/09/28 16:46:07 by abelayad          #+#    #+#             */
+/*   Updated: 2022/09/30 20:29:28 by abelayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTINS_H
-# define BUILTINS_H
-
-typedef struct s_command {
-
-	char	*name;
-	int		num;
-	// int		(*func)(char **args);
-}			t_command;
-
-#endif
+int	ft_isdigit(int c)
+{
+	if ((c >= '0' && c <= '9'))
+		return (1);
+	return (0);
+}
