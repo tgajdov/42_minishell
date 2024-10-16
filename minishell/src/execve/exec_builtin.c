@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 17:29:18 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/16 15:56:02 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/16 16:41:24 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ int		ft_exec_builtin(char **args)
 		return (builtin_export(args));
 	if (ft_strcmp(args[0], "unset") == 0)
 		return (builtin_unset(args));
-	builtin_exit(args);
+	if (ft_strcmp(args[0], "exit") == 0)
+		builtin_exit(args);
+	printf("minishell: %s: command not found\n", args[0]);
 	return (ENO_GENERAL);
 }
 
