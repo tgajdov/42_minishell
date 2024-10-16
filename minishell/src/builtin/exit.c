@@ -6,44 +6,49 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 07:09:44 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/15 15:47:33 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/16 15:34:42 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../include/minishell.h"
+#include "../../include/minishell.h"
 
-int	is_numeric(const char *str)
+static bool	is_numeric(const char *str)
 {
-	int i = 0;
-	// if (str[i] == '-' || str[i] == '+')
-	// 	i++;
+	int	i;
+
+	i = 0;
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
-			return (0);
+			return (false);
 		i++;
 	}
-	return (1);
+	return (true);
 }
 
 void	builtin_exit(char **args)
 {
-	int exit_code;
+	int exit_s;
 
 	ft_putstr_fd("exit\n", STDOUT_FILENO);
-
 	if (args[1] == NULL)
+	{
+		ft_clean_ms();
 		exit(0);
+	}
 	if (!is_numeric(args[1]))
 	{
 		printf("minishell: exit: %s: numeric argument required\n", args[1]);
-		exit(2);
+		ft_clean_ms();
+		exit(255);
 	}
 	if (args[2] != NULL)
 	{
 		printf("minishell: exit: too many arguments\n");
 		return;
 	}
-	exit_code = ft_atoi(args[1]);
-	exit(exit_code);
+	exit_s = ft_atoi(args[1]);
+	ft_clean_ms();
+	exit(exit_s);
 }
+

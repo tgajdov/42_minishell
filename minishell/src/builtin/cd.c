@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:37:25 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/16 12:58:03 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/16 15:56:53 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,12 @@ static int	ft_cd_err_msg(char *err_msg)
 	ft_putstr_fd("\n", 2);
 	return (1);
 }
-
 int	builtin_cd(char *path)
 {
 	if (!path)
 		return (ft_cd_home());
-	if (chdir(path != ENO_SUCCESS))
-		ft_cd_err_msg(path);
+	if (chdir(path) != ENO_SUCCESS)
+		return (ft_cd_err_msg(path));
 	ft_update_envlst("OLDPWD", ft_get_envlst_val("PWD"), false);
 	return (ft_change_pwd());
 }
-

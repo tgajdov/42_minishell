@@ -6,31 +6,49 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:33:58 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/15 15:58:14 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/16 15:42:46 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../include/minishell.h"
 
-int	builtin_echo(char *str, t_builtin_code code)
+static int	ft_check_option(char *s)
 {
-	/*	tolower les arg de commandes avant la fonction
-	*/
-	char *tmp;
+	int	i;
 
-	if (str)
+	i = 0;
+	if (s[0] != '-')
+		return (0);
+	i++;
+	while (s[i])
 	{
-		if (code == ECHON)
-			tmp = ft_strtrim(str, "echo -n ");
-		else
-			tmp = ft_strtrim(str, "echo ");
-		if (tmp)
-		{
-			ft_putstr_fd(tmp, STDOUT_FILENO);
-			free(tmp);
-		}
+		if (s[i] != 'n')
+			return (0);
+		i++;
 	}
-	if(code == ECHO)
-		write (STDOUT_FILENO, "\n", 1);
+	return (1);
+}
+
+int	builtin_echo(char **args)
+{
+	int	i;
+	int	opt;
+
+	i = 1;
+	opt = 0;
+	while (args[i] != NULL && ft_check_option(args[i]) == 1)
+	{
+		opt = 1;
+		i++;
+	}
+	while (args[i])
+	{
+		ft_putstr_fd(args[i], 1);
+		if (args[i + 1])
+			ft_putstr_fd(" ", 1);
+		i++;
+	}
+	if (opt == 0)
+		ft_putstr_fd("\n", 1);
 	return (0);
 }

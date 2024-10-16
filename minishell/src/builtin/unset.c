@@ -6,59 +6,57 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 08:17:33 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/15 15:48:38 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/16 15:29:29 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../include/minishell.h"
 
-int	ft_env_len(char **env)
+static void	ft_unset_helper(char *key)
 {
-	int len;
-	
-	len = 0;
-	while (env[len])
-		len++;
-	return (len);
-}
-int	ft_unsetenv(char *key, char **envp)
-{
-	int		len;
-	int		j;
+	t_env	*current;
+	t_env	*prev;
 
-	len = ft_strlen(key);
-	j = 0;
-	while (envp[j])
+	prev = NULL;
+	current = g_minishell.envlst;
+	while (current)
 	{
-		if (ft_strncmp(envp[j], key, len) == 0 && envp[j][len] == '=')
+		if (!ft_strcmp(key, current->key))
 		{
-			free(envp[j]);
-			while (envp[j])
-			{
-				envp[j] = envp[j + 1];
-				j++;
-			}
-			return (0);
+			if (prev)
+				prev->next = current->next;
+			else
+				g_minishell.envlst = current->next;
+			free(current);
+			return ;
 		}
-		j++;
+		prev = current;
+		current = current->next;
 	}
-	return (1);
 }
 
-void	builtin_unset(char **args, char **envp)
+int	builtin_unset(char **args)
 {
-	int	i;
-	
+	int		i;
+	bool	err;
+
 	i = 1;
+	if (!args[1])
+		return (0);
+	err = false;
 	while (args[i])
 	{
-		if (is_valid_identifier(args[i]))
+		if (!ft_check_key(args[i]))
 		{
-			if (ft_unsetenv(args[i], envp) != 0)
-				printf("unset: %s: failed to unset\n", args[i]);
+			ft_putstr_fd("minishell: unset: `", 2);
+			ft_putstr_fd(args[i], 2);
+			ft_putstr_fd("': not a valid identifier\n", 2);
+			err = true;
 		}
 		else
-			printf("unset: '%s': not a valid identifier\n", args[i]);
+			ft_unset_helper(
+				ft_garbage_collector(ft_extract_key(args[i]), false));
 		i++;
 	}
+	return (err);
 }

@@ -1,23 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_exit.c                                       :+:      :+:    :+:   */
+/*   ft_clean.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/01 15:10:28 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/16 14:45:11 by tgajdov          ###   ########.fr       */
+/*   Created: 2024/10/16 14:22:35 by tgajdov           #+#    #+#             */
+/*   Updated: 2024/10/16 15:55:02 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../include/minishell.h"
 
-void	error_exit(const char *error/* , t_data *name_struct */) //créer notre struct, si besoin! Exemple pour gestion erreur sinon peut être enlevé
+static void	ft_clear_envlst(void)
 {
-	printf(B_RED"%s\n"C_RESET, error);
-	exit(1);
+	t_env	*envlst;
+	t_env	*envlst_tofree;
 
-	//set_bool(&table->table_mutex, &table->end_simulation, true, table);
-	//ou bien
-	//exit();
+	envlst = g_minishell.envlst;
+	while (envlst)
+	{
+		envlst_tofree = envlst;
+		envlst = envlst->next;
+		free(envlst_tofree);
+	}
+	g_minishell.envlst = NULL;
+}
+
+void	ft_clean_ms(void)
+{
+	// ft_garbage_collector(NULL, true);
+	// ft_clear_ast(&g_minishell.ast);
+	ft_clear_envlst();
+	// clear_history();
+	// tcsetattr(STDIN_FILENO, TCSANOW, &g_minishell.original_term);
 }

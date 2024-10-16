@@ -6,17 +6,53 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 08:16:46 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/15 12:32:40 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/16 15:32:35 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../include/minishell.h"
 
-int	is_valid_identifier(const char *str)
+static int	ft_export_err_msg(char *identifier)
 {
-	int i = 0;
+	ft_putstr_fd("minishell: export: `", 2);
+	ft_putstr_fd(identifier, 2);
+	ft_putstr_fd("': not a valid identifier\n", 2);
+	return (1);
+}
 
-	if (!ft_isalpha(str[0]) && str[0] != '_')
+static	void	ft_export_list(void)
+{
+	t_env	*list;
+	size_t	i;
+
+	list = g_minishell.envlst;
+	while (list)
+	{
+		if (list->value != NULL && (ft_strcmp(list->key, "_") != 0))
+		{
+			printf("declare -x %s=\"", list->key);
+			i = 0;
+			while ((list->value)[i])
+			{
+				if ((list->value)[i] == '$' || (list->value)[i] == '"')
+					printf("\\%c", (list->value)[i++]);
+				else
+					printf("%c", (list->value)[i++]);
+			}
+			printf("\"\n");
+		}
+		else if (list->value == NULL && (ft_strcmp(list->key, "_") != 0))
+			printf("declare -x %s\n", list->key);
+		list = list->next;
+	}
+}
+
+int	ft_check_key(char *str)
+{
+	int	i;
+
+	i = 1;
+	if (!ft_isalpha(*str) && *str != '_')
 		return (0);
 	while (str[i] && str[i] != '=')
 	{
@@ -27,55 +63,29 @@ int	is_valid_identifier(const char *str)
 	return (1);
 }
 
-int	update_env(char *key_value, char **envp)
+int	builtin_export(char **argv)
 {
-	int len = 0;
-	
-	while (key_value[len] && key_value[len] != '=')
-		len++;
-	while (*envp)
-	{
-		if (ft_strncmp(*envp, key_value, len) == 0 && (*envp)[len] == '=')
-		{
-			free(*envp);
-			*envp = ft_strdup(key_value);
-			if (!*envp)
-				return (1);
-			return (0);
-		}
-		envp++;
-	}
-	envp = ft_realloc(envp, sizeof(char *) * ft_env_len(envp), sizeof(char *) * (ft_env_len(envp) + 2));
-	if (!envp)
-		return (1);
-	envp[ft_env_len(envp)] = ft_strdup(key_value);
-	envp[ft_env_len(envp) + 1] = NULL;
-	return (0);
-}
+	int		i;
+	int		exit_s;
+	char	*key;
 
-
-void	builtin_export(char **args, char **envp)
-{
-	int i = 1;
-
-	if (!args[1])
+	exit_s = 0;
+	i = 1;
+	if (!argv[1])
+		return (ft_export_list(), 0);
+	while (argv[i])
 	{
-		while (*envp)
-		{
-			printf("declare -x %s\n", *envp);
-			envp++;
-		}
-		return;
-	}
-	while (args[i])
-	{
-		if (is_valid_identifier(args[i]))
-		{
-			if (update_env(args[i], envp) != 0)
-				printf("export: memory allocation error\n");
-		}
+		if (ft_check_key(argv[i]) == 0)
+			exit_s = ft_export_err_msg(argv[i]);
 		else
-			printf("export: '%s': not a valid identifier\n", args[i]);
+		{
+			key = ft_extract_key(argv[i]);
+			if (ft_env_entry_exists(key))
+				ft_update_envlst(key, ft_extract_value(argv[i]), false);
+			else
+				ft_update_envlst(key, ft_extract_value(argv[i]), true);
+		}
 		i++;
 	}
+	return (exit_s);
 }
