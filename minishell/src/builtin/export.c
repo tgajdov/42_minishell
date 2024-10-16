@@ -6,11 +6,11 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 08:16:46 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/16 15:32:35 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/16 16:49:16 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../include/minishell.h"
+#include "../../include/minishell.h"
 
 static int	ft_export_err_msg(char *identifier)
 {

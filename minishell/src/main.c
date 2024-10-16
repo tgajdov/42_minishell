@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:41:25 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/16 16:39:28 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/16 16:51:35 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,11 @@ int	main(int ac, char **av, char **envp)
 {
 	((void)ac, (void)av);
 	ft_init_minishell(envp);
-	while(1)
+	while (1)
 	{
 		g_minishell.line = readline(PROMPT);
 		if (g_minishell.line[0])
 			add_history(g_minishell.line);
-		
 		ft_exec_builtin(ft_split(g_minishell.line, ' '));
 	}
 	return (0);

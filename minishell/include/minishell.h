@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:08:18 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/16 16:33:47 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/16 16:46:03 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,9 @@ int		builtin_unset(char **args);
 int		ft_exec_builtin(char **args);
 bool	ft_is_builtin(char *arg);
 
-
 // clean
 // ft_clean_ms.c
 void	ft_clean_ms(void);
-
 
 // execve
 // execve_utils.c
@@ -79,12 +77,9 @@ bool	ft_is_delimiter(char *delimiter, char *str);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncasecmp(const char *s1, const char *s2, size_t n);
 
-// safe_functions
-
 // utils
 char	*ft_getenv(const char *name, char **envp);
 int		ft_print_tab(char **tab);
 void	*ft_realloc(void *ptr, size_t old_size, size_t new_size);
-
 
 #endif

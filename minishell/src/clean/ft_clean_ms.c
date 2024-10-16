@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_clean.c                                         :+:      :+:    :+:   */
+/*   ft_clean_ms.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:22:35 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/16 15:55:02 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/16 16:50:11 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../include/minishell.h"
+#include "../../include/minishell.h"
 
 static void	ft_clear_envlst(void)
 {

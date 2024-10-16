@@ -6,11 +6,11 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:34:42 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/16 15:30:30 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/16 16:49:06 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../include/minishell.h"
+#include "../../include/minishell.h"
 
 int	builtin_pwd(void)
 {

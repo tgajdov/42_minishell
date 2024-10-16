@@ -6,11 +6,11 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:33:58 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/16 15:42:46 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/16 16:49:48 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../include/minishell.h"
+#include "../../include/minishell.h"
 
 static int	ft_check_option(char *s)
 {

@@ -6,12 +6,12 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 12:11:39 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/16 16:29:07 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/16 16:45:39 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTINS_H
-# define BUILTINS_H
+#ifndef STRUCT_H
+# define STRUCT_H
 
 typedef enum e_err_no
 {
@@ -37,7 +37,8 @@ typedef struct s_scmd
 	int		out_fd;
 }	t_scmd;
 
-typedef struct s_minishell {
+typedef struct s_minishell
+{
 	char			*line;
 	int				exit_s;
 	int				stdin;

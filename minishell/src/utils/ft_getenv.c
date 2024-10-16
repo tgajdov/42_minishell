@@ -6,17 +6,18 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 12:11:40 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/15 12:15:34 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/16 16:53:09 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../include/minishell.h"
+#include "../../include/minishell.h"
 
 char	*ft_getenv(const char *name, char **envp)
 {
-	int i = 0;
-	int len;
-	
+	int	i;
+	int	len;
+
+	i = 0;
 	len = ft_strlen(name);
 	while (envp[i])
 	{

@@ -6,12 +6,11 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:47:51 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/10 13:44:13 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/16 16:52:15 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../include/minishell.h"
-
+#include "../../include/minishell.h"
 
 int	ft_strncasecmp(const char *s1, const char *s2, size_t n)
 {

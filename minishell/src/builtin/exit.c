@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 07:09:44 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/16 15:34:42 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/16 16:48:29 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static bool	is_numeric(const char *str)
 
 void	builtin_exit(char **args)
 {
-	int exit_s;
+	int	exit_s;
 
 	ft_putstr_fd("exit\n", STDOUT_FILENO);
 	if (args[1] == NULL)
@@ -45,10 +45,9 @@ void	builtin_exit(char **args)
 	if (args[2] != NULL)
 	{
 		printf("minishell: exit: too many arguments\n");
-		return;
+		return ;
 	}
 	exit_s = ft_atoi(args[1]);
 	ft_clean_ms();
 	exit(exit_s);
 }
-

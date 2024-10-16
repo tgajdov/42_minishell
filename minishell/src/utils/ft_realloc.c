@@ -6,11 +6,11 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 12:25:47 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/15 12:27:17 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/16 16:53:20 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../include/minishell.h"
+#include "../../include/minishell.h"
 
 void	*ft_realloc(void *ptr, size_t old_size, size_t new_size)
 {

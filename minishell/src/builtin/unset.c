@@ -6,11 +6,11 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 08:17:33 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/16 15:29:29 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/16 16:48:48 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../include/minishell.h"
+#include "../../include/minishell.h"
 
 static void	ft_unset_helper(char *key)
 {

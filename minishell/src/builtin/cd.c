@@ -6,11 +6,11 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:37:25 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/16 15:56:53 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/16 16:49:37 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../../include/minishell.h"
+#include "../../include/minishell.h"
 
 static int	ft_change_pwd(void)
 {
@@ -43,6 +43,7 @@ static int	ft_cd_err_msg(char *err_msg)
 	ft_putstr_fd("\n", 2);
 	return (1);
 }
+
 int	builtin_cd(char *path)
 {
 	if (!path)
