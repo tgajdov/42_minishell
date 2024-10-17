@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:22:35 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/16 16:50:11 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/17 07:16:14 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,19 @@
 
 static void	ft_clear_envlst(void)
 {
-	t_env	*envlst;
-	t_env	*envlst_tofree;
+	t_minishell	*g_minishell;
+	t_env		*envlst;
+	t_env		*envlst_tofree;
 
-	envlst = g_minishell.envlst;
+	g_minishell = get_g_minishell();
+	envlst = g_minishell->envlst;
 	while (envlst)
 	{
 		envlst_tofree = envlst;
 		envlst = envlst->next;
 		free(envlst_tofree);
 	}
-	g_minishell.envlst = NULL;
+	g_minishell->envlst = NULL;
 }
 
 void	ft_clean_ms(void)

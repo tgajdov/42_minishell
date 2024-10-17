@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:34:02 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/16 16:10:08 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/17 07:22:28 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,10 @@ void	ft_init_envlst(void)
 	char	**environ;
 	char	*key;
 	char	*value;
+	t_minishell	*g_minishell;
 
-	environ = g_minishell.environ;
+	g_minishell = get_g_minishell();
+	environ = g_minishell->environ;
 	if (!environ)
 		return ;
 	i = 0;
@@ -67,8 +69,10 @@ void	ft_init_envlst(void)
 int	builtin_env(void)
 {
 	t_env	*list;
+	t_minishell	*g_minishell;
 
-	list = g_minishell.envlst;
+	g_minishell = get_g_minishell();
+	list = g_minishell->envlst;
 	while (list)
 	{
 		if (list->value != NULL)

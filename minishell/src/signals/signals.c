@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:59:41 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/16 17:03:15 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/17 07:11:20 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,10 @@ void	ft_sigquit_handler(int num)
 void	ft_init_signals(void)
 {
 	struct termios	term;
+	t_minishell		*g_minishell;
 
-	term = g_minishell.original_term;
+	g_minishell = get_g_minishell();
+	term = g_minishell->original_term;
 	term.c_lflag &= ~ECHOCTL;
 	tcsetattr(STDIN_FILENO, TCSANOW, &term);
 	// g_minishell.heredoc_sigint = false;

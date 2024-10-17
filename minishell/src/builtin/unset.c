@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 08:17:33 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/16 16:48:48 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/17 07:17:02 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 static void	ft_unset_helper(char *key)
 {
+	t_minishell	*g_minishell;
 	t_env	*current;
 	t_env	*prev;
 
+	g_minishell = get_g_minishell();
 	prev = NULL;
-	current = g_minishell.envlst;
+	current = g_minishell->envlst;
 	while (current)
 	{
 		if (!ft_strcmp(key, current->key))
@@ -26,7 +28,7 @@ static void	ft_unset_helper(char *key)
 			if (prev)
 				prev->next = current->next;
 			else
-				g_minishell.envlst = current->next;
+				g_minishell->envlst = current->next;
 			free(current);
 			return ;
 		}

@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 08:16:46 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/16 16:49:16 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/17 07:20:37 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ static int	ft_export_err_msg(char *identifier)
 
 static	void	ft_export_list(void)
 {
-	t_env	*list;
-	size_t	i;
+	t_minishell	*g_minishell;
+	t_env		*list;
+	size_t		i;
 
-	list = g_minishell.envlst;
+	g_minishell = get_g_minishell();
+	list = g_minishell->envlst;
 	while (list)
 	{
 		if (list->value != NULL && (ft_strcmp(list->key, "_") != 0))

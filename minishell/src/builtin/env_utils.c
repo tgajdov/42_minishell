@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:36:43 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/16 15:38:21 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/17 07:21:56 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 bool	ft_env_entry_exists(char *key)
 {
-	t_env	*envlst;
+	t_env		*envlst;
+	t_minishell	*g_minishell;
 
-	envlst = g_minishell.envlst;
+	g_minishell = get_g_minishell();
+	envlst = g_minishell->envlst;
 	while (envlst)
 	{
 		if (!ft_strcmp(key, envlst->key))
@@ -43,8 +45,10 @@ static t_env	*ft_envlst_new(char *key, char *value)
 char	*ft_get_envlst_val(char *key)
 {
 	t_env	*envlst;
+	t_minishell	*g_minishell;
 
-	envlst = g_minishell.envlst;
+	g_minishell = get_g_minishell();
+	envlst = g_minishell->envlst;
 	while (envlst)
 	{
 		if (!ft_strcmp(key, envlst->key))
@@ -57,13 +61,15 @@ char	*ft_get_envlst_val(char *key)
 void	ft_envlst_back(t_env *new)
 {
 	t_env	*curr;
+	t_minishell	*g_minishell;
 
-	if (!g_minishell.envlst)
+	g_minishell = get_g_minishell();
+	if (!g_minishell->envlst)
 	{
-		g_minishell.envlst = new;
+		g_minishell->envlst = new;
 		return ;
 	}
-	curr = g_minishell.envlst;
+	curr = g_minishell->envlst;
 	while (curr && curr->next)
 		curr = curr->next;
 	curr->next = new;
@@ -72,8 +78,10 @@ void	ft_envlst_back(t_env *new)
 void	ft_update_envlst(char *key, char *value, bool create)
 {
 	t_env	*envlst;
+	t_minishell	*g_minishell;
 
-	envlst = g_minishell.envlst;
+	g_minishell = get_g_minishell();
+	envlst = g_minishell->envlst;
 	while (envlst)
 	{
 		if (!ft_strcmp(key, envlst->key))
