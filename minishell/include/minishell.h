@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:08:18 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/16 22:14:07 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/21 16:09:32 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ bool		ft_is_builtin(char *arg);
 // clean
 // ft_clean_ms.c
 void		ft_clean_ms(void);
+// panic.c
+void		panic(char *str);
 
 // execve
 // execve_utils.c
@@ -82,7 +84,8 @@ int			ft_strncasecmp(const char *s1, const char *s2, size_t n);
 void		ft_sigquit_handler(int num);
 void		ft_init_signals(void);
 
-// utils	
+// utils
+int			ft_fork(void);
 char		*ft_getenv(const char *name, char **envp);
 int			ft_print_tab(char **tab);
 void		*ft_realloc(void *ptr, size_t old_size, size_t new_size);
