@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: dengelba <dengelba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 12:11:39 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/16 22:14:26 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/24 15:02:25 by dengelba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,20 @@ typedef enum e_token_type
 	T_NL,
 }	t_token_type;
 
+typedef enum s_token_type
+{
+	PIPE = 1,
+	GREAT,
+	GREAT_GREAT,
+	LESS,
+	LESS_LESS,
+}	t_token_type;
+
 typedef struct s_token
 {
 	t_token_type		type;
 	char				*value;
+	int					i;
 	struct s_token		*next;
 	struct s_token		*prev;
 }	t_token;
