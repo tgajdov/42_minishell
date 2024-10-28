@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:37:25 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/16 16:49:37 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/28 22:36:39 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static int	ft_cd_err_msg(char *err_msg)
 {
 	ft_putstr_fd("minishell: cd: ", 2);
 	ft_putstr_fd(err_msg, 2);
+	ft_putstr_fd(": ", 2);
 	ft_putstr_fd(strerror(errno), 2);
 	ft_putstr_fd("\n", 2);
 	return (1);

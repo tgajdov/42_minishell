@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:41:25 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/17 07:37:12 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/28 15:57:51 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	*ft_init_minishell(char **env, t_minishell *g_minishell)
 {
-/* 	t_minishell	*g_minishell;
+	t_minishell	*g_minishell;
 
-	g_minishell = get_g_minishell(); */
+	g_minishell = get_g_minishell();
 	ft_memset(g_minishell, 0, sizeof(t_minishell));
 	g_minishell->environ = env;
 	ft_init_envlst();

@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:59:41 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/17 07:11:20 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/28 15:43:03 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 
 static void	ft_sigint_handler(int num)
 {
+	t_minishell	*g_minishell;
+
+	g_minishell = get_g_minishell();
 	(void)num;
-	if (1)
-	// if (g_minishell.signint_child)
+	if (g_minishell->signint_child)
 	{
 		ft_putstr_fd("\n", 1);
-		// g_minishell.signint_child = false;
-		// g_minishell.heredoc_sigint = true;
+		g_minishell->signint_child = false;
+		g_minishell->heredoc_sigint = true;
 	}
 	else
 	{
 		ft_putstr_fd("\n", 1);
-		// rl_replace_line("", 0);
+		//rl_replace_line("", 0);
 		rl_on_new_line();
 		rl_redisplay();
 	}
@@ -46,8 +48,8 @@ void	ft_init_signals(void)
 	term = g_minishell->original_term;
 	term.c_lflag &= ~ECHOCTL;
 	tcsetattr(STDIN_FILENO, TCSANOW, &term);
-	// g_minishell.heredoc_sigint = false;
-	// g_minishell.signint_child = false;
+	g_minishell->heredoc_sigint = false;
+	g_minishell->signint_child = false;
 	signal(SIGINT, ft_sigint_handler);
 	signal(SIGQUIT, SIG_IGN);
 }

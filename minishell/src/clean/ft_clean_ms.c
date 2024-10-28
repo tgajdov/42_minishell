@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:22:35 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/17 07:16:14 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/28 15:27:09 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ static void	ft_clear_envlst(void)
 
 void	ft_clean_ms(void)
 {
-	// ft_garbage_collector(NULL, true);
-	// ft_clear_ast(&g_minishell.ast);
+	ft_garbage_collector(NULL, true);
+	ft_clear_ast(&g_minishell.ast);
 	ft_clear_envlst();
-	// clear_history();
-	// tcsetattr(STDIN_FILENO, TCSANOW, &g_minishell.original_term);
+	clear_history();
+	tcsetattr(STDIN_FILENO, TCSANOW, &g_minishell.original_term);
 }

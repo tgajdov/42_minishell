@@ -6,7 +6,7 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:08:18 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/21 16:09:32 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/28 16:06:44 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,29 @@ int			builtin_export(char **argv);
 int			builtin_pwd(void);
 // unset.c
 int			builtin_unset(char **args);
-// exec_builtin.c
-int			ft_exec_builtin(char **args);
-bool		ft_is_builtin(char *arg);
 
 // clean
+// ft_clean_empty_s.c
+char		*ft_clean_empty_strs(char *str);
 // ft_clean_ms.c
 void		ft_clean_ms(void);
 // panic.c
 void		panic(char *str);
 
 // execve
+// check.c
+t_err		ft_check_exec(char *file, bool cmd);
+t_err		ft_check_read(char *file);
+t_err		ft_check_write(char *file);
+// error.c
+int			ft_err_msg(t_err err);
+// exec_builtin.c
+int			ft_exec_builtin(char **args);
+bool		ft_is_builtin(char *arg);
+// exec_redirect.c
+int			ft_append(t_io_node *io_list, int *status);
+int			ft_in(t_io_node *io_list, int *status);
+int			ft_out(t_io_node *io_list, int *status);
 // execve_utils.c
 void		*ft_garbage_collector(void *ptr, bool clean);
 bool		ft_is_delimiter(char *delimiter, char *str);

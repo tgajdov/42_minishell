@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dengelba <dengelba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 12:11:39 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/24 15:02:25 by dengelba         ###   ########.fr       */
+/*   Updated: 2024/10/28 22:35:05 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ typedef enum e_err_msg
 	ERRMSG_PERM_DENIED,
 	ERRMSG_AMBIGUOUS,
 	ERRMSG_TOO_MANY_ARGS,
-	ERRMSG_NUMERIC_REQUI
+	ERRMSG_NUMERIC_REQUI,
+	ERRMSG_FILEISDIR
 }	t_err_msg;
 
 typedef enum e_err_no
