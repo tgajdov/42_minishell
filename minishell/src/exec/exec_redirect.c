@@ -6,12 +6,23 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 14:59:07 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/28 15:28:51 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/29 14:11:43 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
+/**
+ * @brief Redirects the output of a command to a file specified in io_list
+ * @param io_list The node containing the redirection information
+ * @param status The status of the redirection
+ * @return 0 on success, non-zero on error
+ *
+ * If the file does not exist, it is created. If the file already exists, its
+ * contents are truncated. The file is created with permissions 0644.
+ *
+ * If the redirection fails, *status is set to a non-zero value.
+ */
 int	ft_out(t_io_node *io_list, int *status)
 {
 	int		fd;
@@ -34,6 +45,15 @@ int	ft_out(t_io_node *io_list, int *status)
 	return (*status);
 }
 
+/**
+ * @brief Redirects the input of a command from a file specified in io_list
+ * @param io_list The node containing the redirection information
+ * @param status The status of the redirection
+ * @return 0 on success, non-zero on error
+ *
+ * Opens the file in read-only mode and redirects STDIN to it. If the file
+ * cannot be opened, *status is set to a non-zero value.
+ */
 int	ft_in(t_io_node *io_list, int *status)
 {
 	int		fd;
@@ -56,6 +76,15 @@ int	ft_in(t_io_node *io_list, int *status)
 	return (*status);
 }
 
+/**
+ * @brief Appends the output of a command to a file specified in io_list
+ * @param io_list The node containing the redirection information
+ * @param status The status of the redirection
+ * @return 0 on success, non-zero on error
+ *
+ * Opens the file in append mode and redirects STDOUT to it. If the file
+ * cannot be opened, *status is set to a non-zero value.
+ */
 int	ft_append(t_io_node *io_list, int *status)
 {
 	int	fd;

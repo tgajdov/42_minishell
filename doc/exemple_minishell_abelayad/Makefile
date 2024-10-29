@@ -61,7 +61,8 @@ SRCS		:=	$(BUILTINS)\
 
 OBJS		:=	$(SRCS:.c=.o)
 
-READLINE_PATH:=	/goinfre/homebrew/opt/readline
+READLINE_PATH:=	/usr/local/opt/readline
+#READLINE_PATH:=	/goinfre/homebrew/opt/readline
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@ -Iinclude -I$(READLINE_PATH)/include

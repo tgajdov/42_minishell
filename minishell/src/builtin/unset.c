@@ -6,17 +6,26 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 08:17:33 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/17 07:17:02 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/29 13:28:07 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
+/**
+ * @brief Removes an environment variable from the global environment list.
+ *
+ * This function searches for the specified environment variable by key
+ * in the global environment list and removes it if found. If the variable
+ * is not found, the list remains unchanged.
+ *
+ * @param key The key of the environment variable to be removed.
+ */
 static void	ft_unset_helper(char *key)
 {
 	t_minishell	*g_minishell;
-	t_env	*current;
-	t_env	*prev;
+	t_env		*current;
+	t_env		*prev;
 
 	g_minishell = get_g_minishell();
 	prev = NULL;
@@ -37,6 +46,22 @@ static void	ft_unset_helper(char *key)
 	}
 }
 
+/**
+ * @brief Removes environment variables from the environment list.
+ *
+ * This function takes a list of arguments and attempts to unset each one
+ * from the environment list. For each argument, it first checks if the 
+ * argument is a valid identifier using `ft_check_key`. If the identifier
+ * is invalid, it outputs an error message to standard error and sets an
+ * error flag. If the identifier is valid, it calls `ft_unset_helper` to
+ * remove the variable from the environment list.
+ *
+ * @param args A null-terminated array of strings representing the 
+ * environment variable keys to be unset. The first element is expected
+ * to be the command name and is ignored.
+ * @return Returns 0 if all variables are successfully unset, or 1 if there
+ * were any errors due to invalid identifiers.
+ */
 int	builtin_unset(char **args)
 {
 	int		i;

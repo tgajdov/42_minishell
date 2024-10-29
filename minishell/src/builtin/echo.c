@@ -6,12 +6,24 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:33:58 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/16 16:49:48 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/29 12:55:25 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
+/**
+ * @brief Checks if the argument string is a valid option for the echo command.
+ *
+ * @param s The argument string to check.
+ * @return 1 if the string is a valid option, 0 otherwise.
+ *
+ * The only valid option for the echo command is "-n".
+ * If the string does not start with a '-' character,
+ * the function returns 0.
+ * If the string does not contain only 'n' characters after the '-',
+ * the function returns 0.
+ */
 static int	ft_check_option(char *s)
 {
 	int	i;
@@ -29,6 +41,18 @@ static int	ft_check_option(char *s)
 	return (1);
 }
 
+/**
+ * @brief Built-in echo command
+ * @param args Command-line arguments
+ * @return 0 if successful, 1 if not
+ *
+ * The echo command prints its arguments to the standard output,
+ * followed by a newline.
+ * If the -n option is present, the newline is not printed.
+ * If no arguments are given, nothing is printed.
+ *
+ * @note This function does not handle errors, so it will not return 1.
+ */
 int	builtin_echo(char **args)
 {
 	int	i;

@@ -15,7 +15,8 @@ RM = rm -rf
 MKDIR = mkdir -p
 
 LIB_DIR = lib
-READLINE_DIR=	/goinfre/homebrew/opt/readline
+#READLINE_DIR=/goinfre/homebrew/opt/readline
+READLINE_DIR=/usr/local/opt/readline
 SRC_DIR = src/*/
 OBJ_DIR = bin
 BIN_DIR = bin

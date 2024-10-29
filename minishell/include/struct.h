@@ -6,9 +6,13 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 12:11:39 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/28 22:35:05 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/29 17:48:28 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+* This header contains the structure of the environment
+*/
 
 #ifndef STRUCT_H
 # define STRUCT_H

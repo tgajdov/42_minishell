@@ -6,12 +6,17 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 07:09:44 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/16 16:48:29 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/29 13:00:12 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
+/**
+ * Checks if the given string is a numeric string.
+ * @param str String to check.
+ * @return true if string is numeric, false otherwise.
+ */
 static bool	is_numeric(const char *str)
 {
 	int	i;
@@ -26,6 +31,15 @@ static bool	is_numeric(const char *str)
 	return (true);
 }
 
+/**
+ * @brief Handles the exit command
+ * @details Prints "exit" and then exits the program with the given code.
+ * If no argument is given, the default exit code is 0.
+ * If the argument is not numeric, it prints an error message and exits with
+ * code 255.
+ * If too many arguments are given, it prints an error message and does not exit.
+ * @param args The arguments given to the exit command.
+ */
 void	builtin_exit(char **args)
 {
 	int	exit_s;

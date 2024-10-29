@@ -1,17 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_clean_ws.c                                      :+:      :+:    :+:   */
+/*   ft_clean_empty_s.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:38:55 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/28 15:39:37 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/29 13:29:41 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
+/**
+ * Removes pairs of consecutive single or double quotes from the input string.
+ *
+ * This function allocates memory to create a new string where all pairs of
+ * consecutive single quotes ('') or double quotes ("") are removed from the
+ * input string. If the input string starts and ends with a pair of quotes and
+ * contains no other characters, the original string is returned. The input
+ * string is freed after processing.
+ *
+ * @param str The input string to be processed. Must be dynamically allocated.
+ * @return A new string with pairs of quotes removed. The returned string is
+ *         dynamically allocated and should be freed by the caller.
+ */
 char	*ft_clean_empty_strs(char *str)
 {
 	size_t	i;

@@ -6,10 +6,16 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:08:18 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/28 16:06:44 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/29 17:47:20 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+ * This is the main header of the minishell project.
+ * It includes all the necessary headers to use the standard library,
+ * the readline library and the sys/wait.h header.
+ * It also includes the structures and functions used by the minishell.
+ */
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
@@ -33,7 +39,9 @@
 # include "../lib/includes/libft.h"
 
 # define PROMPT "minis_hell > "
-# define DEBUG(str) printf(B_RED"%s, line: %d\n"B_BLACK"%s\n\n"C_RESET, __FILE__, __LINE__, str);
+# define DEBUG(str) \
+	printf(B_RED"%s, line: %d\n"B_BLACK, __FILE__, __LINE__); \
+	printf("%s\n\n"C_RESET, str);
 
 // builtin
 // cd.c
@@ -82,7 +90,21 @@ bool		ft_is_builtin(char *arg);
 int			ft_append(t_io_node *io_list, int *status);
 int			ft_in(t_io_node *io_list, int *status);
 int			ft_out(t_io_node *io_list, int *status);
-// execve_utils.c
+// exec_simple.c
+void		ft_true_sigint_child(void);
+int			ft_check_redirection(t_node *node);
+void		ft_reset_stds(bool piped);
+int			ft_exec_simple_cmd(t_node *node, bool piped);
+// exec.c
+void		ft_false_sigint_child(void);
+int			ft_get_exit_status(int status);
+int			ft_exec_node(t_node *tree, bool piped);
+// get_path.c
+t_path		ft_get_path(char *cmd);
+// init_tree.c
+void		ft_heredoc(t_io_node *io, int p[2]);
+void		ft_init_tree(t_node *node);
+// utils_execve.c
 void		*ft_garbage_collector(void *ptr, bool clean);
 bool		ft_is_delimiter(char *delimiter, char *str);
 
@@ -92,7 +114,7 @@ int			ft_strcmp(const char *s1, const char *s2);
 int			ft_strncasecmp(const char *s1, const char *s2, size_t n);
 
 // signals
-// signa	ls.c
+// signals.c
 void		ft_sigquit_handler(int num);
 void		ft_init_signals(void);
 

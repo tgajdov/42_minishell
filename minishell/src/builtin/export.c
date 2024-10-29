@@ -6,12 +6,23 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 08:16:46 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/17 07:20:37 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/29 13:00:59 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
+/**
+ * @brief Outputs an error message if the identifier passed to the export
+ *        function is not a valid identifier.
+ *
+ * This function outputs "minishell: export: `<identifier>': not a valid
+ * identifier\n" to stderr if the identifier passed to the export function
+ * is not a valid identifier.
+ *
+ * @param identifier The identifier passed to the export function.
+ * @return 1 to indicate that an error occurred.
+ */
 static int	ft_export_err_msg(char *identifier)
 {
 	ft_putstr_fd("minishell: export: `", 2);
@@ -20,6 +31,17 @@ static int	ft_export_err_msg(char *identifier)
 	return (1);
 }
 
+/**
+ * @brief Outputs the current environment variables to stdout in a format
+ *        compatible with Bash.
+ *
+ * This function outputs the environment variables in the format
+ * "declare -x <key>=\"<value>\"", where <key> is the name of the variable
+ * and <value> is the value of the variable. If the variable's value is
+ * NULL, the output is "declare -x <key>".
+ *
+ * This function is used by the export command when no arguments are provided.
+ */
 static	void	ft_export_list(void)
 {
 	t_minishell	*g_minishell;
@@ -49,6 +71,14 @@ static	void	ft_export_list(void)
 	}
 }
 
+/**
+ * @brief Checks if a string can be used as an environment variable key.
+ *
+ * A valid environment variable key must start with a letter or an underscore,
+ * and the rest of the characters must be alphanumeric or underscores.
+ *
+ * This function returns 1 if the string is valid, and 0 otherwise.
+ */
 int	ft_check_key(char *str)
 {
 	int	i;
@@ -65,6 +95,15 @@ int	ft_check_key(char *str)
 	return (1);
 }
 
+/**
+ * @brief Handles the export command.
+ *
+ * The export command takes a list of variables to update or create in the
+ * environment. If no arguments are provided, the export command outputs the
+ * current environment variables to stdout in a format compatible with Bash.
+ *
+ * This function returns the exit status of the export command.
+ */
 int	builtin_export(char **argv)
 {
 	int		i;

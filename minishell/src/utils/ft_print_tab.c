@@ -6,12 +6,20 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 16:29:46 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/16 16:53:34 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/29 14:32:44 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
+/**
+ * Prints the strings in a tab of strings on the standard output,
+ * each string followed by a newline character.
+ *
+ * @param tab A tab of strings.
+ *
+ * @return 0.
+ */
 int	ft_print_tab(char **tab)
 {
 	int	i;

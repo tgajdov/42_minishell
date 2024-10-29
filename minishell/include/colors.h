@@ -6,9 +6,13 @@
 /*   By: tgajdov <tgajdov@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 14:58:43 by tgajdov           #+#    #+#             */
-/*   Updated: 2024/10/01 14:58:47 by tgajdov          ###   ########.fr       */
+/*   Updated: 2024/10/29 17:49:49 by tgajdov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+** This header contains all the colors used by the minishell
+*/
 
 // colors.h
 #ifndef COLORS_H
